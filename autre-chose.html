@@ -1,0 +1,152 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Contact · Ma Petite Commune</title>
+<meta name="description" content="Un pré-diagnostic de votre commune, une question sur une prestation, sur les données ou sur la méthode, une erreur à signaler : appelez-moi, ou laissez…"><link rel="stylesheet" href="fonts.css"><link rel="stylesheet" href="pellucid.css"><style>html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style></head><body class="pl"><header class="pl-nav"><div class="pl-nav-in"><a class="pl-brand" href="index.html"><svg viewBox="-4 -680 1961 700" aria-hidden="true"><g transform="scale(1,-1)"><path transform="translate(-40 0)" fill="var(--pl-ink)" d="M40 0V660H283L418 191H420L552 660H782V0H632V497H630L481 0H339L192 497H190V0Z"/><path transform="translate(747 0)" fill="var(--pl-accent)" d="M161 187V317H284Q345 317 375.0 341.5Q405 366 405 423Q405 477 377.5 503.5Q350 530 294 530H161V660H303Q360 660 409.0 646.5Q458 633 494.5 604.0Q531 575 551.5 531.0Q572 487 572 425Q572 346 536.5 293.0Q501 240 434.0 213.5Q367 187 270 187ZM40 0V660H202V0Z"/><path transform="translate(1338 0)" fill="var(--pl-ink)" d="M341 -14Q257 -14 197.0 13.0Q137 40 99.0 88.0Q61 136 43.5 197.5Q26 259 26 328Q26 399 44.0 462.0Q62 525 99.5 572.5Q137 620 196.0 647.0Q255 674 338 674Q410 674 462.0 653.5Q514 633 545.5 597.5Q577 562 589.0 516.0Q601 470 595 420L446 402Q448 445 435.5 476.0Q423 507 397.5 524.0Q372 541 333 541Q300 541 274.5 528.0Q249 515 231.5 489.0Q214 463 205.0 424.5Q196 386 196 335Q196 269 212.0 220.5Q228 172 261.0 145.5Q294 119 344 119Q390 119 416.5 140.0Q443 161 454.0 198.0Q465 235 461 281L614 268Q619 213 606.5 162.5Q594 112 561.5 72.0Q529 32 474.5 9.0Q420 -14 341 -14Z"/></g></svg>Ma Petite Commune</a><nav class="pl-links" id="pl-links" aria-label="Rubriques"><a href="index.html" class="pl-home">Accueil</a><a href="observer.html">Observer</a><a href="s-informer.html">S'informer</a><a href="apprendre.html">Apprendre</a><a href="offre.html">Nos offres</a><a href="autre-chose.html" class="pl-cta" aria-current="page">Contact</a></nav></div></header><style>
+/* Une demande de rappel : texte à gauche, formulaire en carte */
+:root{ --ok:#2A8A4E; --ok-soft:#DDF1E2; --bad:#C2412D; --bad-soft:#F7DDD7; }
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){ --ok:#55BE7B; --ok-soft:#173022; --bad:#EE7A63; --bad-soft:#3A1E18; }}
+:root[data-theme="dark"]{ --ok:#55BE7B; --ok-soft:#173022; --bad:#EE7A63; --bad-soft:#3A1E18; }
+.ac *,.ac *::before,.ac *::after{box-sizing:border-box}
+.ac{max-width:1040px;margin:0 auto;padding-block:40px 80px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:32px}
+.crumb{font-size:14px;color:var(--pl-ink-2);margin:0}
+.crumb a{color:var(--pl-accent)}
+.lead{font-size:clamp(18px,2.2vw,21px);line-height:1.6;max-width:62ch;margin:18px 0 0}
+.lead a{color:var(--pl-accent)}
+.card{background:var(--pl-panel);border:1px solid var(--pl-line);border-radius:8px;padding:22px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.card h2{font-family:var(--pl-display);font-stretch:75%;font-weight:800;font-size:26px;line-height:1;margin:0}
+label.f{display:flex;flex-direction:column;gap:5px;font-size:14px;font-weight:700}
+label.f small{font-weight:400;color:var(--pl-ink-2)}
+input[type=email],input[type=text],textarea{font:16px var(--pl-body);color:var(--pl-ink);background:var(--pl-bg);border:1px solid var(--pl-line);border-radius:6px;padding:10px 12px;width:100%;min-width:0}
+textarea{min-height:110px;resize:vertical}
+input:focus-visible,textarea:focus-visible,button:focus-visible{outline:2px solid var(--pl-accent);outline-offset:2px}
+fieldset{border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+legend{font-size:14px;font-weight:700;padding:0;margin-bottom:6px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips label{position:relative}
+.chips input{position:absolute;opacity:0;inset:0}
+.chips span{display:inline-block;padding:7px 11px;border:1px solid var(--pl-line);border-radius:999px;font-size:14px;cursor:pointer;background:var(--pl-bg)}
+.chips input:checked+span{border-color:var(--pl-accent);background:var(--pl-accent-soft);color:var(--pl-accent);font-weight:700}
+.chips input:focus-visible+span{outline:2px solid var(--pl-accent);outline-offset:2px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:520px){.row2{grid-template-columns:1fr}}
+.send{align-self:flex-start;border:0;cursor:pointer}
+.msg{font-size:14.5px;padding:10px 12px;border-radius:6px;margin:0}
+.msg.ok{background:var(--ok-soft);color:var(--ok)} .msg.bad{background:var(--bad-soft);color:var(--bad)}
+.ctx{font-size:14.5px;padding:10px 12px;border-radius:6px;margin:0;background:var(--pl-accent-soft);color:var(--pl-ink)}
+.legal{font-size:12.5px;color:var(--pl-ink-2);margin:0}
+.phone{display:inline-flex;align-items:center;gap:14px;margin:22px 0 0;padding:12px 18px 12px 14px;border:1px solid var(--pl-line);border-radius:8px;background:var(--pl-panel)}
+.phone svg{width:30px;height:30px;color:var(--pl-accent);flex:none}
+.phone span{display:flex;flex-direction:column;gap:2px}
+.phone small{font-size:12.5px;color:var(--pl-ink-2)}
+.phone b{font:500 24px/1 var(--pl-mono);letter-spacing:.04em;user-select:all}
+</style>
+
+<main class="ac">
+  <div>
+    <p class="crumb"><a href="index.html">← Accueil</a></p>
+    <p class="pl-eyebrow" style="margin-top:18px">Me contacter</p>
+    <h1 class="pl-h1">Contact</h1>
+    <p class="lead">Un pré-diagnostic de votre commune, une question sur une <a href="offre.html">prestation</a>, sur les données ou sur la méthode, une erreur à signaler : appelez-moi, ou laissez votre e-mail et je vous rappelle.</p>
+    <p class="phone"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8 9.8a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z"/></svg><span><small>M'appeler</small><b>XXXXXXX</b></span></p>
+  </div>
+
+  <form class="card" style="max-width:700px" id="contact" novalidate aria-labelledby="h-form">
+      <h2 id="h-form">Je vous rappelle</h2>
+      <fieldset>
+        <legend>C'est pour…</legend>
+        <div class="chips">
+          <label><input type="radio" name="sujet" value="Un pré-diagnostic gratuit" data-k="prediag" checked><span>Un pré-diagnostic gratuit</span></label>
+          <label><input type="radio" name="sujet" value="Un diagnostic ou un plan de financement" data-k="offre"><span>Un diagnostic ou un plan de financement</span></label>
+          <label><input type="radio" name="sujet" value="Une présentation en conseil" data-k="conseil"><span>Une présentation en conseil</span></label>
+          <label><input type="radio" name="sujet" value="Une licence ou un pilote formateur" data-k="formateur"><span>Une licence ou un pilote formateur</span></label>
+          <label><input type="radio" name="sujet" value="Les données ou la méthode" data-k="donnees"><span>Les données ou la méthode</span></label>
+          <label><input type="radio" name="sujet" value="Une erreur à signaler" data-k="erreur"><span>Une erreur à signaler</span></label>
+          <label><input type="radio" name="sujet" value="Autre chose" data-k="autre"><span>Autre chose</span></label>
+        </div>
+      </fieldset>
+      <p class="ctx" id="ctx" hidden></p>
+      <label class="f" for="email">Votre adresse e-mail<input type="email" id="email" name="email" autocomplete="email" required placeholder="prenom.nom@mairie.fr"></label>
+      <div class="row2">
+        <label class="f" for="nom">Votre nom et votre fonction <small>facultatif</small><input type="text" id="nom" name="nom" autocomplete="name" placeholder="Maire, secrétaire de mairie…"></label>
+        <label class="f" for="commune">Commune concernée <small>facultatif pour le pré-diagnostic, mais utile</small><input type="text" id="commune" name="commune"></label>
+      </div>
+      <label class="f" for="message">Quelques mots <small>facultatif</small><textarea id="message" name="message" placeholder="Vos projets, ce dont vous avez besoin, vos disponibilités pour que je vous rappelle…"></textarea></label>
+      <button class="pl-btn send" type="submit" id="send">Envoyer</button>
+      <p class="msg" id="form-msg" hidden role="status"></p>
+      <p class="legal">Votre adresse sert uniquement à vous recontacter au sujet de cette demande. Voir la <a href="confidentialite.html">politique de confidentialité</a>.</p>
+  </form>
+</main>
+
+<script>
+(() => {
+"use strict";
+const $ = id => document.getElementById(id);
+const norm = s => (s || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+const SUR_PLACE = ["gard", "herault"];
+
+/* ---- Pré-remplissage : paramètres venus d'Observer ou de l'offre, sinon la commune suivie ---- */
+let ctx = { code: "", dep: "" };
+try {
+  /* le sujet arrive par l'ancre (#prediag), la commune par la session (Observer) ou, sur le site final, par l'adresse */
+  const q = new URLSearchParams(location.search);
+  let s = {}; try { s = JSON.parse(sessionStorage.getItem("pellucid-demande") || "{}") || {}; sessionStorage.removeItem("pellucid-demande"); } catch (e2) {}
+  const k = (location.hash || "").slice(1) || q.get("sujet") || s.sujet;
+  if (k) { const r = document.querySelector(`input[name="sujet"][data-k="${CSS.escape(k)}"]`); if (r) r.checked = true; }
+  const com = q.get("commune") || s.commune;
+  if (com) $("commune").value = String(com).slice(0, 120);
+  ctx.code = String(q.get("code") || s.code || "").slice(0, 10); ctx.dep = String(q.get("dep") || s.dep || "").slice(0, 60);
+} catch (e) {}
+if (!$("commune").value) { try { const c = localStorage.getItem("pellucid-commune"); if (c) $("commune").value = c; } catch (e) {} }
+
+function renderCtx() {
+  const box = $("ctx"), com = $("commune").value.trim();
+  const k = (document.querySelector('input[name="sujet"]:checked') || {}).dataset?.k;
+  if (!com || !ctx.dep || !["prediag", "offre", "conseil"].includes(k) || norm(com) !== norm(ctx.nomInitial)) { box.hidden = true; return; }
+  box.textContent = SUR_PLACE.includes(norm(ctx.dep))
+    ? `${com} (${ctx.dep}) : je peux venir présenter l'analyse en mairie.`
+    : `${com} (${ctx.dep}) : je travaille en visioconférence hors du Gard et de l'Hérault ; l'analyse et le prix restent les mêmes.`;
+  box.hidden = false;
+}
+ctx.nomInitial = $("commune").value;
+document.querySelectorAll('input[name="sujet"]').forEach(r => r.addEventListener("change", renderCtx));
+$("commune").addEventListener("input", renderCtx);
+renderCtx();
+
+/* ---- Formulaire ---- */
+let db = null, uid = null, canWrite = true;
+(async () => {
+  try {
+    if (!window.claude || !window.claude.use) return;
+    db = await window.claude.use("db");
+    const user = await window.claude.use("user");
+    if (user) { uid = await user.id(); const w = await user.can("data.write"); if (w === false) canWrite = false; }
+  } catch (e) { db = null; }
+})();
+function say(text, ok){ const m=$("form-msg"); m.textContent=text; m.className="msg "+(ok?"ok":"bad"); m.hidden=false; }
+$("contact").addEventListener("submit", async e => {
+  e.preventDefault();
+  const email = $("email").value.trim();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { say("Indiquez une adresse e-mail valide, par exemple prenom.nom@mairie.fr.", false); $("email").focus(); return; }
+  if (!db || !uid || !canWrite) { say("Ce formulaire ne peut pas enregistrer de demande depuis votre accès. Appelez-moi au XXXXXXX, je vous répondrai avec plaisir.", false); return; }
+  const btn = $("send"); btn.disabled = true; btn.textContent = "Envoi…";
+  const sameCommune = norm($("commune").value) === norm(ctx.nomInitial);
+  const data = {
+    email, nom: $("nom").value.trim().slice(0,120), commune: $("commune").value.trim().slice(0,120),
+    codeInsee: sameCommune ? ctx.code : "", departement: sameCommune ? ctx.dep : "",
+    sujet: (document.querySelector('input[name="sujet"]:checked')||{}).value || "",
+    message: $("message").value.trim().slice(0,3000), envoyeLe: new Date().toISOString()
+  };
+  try {
+    const ref = db.doc(`demandes/${uid}`);
+    const snap = await ref.get();
+    const prev = snap.exists && Array.isArray((snap.data()||{}).historique) ? snap.data().historique : [];
+    await ref.set(Object.assign({}, data, { historique: prev.concat([data]).slice(-20) }));
+    $("email").value = ""; $("message").value = "";
+    say(data.sujet === "Un pré-diagnostic gratuit" ? "C'est noté. Je vous envoie le pré-diagnostic par e-mail et je vous rappelle si vous le souhaitez." : "C'est noté. Je vous rappelle très vite.", true);
+  } catch (err) {
+    say("La demande n'a pas pu être enregistrée. Réessayez dans un instant, ou appelez-moi.", false);
+  }
+  btn.disabled = false; btn.textContent = "Envoyer";
+});
+})();
+</script>
+<footer class="pl-foot"><div><span>Ma Petite Commune · les finances communales, en clair</span><nav class="pl-foot-links" aria-label="Informations"><a href="a-propos.html">Qui est derrière Ma Petite Commune</a><a href="methodologie.html">Méthodologie</a><a href="credits.html">Crédits et licences</a><a href="conditions.html">Conditions d'utilisation</a><a href="accessibilite.html">Accessibilité : non conforme</a><a href="mentions-legales.html">Mentions légales</a><a href="confidentialite.html">Confidentialité</a><a href="cookies.html">Cookies</a><a href="autre-chose.html">Contact</a></nav></div></footer><script src="pellucid-commun.js" defer></script>
+</body></html>

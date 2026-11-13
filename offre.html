@@ -1,0 +1,179 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Offre communes · Ma Petite Commune</title>
+<meta name="description" content="Une analyse claire de la situation financière de votre commune, reliée aux projets que vous voulez mener et aux aides qui peuvent les financer. Présentée…"><link rel="stylesheet" href="fonts.css"><link rel="stylesheet" href="pellucid.css"><style>
+html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+/* Une grille tarifaire lisible comme un tableau de budget : prix en chiffres alignés, livrables en clair */
+.of *,.of *::before,.of *::after{box-sizing:border-box}
+.of h2{font-family:"Bricolage Grotesque",var(--pl-display);font-weight:800;font-size:clamp(26px,3.4vw,36px);letter-spacing:-.02em;margin:0;line-height:1.05;text-wrap:balance}
+.of .sub{margin:8px 0 0;color:var(--pl-ink-2);max-width:62ch}
+.cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.pl-btn.ghost{background:transparent;color:var(--pl-ink);border-color:var(--pl-line)}
+.zone{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:20px;font-size:15px;color:var(--pl-ink-2)}
+.zone b{color:var(--pl-ink)}
+.zone span{display:inline-flex;align-items:center;gap:8px}
+.zone i{width:9px;height:9px;border-radius:50%;background:var(--pl-accent);flex:none}
+.zone i.v{background:transparent;border:2px solid var(--pl-ink-2)}
+
+.free{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:20px 32px;align-items:center;background:var(--pl-ink);color:var(--pl-panel);border-radius:6px;padding:26px}
+@media (max-width:820px){.free{grid-template-columns:1fr}}
+.free h2{color:var(--pl-panel)}
+.free p{margin:10px 0 0;color:color-mix(in srgb,var(--pl-panel) 78%,transparent);max-width:58ch}
+.free ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px;font-size:15px}
+.free li{display:flex;gap:10px}
+.free li::before{content:"";width:16px;height:2px;background:var(--pl-accent);margin-top:11px;flex:none}
+.free .pl-btn{background:var(--pl-panel);color:var(--pl-ink);border-color:var(--pl-panel)}
+.free .pl-btn:hover{background:var(--pl-accent);border-color:var(--pl-accent);color:#fff}
+
+.prods{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:18px}
+@media (max-width:820px){.prods{grid-template-columns:1fr}}
+.prod{background:var(--pl-panel);border:1px solid var(--pl-line);border-radius:6px;padding:22px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.prod.main{grid-column:1 / -1}
+.prod header{display:flex;justify-content:space-between;align-items:baseline;gap:6px 16px;flex-wrap:wrap}
+.prod h3{margin:0;font-family:"Bricolage Grotesque",var(--pl-display);font-weight:800;font-size:23px;letter-spacing:-.01em;line-height:1.1}
+.price{font:500 22px/1 var(--pl-mono);letter-spacing:-.02em;white-space:nowrap}
+.price small{font-size:13px;color:var(--pl-ink-2);letter-spacing:0}
+.prod p{margin:0;color:var(--pl-ink-2);font-size:15px}
+.prod ul{margin:0;padding-left:18px;font-size:15px;display:flex;flex-direction:column;gap:3px}
+.meta{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:13.5px;color:var(--pl-ink-2);margin-top:auto;padding-top:6px;border-top:1px solid var(--pl-line)}
+.grid-wrap{overflow-x:auto}
+table.grille{border-collapse:collapse;width:100%;min-width:420px;font-size:15px}
+.grille th,.grille td{padding:10px 12px;border-bottom:1px solid var(--pl-line);text-align:left}
+.grille thead th{font:700 12px/1.2 var(--pl-display);letter-spacing:.08em;text-transform:uppercase;color:var(--pl-ink-2)}
+.grille td.n,.grille th.n{text-align:right;font-family:var(--pl-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.grille tbody tr:last-child td{border-bottom:0}
+
+.steps{counter-reset:s;list-style:none;margin:18px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px 24px}
+@media (max-width:900px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.steps{grid-template-columns:1fr}}
+.steps li{counter-increment:s;border-top:3px solid var(--pl-ink);padding-top:12px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.steps li::before{content:counter(s);font:500 13px/1 var(--pl-mono);color:var(--pl-accent)}
+.steps b{font-size:16.5px}
+.steps span{font-size:14.5px;color:var(--pl-ink-2)}
+
+.split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:18px}
+@media (max-width:820px){.split{grid-template-columns:1fr}}
+.split div{border:1px solid var(--pl-line);border-radius:6px;padding:20px;min-width:0}
+.split h3{margin:0 0 10px;font-size:17px}
+.split ul{margin:0;padding-left:18px;font-size:15px;color:var(--pl-ink-2);display:flex;flex-direction:column;gap:6px}
+.split ul b{color:var(--pl-ink)}
+.rule{margin:16px 0 0;padding:14px 16px;background:var(--pl-accent-soft);border-radius:6px;font-size:15px;max-width:76ch}
+.notes{font-size:14px;color:var(--pl-ink-2);display:flex;flex-direction:column;gap:6px;max-width:76ch}
+.notes p{margin:0}
+.end{display:flex;flex-wrap:wrap;gap:16px 32px;align-items:center;justify-content:space-between;border-top:3px solid var(--pl-ink);padding-top:22px}
+.end p{margin:0;max-width:58ch;color:var(--pl-ink-2)}
+.end strong{color:var(--pl-ink)}
+</style></head><body class="pl">
+<header class="pl-nav"><div class="pl-nav-in"><a class="pl-brand" href="index.html"><svg viewBox="-4 -680 1961 700" aria-hidden="true"><g transform="scale(1,-1)"><path transform="translate(-40 0)" fill="var(--pl-ink)" d="M40 0V660H283L418 191H420L552 660H782V0H632V497H630L481 0H339L192 497H190V0Z"/><path transform="translate(747 0)" fill="var(--pl-accent)" d="M161 187V317H284Q345 317 375.0 341.5Q405 366 405 423Q405 477 377.5 503.5Q350 530 294 530H161V660H303Q360 660 409.0 646.5Q458 633 494.5 604.0Q531 575 551.5 531.0Q572 487 572 425Q572 346 536.5 293.0Q501 240 434.0 213.5Q367 187 270 187ZM40 0V660H202V0Z"/><path transform="translate(1338 0)" fill="var(--pl-ink)" d="M341 -14Q257 -14 197.0 13.0Q137 40 99.0 88.0Q61 136 43.5 197.5Q26 259 26 328Q26 399 44.0 462.0Q62 525 99.5 572.5Q137 620 196.0 647.0Q255 674 338 674Q410 674 462.0 653.5Q514 633 545.5 597.5Q577 562 589.0 516.0Q601 470 595 420L446 402Q448 445 435.5 476.0Q423 507 397.5 524.0Q372 541 333 541Q300 541 274.5 528.0Q249 515 231.5 489.0Q214 463 205.0 424.5Q196 386 196 335Q196 269 212.0 220.5Q228 172 261.0 145.5Q294 119 344 119Q390 119 416.5 140.0Q443 161 454.0 198.0Q465 235 461 281L614 268Q619 213 606.5 162.5Q594 112 561.5 72.0Q529 32 474.5 9.0Q420 -14 341 -14Z"/></g></svg>Ma Petite Commune</a><nav class="pl-links" id="pl-links" aria-label="Rubriques"><a href="index.html" class="pl-home">Accueil</a><a href="observer.html">Observer</a><a href="s-informer.html">S'informer</a><a href="apprendre.html">Apprendre</a><a href="offre.html" aria-current="page">Nos offres</a><a href="autre-chose.html" class="pl-cta">Contact</a></nav></div></header>
+<main class="pl-main of">
+  <nav class="offres-tabs" aria-label="Nos offres"><a href="offre.html" aria-current="page">Pour les communes</a><a href="formateurs.html">Pour les formateurs</a></nav>
+  <header>
+    <p class="pl-eyebrow">Offre communes · moins de 3 500 habitants</p>
+    <h1 class="pl-h1">Vos comptes, vos projets, leurs financements.</h1>
+    <p class="pl-lede">Une analyse claire de la situation financière de votre commune, reliée aux projets que vous voulez mener et aux aides qui peuvent les financer. Présentée en mairie, à prix fixe, connu avant de commander.</p>
+    <div class="cta-row"><a class="pl-btn" href="autre-chose.html#prediag">Demander mon pré-diagnostic gratuit</a><a class="pl-btn ghost" href="a-propos.html">Qui suis-je ?</a></div>
+    <div class="zone"><span><i></i><b>Gard et Hérault</b> : restitution sur place, en mairie</span><span><i class="v"></i><b>Ailleurs en France</b> : restitution en visioconférence</span></div>
+  </header>
+
+  <section class="free" aria-labelledby="h-free">
+    <div>
+      <p class="pl-eyebrow" style="color:color-mix(in srgb,var(--pl-panel) 70%,transparent)">Pour commencer</p>
+      <h2 id="h-free">Le pré-diagnostic, gratuit et sans engagement</h2>
+      <p>Commencez seul : la fiche A4 de votre commune s'affiche aussitôt, sans compte, depuis la <a href="index.html#recherche" style="color:inherit;font-weight:700">recherche de l'accueil</a>. Elle montre son budget, sa fiscalité et sa position parmi les communes de même taille. Si vous le souhaitez, je la commente pour vous, gratuitement, pour décider si une analyse complète vous serait utile.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:18px">
+      <ul><li>La fiche s'affiche sans compte ; le commentaire arrive par e-mail</li><li>Aucune suite payante imposée</li><li>Un appel de vingt minutes si vous voulez en parler</li></ul>
+      <div><a class="pl-btn" href="autre-chose.html#prediag">Recevoir le pré-diagnostic →</a></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-prods">
+    <h2 id="h-prods">Les prestations et leurs prix</h2>
+    <p class="sub">Chaque prestation se commande sur devis à prix fixe ou par simple bon de commande. Le prix affiché est celui que la commune paie : pas de TVA en sus.</p>
+    <div class="prods">
+      <article class="prod main" aria-labelledby="p-diag">
+        <header><h3 id="p-diag">Diagnostic financier</h3><span class="price">390 €</span></header>
+        <p>La situation financière de la commune sur cinq ans, comparée à sa strate, et ce qu'elle peut investir et emprunter d'ici la fin du mandat. Un seul prix, quelle que soit la taille de la commune.</p>
+        <ul><li>Épargne brute et nette, capacité de désendettement, fiscalité, charges de personnel</li><li>Comparaison avec les communes de même taille, dans le département et en France</li><li>Capacité d'investissement et d'emprunt jusqu'en 2032</li><li>Une note d'une dizaine de pages avec une synthèse d'une page, et un tableau de bord</li></ul>
+        <div class="meta"><span>Livré en 3 semaines</span><span>Restitution en mairie comprise dans le Gard et l'Hérault</span></div>
+      </article>
+
+      <article class="prod" aria-labelledby="p-plan">
+        <header><h3 id="p-plan">Plan de financement</h3><span class="price">290 €</span></header>
+        <p>Pour un à trois projets : quelles aides solliciter, dans quel ordre, et ce qu'il restera à la charge de la commune.</p>
+        <ul><li>Aides mobilisables : Union européenne, État, Région, Département</li><li>Vérification de l'éligibilité et des règles de cumul</li><li>Reste à charge mesuré sur le budget, calendrier de dépôt</li></ul>
+        <div class="meta"><span>Livré en 2 semaines</span></div>
+      </article>
+
+      <article class="prod" aria-labelledby="p-pack">
+        <header><h3 id="p-pack">Pack début de mandat</h3><span class="price">790 €</span></header>
+        <p>Le diagnostic, le plan de financement et la présentation au conseil ensemble, avec une page « budget lisible » à publier pour les habitants.</p>
+        <ul><li>Diagnostic financier complet</li><li>Plan de financement pour un à trois projets</li><li>Présentation en conseil municipal, offerte</li><li>Une page de présentation du budget pour le bulletin municipal</li></ul>
+        <div class="meta"><span>Livré en 4 semaines</span><span>Au lieu de 880 € pour les trois prestations séparées</span></div>
+      </article>
+
+      <article class="prod" aria-labelledby="p-conseil">
+        <header><h3 id="p-conseil">Présentation en conseil municipal</h3><span class="price">200 €</span></header>
+        <p>Je présente l'analyse au conseil, avec des supports lisibles, et je réponds aux questions des élus.</p>
+        <div class="meta"><span>Déplacement compris dans le Gard et l'Hérault</span><span>Offerte dans le pack début de mandat</span></div>
+      </article>
+
+      <article class="prod" aria-labelledby="p-dossier">
+        <header><h3 id="p-dossier">Montage de dossier de subvention</h3><span class="price">500 €</span></header>
+        <p>Rédaction et dépôt d'un dossier de demande, pièces justificatives comprises. Un forfait par dossier, quel que soit le fonds sollicité.</p>
+        <div class="meta"><span>Au forfait, jamais au pourcentage de la subvention</span></div>
+      </article>
+
+      <article class="prod" aria-labelledby="p-suivi">
+        <header><h3 id="p-suivi">Suivi annuel</h3><span class="price">290 € <small>par an</small></span></header>
+        <p>Chaque année, à la sortie des comptes : la mise à jour du diagnostic et du tableau de bord, et une infographie du budget pour les habitants.</p>
+        <div class="meta"><span>Pour les communes ayant fait un diagnostic</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="free" aria-labelledby="h-sol" style="background:var(--pl-accent-soft);color:var(--pl-ink)">
+    <div>
+      <p class="pl-eyebrow">Tarif solidaire</p>
+      <h2 id="h-sol" style="color:var(--pl-ink)">Moitié prix pour les communes à épargne nette négative</h2>
+      <p style="color:var(--pl-ink-2)">Quand l'épargne d'une commune ne suffit plus à rembourser le capital de sa dette, c'est souvent qu'elle a le plus besoin d'un regard extérieur et le moins de marge pour le payer. Toutes les prestations sont alors à moitié prix. Le critère est objectif : l'épargne nette du dernier exercice publié, que la fiche A4 de la commune affiche. 4 067 communes étaient dans ce cas en 2025.</p>
+    </div>
+    <ul style="color:var(--pl-ink)"><li>Diagnostic financier : 195 € au lieu de 390 €</li><li>Plan de financement : 145 € au lieu de 290 €</li><li>Pack début de mandat : 395 € au lieu de 790 €</li><li>Suivi annuel : 145 € par an au lieu de 290 €</li></ul>
+  </section>
+
+  <aside class="rule" style="max-width:none">Vous formez des élus ou des agents plutôt que d'administrer une commune ? Voyez <a href="formateurs.html" style="color:var(--pl-accent);font-weight:700">l'offre formateurs</a>.</aside>
+
+  <section aria-labelledby="h-steps">
+    <h2 id="h-steps">Comment ça se passe</h2>
+    <ol class="steps">
+      <li><b>Un appel de vingt minutes</b><span>Pour cerner le besoin, le calendrier et qui décide.</span></li>
+      <li><b>Un devis à prix fixe</b><span>Sous le seuil de dispense de procédure, un bon de commande suffit.</span></li>
+      <li><b>Les données</b><span>Je récupère les comptes publics. Je vous demande le dernier compte administratif ou compte financier unique, l'état de la dette et la liste des projets.</span></li>
+      <li><b>L'analyse</b><span>Les calculs sont automatisés et vérifiés ; l'analyse et les recommandations sont écrites pour votre commune.</span></li>
+      <li><b>La restitution</b><span>En mairie dans le Gard et l'Hérault, en visioconférence ailleurs.</span></li>
+      <li><b>La facture</b><span>À la livraison, réglée par mandat administratif dans le délai de 30 jours.</span></li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="h-perim">
+    <h2 id="h-perim">En complément de l'ingénierie publique</h2>
+    <p class="sub">De nombreux services publics aident déjà les petites communes, souvent gratuitement. Je propose ce qu'ils produisent rarement : une analyse financière reliée aux financements, sous forme de document à présenter au conseil.</p>
+    <div class="split">
+      <div><h3>Ce que je fais</h3><ul><li>Le diagnostic financier comparé à la strate</li><li>La capacité d'investissement et d'emprunt sur le mandat</li><li>Le plan de financement, subvention par subvention</li><li>Le dossier de demande et la présentation au conseil</li></ul></div>
+      <div><h3>Ce que je vous conseille de demander ailleurs</h3><ul><li><b>Conseil budgétaire et comptable courant</b> : le conseiller aux décideurs locaux de la DGFiP</li><li><b>Question juridique ou financière ponctuelle</b> : Rural Consult, de la Banque des Territoires</li><li><b>Assistance technique aux projets d'équipement</b> : l'agence technique départementale ou le CAUE</li><li><b>Comptabilité, actes budgétaires, maîtrise d'œuvre</b> : hors de mon champ</li></ul></div>
+    </div>
+    <p class="rule">Si l'agence départementale ou le conseiller de la DGFiP peut faire la même chose gratuitement dans le même délai, je vous y oriente avant tout devis.</p>
+  </section>
+
+  <section class="notes" aria-label="Précisions sur les prix">
+    <p>Prix nets : TVA non applicable, article 293 B du code général des impôts.</p>
+    <p>Les prix sont les mêmes pour toutes les communes de moins de 3 500 habitants.</p>
+    <p>Je ne perçois aucune commission des financeurs, plateformes ou prestataires que je peux être amené à recommander.</p>
+  </section>
+
+  <section class="end" aria-label="Demander un pré-diagnostic">
+    <p><strong>Envie de voir ce que cela donne pour votre commune ?</strong> Le pré-diagnostic est gratuit, et vous dit en deux pages si une analyse complète vaut la peine.</p>
+    <a class="pl-btn" href="autre-chose.html#prediag">Demander mon pré-diagnostic</a>
+  </section>
+</main>
+<footer class="pl-foot"><div><span>Ma Petite Commune · les finances communales, en clair</span><nav class="pl-foot-links" aria-label="Informations"><a href="a-propos.html">Qui est derrière Ma Petite Commune</a><a href="methodologie.html">Méthodologie</a><a href="credits.html">Crédits et licences</a><a href="conditions.html">Conditions d'utilisation</a><a href="accessibilite.html">Accessibilité : non conforme</a><a href="mentions-legales.html">Mentions légales</a><a href="confidentialite.html">Confidentialité</a><a href="cookies.html">Cookies</a><a href="autre-chose.html">Contact</a></nav></div></footer>
+<script src="pellucid-commun.js" defer></script>
+</body></html>
