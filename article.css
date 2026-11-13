@@ -116,3 +116,8 @@ mark.todo{background:var(--a-gold-soft);color:var(--a-gold);border:1px dashed va
 .also h2{font-size:18px;margin:0 0 8px}
 .also a{color:var(--pl-accent)}
 .art code{font-family:var(--pl-mono);font-size:.9em}
+
+/* Illustrations (2026-11-13) */
+.card-a .vig{display:block;margin:-2px 0 4px}
+.card-a .vig svg{display:block;width:100%;max-width:220px;height:auto}
+.art .art-vig svg{display:block;width:min(260px,70%);height:auto}
