@@ -45,7 +45,7 @@ legend{font-size:14px;font-weight:700;padding:0;margin-bottom:6px}
     <p class="pl-eyebrow" style="margin-top:18px">Me contacter</p>
     <h1 class="pl-h1">Contact</h1>
     <p class="lead">Un pré-diagnostic de votre commune, une question sur une <a href="offre.html">prestation</a>, sur les données ou sur la méthode, une erreur à signaler : appelez-moi, ou laissez votre e-mail et je vous rappelle.</p>
-    <p class="phone"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8 9.8a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z"/></svg><span><small>M'appeler</small><b>XXXXXXX</b></span></p>
+    <p class="phone"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8 9.8a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z"/></svg><span><small>M'appeler</small><b><a href="tel:+33640785578">06 40 78 55 78</a></b></span></p>
   </div>
 
   <form class="card" style="max-width:700px" id="contact" novalidate aria-labelledby="h-form">
@@ -125,7 +125,19 @@ $("contact").addEventListener("submit", async e => {
   e.preventDefault();
   const email = $("email").value.trim();
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { say("Indiquez une adresse e-mail valide, par exemple prenom.nom@mairie.fr.", false); $("email").focus(); return; }
-  if (!db || !uid || !canWrite) { say("Ce formulaire ne peut pas enregistrer de demande depuis votre accès. Appelez-moi au XXXXXXX, je vous répondrai avec plaisir.", false); return; }
+  if (!db || !uid || !canWrite) {
+    /* Hors de Claude (site public) : la demande part par la messagerie du visiteur, déjà rédigée. */
+    const ADR = "contact@commentseportentlesfinancesdemapetitecommune.com";
+    const sujet = (document.querySelector('input[name="sujet"]:checked')||{}).value || "Demande";
+    const nom = $("nom").value.trim(), com = $("commune").value.trim(), msg = $("message").value.trim();
+    const lignes = ["Sujet : " + sujet, "Mon e-mail : " + email];
+    if (nom) lignes.push("Nom et fonction : " + nom);
+    if (com) lignes.push("Commune : " + com);
+    if (msg) lignes.push("", msg);
+    location.href = "mailto:" + ADR + "?subject=" + encodeURIComponent("[MPC] " + sujet + (com ? " - " + com : "")) + "&body=" + encodeURIComponent(lignes.join("\n"));
+    say("Votre messagerie s'ouvre avec la demande déjà rédigée : il ne reste qu'à l'envoyer. Si rien ne s'ouvre, écrivez à " + ADR + " ou appelez le 06 40 78 55 78.", true);
+    return;
+  }
   const btn = $("send"); btn.disabled = true; btn.textContent = "Envoi…";
   const sameCommune = norm($("commune").value) === norm(ctx.nomInitial);
   const data = {
