@@ -49,6 +49,9 @@
 .ct-form .send{display:inline-flex;align-items:center;gap:10px;align-self:flex-start;min-height:54px;padding:0 28px;font-size:16.5px;overflow:hidden}
 .send-av{width:20px;height:20px}
 .ct-form .legal a{color:var(--pl-ink);font-weight:700}
+.ct-form .f{min-width:0;max-width:100%}.ct-form .f select{width:100%;max-width:100%;min-width:0;text-overflow:ellipsis;min-height:50px;border-radius:14px;border:2px solid var(--pl-line);background:var(--pl-panel);color:var(--pl-ink);padding:0 14px;font:600 15px var(--pl-body);margin-top:6px;transition:border-color .2s,box-shadow .25s}
+.ct-form .f select:hover{border-color:var(--pl-ink)}
+.ct-form .f select:focus{outline:none;border-color:#172E3A;box-shadow:0 0 0 5px rgba(233,182,92,.35)}
 .ct-form .msg{border-radius:14px}
 .ct-form .row2{align-items:end}
 .ct-form textarea{min-height:130px!important}
@@ -183,6 +186,7 @@ legend{font-size:14px;font-weight:700;padding:0;margin-bottom:6px}
         <label class="f" for="nom">Votre nom et votre fonction <small>facultatif</small><input type="text" id="nom" name="nom" autocomplete="name" placeholder="Maire, secrétaire de mairie…"></label>
         <label class="f" for="commune">Commune concernée <small>facultatif pour le pré-diagnostic, mais utile</small><input type="text" id="commune" name="commune"></label>
       </div>
+      <label class="f" for="source">Comment avez-vous connu Ma Petite Commune ? <small>facultatif</small><select id="source" name="source"><option value="">Choisir…</option><option>Une recherche sur Internet</option><option>Le bouche-à-oreille (collègue, autre commune)</option><option>Une association d'élu·es ou de secrétaires de mairie</option><option>LinkedIn ou un autre réseau social</option><option>Un salon ou un événement</option><option>Un article ou la presse</option><option>Une formation</option><option>Autre</option></select></label>
       <label class="f" for="message">Quelques mots <small>facultatif</small><textarea id="message" name="message" placeholder="Vos projets, ce dont vous avez besoin, vos disponibilités pour que je vous rappelle…"></textarea></label>
       <button class="pl-btn send" type="submit" id="send"><span class="send-t">Envoyer</span><svg class="send-av" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l18-8-6 18-3-7z" fill="currentColor"/></svg></button>
       <p class="msg" id="form-msg" hidden role="status"></p>
@@ -250,6 +254,7 @@ $("contact").addEventListener("submit", async e => {
     const lignes = ["Sujet : " + sujet, "Mon e-mail : " + email];
     if (nom) lignes.push("Nom et fonction : " + nom);
     if (com) lignes.push("Commune : " + com);
+    const src = $("source").value; if (src) lignes.push("Connu par : " + src);
     if (msg) lignes.push("", msg);
     location.href = "mailto:" + ADR + "?subject=" + encodeURIComponent("[MPC] " + sujet + (com ? " - " + com : "")) + "&body=" + encodeURIComponent(lignes.join("\n"));
     say("Votre messagerie s'ouvre avec la demande déjà rédigée : il ne reste qu'à l'envoyer. Si rien ne s'ouvre, écrivez à " + ADR + " ou appelez le 06 40 78 55 78.", true);
@@ -258,7 +263,7 @@ $("contact").addEventListener("submit", async e => {
   const btn = $("send"); btn.disabled = true; btn.querySelector(".send-t").textContent = "Envoi…";
   const sameCommune = norm($("commune").value) === norm(ctx.nomInitial);
   const data = {
-    email, nom: $("nom").value.trim().slice(0,120), commune: $("commune").value.trim().slice(0,120),
+    email, nom: $("nom").value.trim().slice(0,120), commune: $("commune").value.trim().slice(0,120), source: $("source").value.slice(0,80),
     codeInsee: sameCommune ? ctx.code : "", departement: sameCommune ? ctx.dep : "",
     sujet: (document.querySelector('input[name="sujet"]:checked')||{}).value || "",
     message: $("message").value.trim().slice(0,3000), envoyeLe: new Date().toISOString()
