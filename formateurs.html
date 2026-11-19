@@ -1,53 +1,167 @@
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Pour les formateurs · Ma Petite Commune</title>
-<meta name="description" content="Les vases communicants, La Leçon du jour, le glossaire et Observer sont gratuits pour chacun. Pour les utiliser en séance avec un groupe, Ma Petite…"><link rel="stylesheet" href="fonts.css"><link rel="stylesheet" href="pellucid.css"><link rel="stylesheet" href="article.css"><style>html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style></head><body class="pl"><header class="pl-nav"><div class="pl-nav-in"><a class="pl-brand" href="index.html"><svg viewBox="-4 -680 1961 700" aria-hidden="true"><g transform="scale(1,-1)"><path transform="translate(-40 0)" fill="var(--pl-ink)" d="M40 0V660H283L418 191H420L552 660H782V0H632V497H630L481 0H339L192 497H190V0Z"/><path transform="translate(747 0)" fill="var(--pl-accent)" d="M161 187V317H284Q345 317 375.0 341.5Q405 366 405 423Q405 477 377.5 503.5Q350 530 294 530H161V660H303Q360 660 409.0 646.5Q458 633 494.5 604.0Q531 575 551.5 531.0Q572 487 572 425Q572 346 536.5 293.0Q501 240 434.0 213.5Q367 187 270 187ZM40 0V660H202V0Z"/><path transform="translate(1338 0)" fill="var(--pl-ink)" d="M341 -14Q257 -14 197.0 13.0Q137 40 99.0 88.0Q61 136 43.5 197.5Q26 259 26 328Q26 399 44.0 462.0Q62 525 99.5 572.5Q137 620 196.0 647.0Q255 674 338 674Q410 674 462.0 653.5Q514 633 545.5 597.5Q577 562 589.0 516.0Q601 470 595 420L446 402Q448 445 435.5 476.0Q423 507 397.5 524.0Q372 541 333 541Q300 541 274.5 528.0Q249 515 231.5 489.0Q214 463 205.0 424.5Q196 386 196 335Q196 269 212.0 220.5Q228 172 261.0 145.5Q294 119 344 119Q390 119 416.5 140.0Q443 161 454.0 198.0Q465 235 461 281L614 268Q619 213 606.5 162.5Q594 112 561.5 72.0Q529 32 474.5 9.0Q420 -14 341 -14Z"/></g></svg>Ma Petite Commune</a><nav class="pl-links" id="pl-links" aria-label="Rubriques"><a href="index.html" class="pl-home">Accueil</a><a href="observer.html">Observer</a><a href="s-informer.html">S'informer</a><a href="apprendre.html">Apprendre</a><a href="offre.html" aria-current="page">Nos offres</a><a href="autre-chose.html" class="pl-cta">Contact</a></nav></div></header>
-<article class="art">
-  <nav class="offres-tabs" aria-label="Nos offres"><a href="offre.html">Pour les communes</a><a href="formateurs.html" aria-current="page">Pour les formateurs</a></nav>
-  <div class="kicker"><span class="tag">Pour les formateurs</span><span class="tag status">Pilote ouvert</span></div>
-  <h1>Former aux finances locales avec Ma Petite Commune</h1>
-  <p class="chapo">Les vases communicants, La Leçon du jour, le glossaire et Observer sont gratuits pour chacun. Pour les utiliser en séance avec un groupe, Ma Petite Commune prépare une licence pour les formateurs. Le premier pilote est gratuit.</p>
-  <div class="meta"><span>Ma Petite Commune · 6 novembre 2026</span></div>
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Pour les formateur·rices · Ma Petite Commune</title><link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="description" content="Les vases communicants, La Leçon du jour, le glossaire et Observer sont gratuits pour chacun. Pour les utiliser en séance avec un groupe, Ma Petite…"><link rel="stylesheet" href="fonts.css"><link rel="stylesheet" href="pellucid.css"><link rel="stylesheet" href="mpc-anim.css"><style>
+html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.of *,.of *::before,.of *::after{box-sizing:border-box}
+.fo{display:flex;flex-direction:column;gap:64px}
+.fo h2{font-family:var(--pl-display);font-weight:600;font-size:clamp(28px,3.8vw,42px);letter-spacing:-.02em;margin:6px 0 0;line-height:1.05;text-wrap:balance}
+.fo .sub{margin:10px 0 0;color:var(--pl-ink-2);max-width:62ch}
+.cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.pl-btn.ghost{background:transparent;color:var(--pl-ink);border-color:var(--pl-line)}
+.fo-pilote{display:inline-block;padding:3px 10px;border-radius:999px;background:var(--mpc-sauge);color:#172E3A;letter-spacing:.08em}
+.fo-hero{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:32px 48px;align-items:end;margin-top:-30px}
+@media (max-width:900px){.fo-hero{grid-template-columns:1fr}}
+.fo-chif{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fo-chif li{background:var(--pl-panel);border:1px solid var(--pl-line);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:4px}
+.fo-chif b{font:600 clamp(34px,4vw,46px)/1 var(--pl-display);font-variant-numeric:tabular-nums;color:var(--pl-ink)}
+.fo-chif li:nth-child(1) b{color:var(--mpc-terra-txt)}.fo-chif li:nth-child(3) b{color:var(--mpc-sauge-txt)}
+.fo-chif span{font-size:13.5px;line-height:1.4;color:var(--pl-ink-2)}
+.fo-outils{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:24px}
+@media (max-width:760px){.fo-outils{grid-template-columns:1fr}}
+.fo-o{display:grid;grid-template-columns:200px minmax(0,1fr);background:var(--pl-panel);border:1px solid var(--pl-line);border-radius:18px;overflow:hidden;color:inherit;text-decoration:none;transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s}
+@media (max-width:520px){.fo-o{grid-template-columns:1fr}}
+.fo-o .ill{background:#F5F1E8;display:grid;place-items:center;padding:16px;border-right:1px solid var(--pl-line)}
+.fo-o .ill svg{width:100%;max-width:170px;height:auto;overflow:visible}
+.fo-b{padding:20px 22px;display:flex;flex-direction:column;gap:8px}
+.fo-b h3{margin:0;font:600 23px/1.1 var(--pl-display)}
+.fo-b p{margin:0;font-size:15px;line-height:1.5;color:var(--pl-ink-2)}
+.fo-b .fo-pub{margin-top:auto;font-weight:700;font-size:13px;color:var(--mpc-sauge-txt)}
+.fo-o:focus-visible{outline:3px solid var(--mpc-terra-txt);outline-offset:3px}
+.fo-lic{background:var(--mpc-bleu);color:#F5F1E8;border-radius:28px;padding:clamp(26px,4vw,48px)}
+.fo-lic h2{color:#F5F1E8}.fo-lic h2 em{color:var(--mpc-safran)}.fo-lic .pl-eyebrow{color:var(--mpc-safran)}.fo-lic .sub{color:var(--mpc-sur-sombre)}
+.fo-l{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+@media (max-width:1000px){.fo-l{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (max-width:560px){.fo-l{grid-template-columns:1fr}}
+.fo-l li{display:flex;flex-direction:column;gap:10px;padding:22px;border-radius:20px;background:rgba(245,241,232,.07);border:1px solid rgba(245,241,232,.14);transition:background .3s,transform .3s cubic-bezier(.2,.7,.2,1)}
+.fo-l b{font:600 22px/1.1 var(--pl-display)}
+.fo-l span:not(.ic){font-size:14.5px;line-height:1.5;color:var(--mpc-sur-sombre)}
+.ic{display:grid;place-items:center;width:54px;height:54px;border-radius:16px;border:2px solid rgba(245,241,232,.5)}
+.ic svg{width:30px;height:30px}
+.fo-qui{list-style:none;margin:22px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+@media (max-width:1000px){.fo-qui{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (max-width:560px){.fo-qui{grid-template-columns:1fr}}
+.fo-qui li{position:relative;display:flex;flex-direction:column;gap:6px;padding:20px 20px 20px 24px;border-radius:16px;background:var(--pl-panel);border:1px solid var(--pl-line);overflow:hidden}
+.fo-qui li::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--c,#78A995);transform-origin:50% 100%;transition:width .35s cubic-bezier(.2,.8,.2,1)}
+.fo-qui li:nth-child(2){--c:#D77D68}.fo-qui li:nth-child(3){--c:#E9B65C}.fo-qui li:nth-child(4){--c:#172E3A}
+.fo-qui b{font:600 19px/1.15 var(--pl-display)}.fo-qui span{font-size:14px;line-height:1.45;color:var(--pl-ink-2)}
+.fo-pil{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px 48px;align-items:center;background:var(--mpc-safran-doux);border-radius:28px;padding:clamp(26px,4vw,48px)}
+@media (max-width:860px){.fo-pil{grid-template-columns:1fr}}
+.fo-pil p{max-width:60ch;line-height:1.55}
+.fo-pas{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;counter-reset:p}
+.fo-pas li{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:16px;background:var(--pl-panel);font-weight:600;font-size:15px}
+.fo-pas b{flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--mpc-bleu);color:var(--mpc-safran);font:600 20px var(--pl-display)}
+.fo-note{padding:16px 20px;border-radius:16px;border:1px dashed var(--pl-line);font-size:14.5px;color:var(--pl-ink-2);line-height:1.55}
+.fo-note a{color:var(--pl-ink);font-weight:700}
+.fo-suite{display:flex;flex-wrap:wrap;gap:10px}
+.fo-suite a{padding:12px 20px;border-radius:999px;border:2px solid var(--pl-ink);color:var(--pl-ink);text-decoration:none;font-weight:700;transition:background .25s,color .25s,transform .25s}
+.fo-suite a:hover{background:var(--pl-ink);color:var(--pl-bg);transform:translateY(-2px)}
+/* illustrations */
+.fo-o svg *{transform-box:fill-box}
+.fo-o .a-w{transform-origin:50% 100%}.fo-o .a-pop,.fo-o .a-tilt{transform-origin:50% 50%}.fo-o .a-hl{transform-origin:0 50%}.fo-o .a-pin{transform-origin:50% 100%}
+/* arrivée, une fois */
+@media (prefers-reduced-motion:no-preference){
+ .fo [style*="--i"]{opacity:0}
+ .fo .vu [style*="--i"],.fo .vu[style*="--i"]{animation:foMonte .6s cubic-bezier(.2,.8,.2,1) calc(var(--i) * 90ms) both}
+ .fo .vu .fo-o .a-w{animation:foFill 1s cubic-bezier(.2,.7,.2,1) .3s both}
+ .fo .vu .fo-o .a-pop{animation:foPop .5s cubic-bezier(.2,.8,.2,1.5) calc(.4s + var(--d,0s)) both}
+ .fo .vu .fo-o .a-pin{animation:foPin .7s cubic-bezier(.3,1.4,.5,1) .7s both}
+ .fo .vu .fo-o .a-tr{animation:foTrace 1.2s ease .2s both}
+ .fo .vu .fo-o .a-hl{animation:foGrow .6s ease .6s both}
+ .fo-pas li{opacity:0}.fo-pil.vu .fo-pas li{animation:foGauche .55s cubic-bezier(.2,.8,.2,1) both}
+ .fo-pil.vu .fo-pas li:nth-child(2){animation-delay:.12s}.fo-pil.vu .fo-pas li:nth-child(3){animation-delay:.24s}
+}
+/* survol, une fois */
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+ .fo-o:hover{transform:translateY(-5px);box-shadow:0 18px 36px rgba(23,46,58,.14),inset 0 -4px 0 var(--mpc-terra)}
+ .fo-o:hover .a-w{animation:foSlosh .8s ease both}
+ .fo-o:hover .a-pop{animation:foPop .45s cubic-bezier(.2,.8,.2,1.5) var(--d,0s) both}
+ .fo-o:hover .a-pin{animation:foSaut .7s ease both}
+ .fo-o:hover .a-tilt{animation:foTilt .6s ease both}
+ .fo-o:hover .a-hl{animation:foGrow .5s ease both}
+ .fo-l li:hover{background:rgba(245,241,232,.13);transform:translateY(-4px)}
+ .fo-l li:hover .ic{animation:foTilt .6s ease both}
+ .fo-qui li:hover::before{width:12px}
+ .fo-chif li:hover b{animation:foPop .45s cubic-bezier(.2,.8,.2,1.5) both}
+}
+@keyframes foMonte{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes foGauche{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:none}}
+@keyframes foFill{from{transform:scaleY(0)}to{transform:none}}
+@keyframes foSlosh{0%,100%{transform:none}35%{transform:scaleY(.8)}70%{transform:scaleY(1.06)}}
+@keyframes foPop{from{transform:scale(.3);opacity:0}to{transform:none;opacity:1}}
+@keyframes foPin{from{transform:translateY(-40px);opacity:0}to{transform:none;opacity:1}}
+@keyframes foSaut{0%,100%{transform:none}35%{transform:translateY(-10px)}65%{transform:translateY(0) scaleY(.9)}}
+@keyframes foTrace{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes foGrow{from{transform:scaleX(0)}to{transform:none}}
+@keyframes foTilt{0%,100%{transform:none}35%{transform:rotate(-8deg) scale(1.06)}70%{transform:rotate(4deg)}}
+</style></head>
+<body class="pl"><header class="pl-nav"><div class="pl-nav-in"><a class="pl-brand" href="index.html" aria-label="Ma Petite Commune, accueil"><svg viewBox="0 -84 251 88" aria-hidden="true"><g class="mk">
+<rect class="b" style="--k:0" x="36" y="-22" width="16" height="22" rx="3" fill="#F5F1E8"/>
+<rect class="b" style="--k:1" x="56" y="-40" width="16" height="40" rx="3" fill="#F5F1E8"/>
+<rect class="b" style="--k:2" x="76" y="-62" width="16" height="62" rx="3" fill="#78A995"/>
+<path class="c" pathLength="1" d="M7 -6 C 16 -14, 18 -58, 34 -57 C 47 -56, 50 -40, 63 -45 C 72 -49, 77 -61, 82 -68" fill="none" stroke="#D77D68" stroke-width="12.5" stroke-linecap="round"/>
+<circle class="p" cx="84" cy="-73" r="8" fill="#E9B65C"/>
+</g><path class="l" style="--k:0" d="M109.0 0.0V-70.0H141.0Q150.6 -70.0 157.55 -66.9Q164.5 -63.800000000000004 168.3 -57.95Q172.10000000000002 -52.1 172.10000000000002 -44.1Q172.10000000000002 -36.2 168.3 -30.400000000000002Q164.5 -24.6 157.55 -21.450000000000003Q150.6 -18.3 141.0 -18.3H120.0L128.8 -26.900000000000002V0.0ZM128.8 -24.8 120.0 -33.9H139.8Q146.0 -33.9 149.05 -36.6Q152.1 -39.300000000000004 152.1 -44.1Q152.1 -49.0 149.05 -51.7Q146.0 -54.400000000000006 139.8 -54.400000000000006H120.0L128.8 -63.5Z" fill="#F5F1E8"/><path class="l" style="--k:1" d="M215.6 1.4000000000000001Q207.29999999999998 1.4000000000000001 200.25 -1.25Q193.2 -3.9000000000000004 188.04999999999998 -8.8Q182.89999999999998 -13.700000000000001 180.0 -20.35Q177.1 -27.0 177.1 -35.0Q177.1 -43.0 180.0 -49.650000000000006Q182.89999999999998 -56.300000000000004 188.04999999999998 -61.2Q193.2 -66.10000000000001 200.25 -68.75Q207.29999999999998 -71.4 215.6 -71.4Q225.29999999999998 -71.4 232.95 -68.0Q240.6 -64.60000000000001 245.7 -58.2L233.1 -46.800000000000004Q229.7 -50.800000000000004 225.64999999999998 -52.900000000000006Q221.6 -55.0 216.6 -55.0Q212.29999999999998 -55.0 208.7 -53.6Q205.1 -52.2 202.55 -49.550000000000004Q200.0 -46.900000000000006 198.55 -43.2Q197.1 -39.5 197.1 -35.0Q197.1 -30.5 198.55 -26.8Q200.0 -23.1 202.55 -20.450000000000003Q205.1 -17.8 208.7 -16.4Q212.29999999999998 -15.0 216.6 -15.0Q221.6 -15.0 225.64999999999998 -17.1Q229.7 -19.200000000000003 233.1 -23.200000000000003L245.7 -11.8Q240.6 -5.5 232.95 -2.05Q225.29999999999998 1.4000000000000001 215.6 1.4000000000000001Z" fill="#D77D68"/></svg><span>Ma Petite<br>Commune</span></a><script>try{if(!sessionStorage.getItem("mpc-logo")){document.documentElement.classList.add("mpc-intro");sessionStorage.setItem("mpc-logo","1")}}catch(e){}</script><nav class="pl-links" id="pl-links" aria-label="Rubriques"><a href="index.html" class="pl-home">Accueil</a><a href="observer.html">Observer</a><a href="s-informer.html">S'informer</a><a href="apprendre.html">Apprendre</a><a href="offre.html" aria-current="page">Nos offres</a><a href="autre-chose.html" class="pl-cta">Contact</a></nav></div></header>
+<main class="pl-main of fo">
+  <nav class="offres-tabs" aria-label="Nos offres"><a href="offre.html">Pour les communes</a><a href="formateurs.html" aria-current="page">Pour les formateur·rices</a></nav>
+  <header class="fo-hero">
+    <div><p class="pl-eyebrow">Pour les formateur·rices · <span class="fo-pilote">Pilote ouvert</span></p>
+    <h1 class="pl-h1">Former aux finances locales <em>avec Ma Petite Commune.</em></h1>
+    <p class="pl-lede">Les vases communicants, La Leçon du jour, le glossaire et Observer sont gratuits pour chacun. Pour les utiliser en séance avec un groupe, Ma Petite Commune prépare une licence pour les formateur·rices. Le premier pilote est gratuit.</p>
+    <div class="cta-row"><a class="pl-btn" href="autre-chose.html#formateur">Proposer un pilote →</a><a class="pl-btn ghost" href="apprendre.html">Voir les outils d'Apprendre</a></div></div>
+    <ul class="fo-chif" aria-label="Les outils en chiffres">
+      <li style="--i:0"><b data-n="91">91</b><span>leçons, dont 76 pour le concours d'administrateur territorial</span></li>
+      <li style="--i:1"><b data-n="82">82</b><span>définitions sourcées</span></li>
+      <li style="--i:2"><b data-n="22925">22 925</b><span>communes dans Observer</span></li>
+      <li style="--i:3"><b data-n="6">6</b><span>budgets à jouer dans un mandat</span></li>
+    </ul>
+  </header>
 
-  <section class="essentiel" aria-labelledby="ess"><h2 id="ess">L'essentiel</h2><ul>
-    <li>Des outils déjà en ligne : un jeu de simulation budgétaire, <strong>91 leçons</strong> dont 76 pour le concours d'administrateur territorial, <strong>82 définitions</strong> sourcées, les données de <strong>22 925 communes</strong>.</li>
-    <li>Une licence en préparation : mode formateur, suivi des stagiaires, guide d'animation, attestations de parcours.</li>
-    <li>Un pilote gratuit pour les premiers partenaires, qui fixent avec Ma Petite Commune ce que la licence doit contenir.</li>
-  </ul></section>
+  <section aria-labelledby="h-outils">
+    <p class="pl-eyebrow">Déjà en ligne, gratuit</p><h2 id="h-outils">Ce que vous pouvez <em>déjà utiliser.</em></h2>
+    <div class="fo-outils">
+      <a class="fo-o" href="vases-communicants.html" style="--i:0"><div class="ill" aria-hidden="true"><svg viewBox="0 0 160 96"><rect class="a-w" x="28" y="50" width="30" height="32" fill="#78A995"/><path d="M26 30v48q0 4 4 4h26q4 0 4-4V30" fill="none" stroke="#172E3A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><rect class="a-w" x="66" y="46" width="30" height="36" fill="#E9B65C"/><path d="M64 30v48q0 4 4 4h26q4 0 4-4V30" fill="none" stroke="#172E3A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><rect class="a-w" x="104" y="60" width="30" height="22" fill="#D77D68"/><path d="M102 30v48q0 4 4 4h26q4 0 4-4V30" fill="none" stroke="#172E3A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M60 76h4M98 76h4" stroke="#172E3A" stroke-width="5" stroke-linecap="round"/></svg></div><div class="fo-b"><h3>Les vases communicants</h3><p>Projeter une mission et la résoudre en groupe ; jouer un mandat de six budgets ; régler les hypothèses dans le bac à sable pour illustrer un effet de ciseaux.</p><p class="fo-pub">Élu·es · secrétaires de mairie · étudiant·es</p></div></a>
+      <a class="fo-o" href="le-fil.html" style="--i:1"><div class="ill" aria-hidden="true"><svg viewBox="0 0 160 96"><path class="a-tr" pathLength="1" d="M24 80 C 60 80, 50 50, 84 50 S 120 20, 140 16" fill="none" stroke="#172E3A" stroke-width="2.6" stroke-dasharray=".02 .04" stroke-linecap="round" opacity=".5"/><g class="a-pop"><circle cx="48" cy="72" r="11" fill="#78A995" stroke="#172E3A" stroke-width="2.2"/><path d="M43 72l4 4 6-7" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></g><g class="a-pop" style="--d:.12s"><circle cx="92" cy="47" r="12" fill="#E9B65C" stroke="#172E3A" stroke-width="2.2"/><path d="M92 40l2.2 4.5 5 .7-3.6 3.5.9 5-4.5-2.4-4.5 2.4.9-5-3.6-3.5 5-.7z" fill="#fff"/></g><g class="a-pop" style="--d:.24s"><circle cx="134" cy="18" r="9" fill="#fff" stroke="#172E3A" stroke-width="2.2" stroke-dasharray="3 3"/></g></svg></div><div class="fo-b"><h3>La Leçon du jour</h3><p>Faire travailler les stagiaires entre deux séances, leçon par leçon, avec des questions de révision.</p><p class="fo-pub">Agent·es · candidat·es aux concours</p></div></a>
+      <a class="fo-o" href="glossaire.html" style="--i:2"><div class="ill" aria-hidden="true"><svg viewBox="0 0 160 96"><rect x="34" y="18" width="80" height="66" rx="6" fill="#78A995" stroke="#172E3A" stroke-width="2.2" transform="rotate(-6 74 51)"/><g class="a-tilt"><rect x="44" y="12" width="80" height="70" rx="6" fill="#fff" stroke="#172E3A" stroke-width="2.4"/><text x="54" y="36" font-family="Newsreader,Georgia,serif" font-weight="600" font-size="17" fill="#172E3A">CAF</text><rect x="54" y="44" width="58" height="4" rx="2" fill="#172E3A" opacity=".18"/><rect x="54" y="52" width="46" height="4" rx="2" fill="#172E3A" opacity=".18"/><rect class="a-hl" x="54" y="62" width="50" height="12" rx="3" fill="#E9B65C"/></g><g class="a-pop" style="--d:.1s"><rect x="128" y="16" width="16" height="14" rx="4" fill="#D77D68" stroke="#172E3A" stroke-width="2"/><rect x="128" y="36" width="16" height="14" rx="4" fill="#fff" stroke="#172E3A" stroke-width="2"/></g></svg></div><div class="fo-b"><h3>Le glossaire</h3><p>Une référence commune, sourcée article par article, ouverte à tout moment depuis chaque page.</p><p class="fo-pub">Tous les publics</p></div></a>
+      <a class="fo-o" href="observer.html" style="--i:3"><div class="ill" aria-hidden="true"><svg viewBox="0 0 160 96"><path d="M70 10l14 6 10-2 6 10 12 6-4 12 6 12-10 10-2 14-14 4-12-6-14 4-8-10-12-4 2-14-8-10 8-10-2-12 12-4 6-10z" fill="#F5F1E8" stroke="#172E3A" stroke-width="2.2" stroke-linejoin="round" transform="translate(-4 0)"/><circle class="a-pop" style="--d:0.00s" cx="54" cy="30" r="3.4" fill="#78A995"/><circle class="a-pop" style="--d:0.05s" cx="70" cy="46" r="3.4" fill="#78A995"/><circle class="a-pop" style="--d:0.10s" cx="88" cy="34" r="3.4" fill="#E9B65C"/><circle class="a-pop" style="--d:0.15s" cx="60" cy="62" r="3.4" fill="#D77D68"/><circle class="a-pop" style="--d:0.20s" cx="84" cy="62" r="3.4" fill="#78A995"/><circle class="a-pop" style="--d:0.25s" cx="98" cy="52" r="3.4" fill="#E9B65C"/><circle class="a-pop" style="--d:0.30s" cx="76" cy="76" r="3.4" fill="#78A995"/><circle class="a-pop" style="--d:0.35s" cx="48" cy="48" r="3.4" fill="#E9B65C"/><circle class="a-pop" style="--d:0.40s" cx="92" cy="78" r="3.4" fill="#D77D68"/><g class="a-pin"><path d="M118 20c-7 0-12 5-12 11 0 9 12 20 12 20s12-11 12-20c0-6-5-11-12-11z" fill="#172E3A"/><circle cx="118" cy="31" r="4.5" fill="#fff"/></g></svg></div><div class="fo-b"><h3>Observer et ses fiches A4</h3><p>Travailler sur des cas réels : la commune des stagiaires, ses pairs, son évolution depuis 2018.</p><p class="fo-pub">Élu·es · agent·es · étudiant·es</p></div></a>
+    </div>
+  </section>
 
-  <h2>Ce que vous pouvez déjà utiliser</h2>
-  <div class="scroll"><table class="t">
-    <thead><tr><th>Outil</th><th>En séance</th><th>Public</th></tr></thead>
-    <tbody>
-      <tr><td><a href="vases-communicants.html">Les vases communicants</a></td><td>Projeter une mission et la résoudre en groupe ; jouer un mandat de six budgets ; régler les hypothèses dans le bac à sable pour illustrer un effet de ciseaux</td><td>Élus, secrétaires de mairie, étudiants</td></tr>
-      <tr><td><a href="le-fil.html">La Leçon du jour</a></td><td>Faire travailler les stagiaires entre deux séances, leçon par leçon, avec des questions de révision</td><td>Agents, candidats aux concours</td></tr>
-      <tr><td><a href="glossaire.html">Le glossaire</a></td><td>Une référence commune, sourcée article par article, ouverte à tout moment depuis chaque page</td><td>Tous</td></tr>
-      <tr><td><a href="observer.html">Observer</a> et ses fiches A4</td><td>Travailler sur des cas réels : la commune des stagiaires, ses pairs, son évolution depuis 2018</td><td>Élus, agents, étudiants</td></tr>
-    </tbody></table></div>
+  <section class="fo-lic" aria-labelledby="h-lic">
+    <p class="pl-eyebrow">En préparation</p><h2 id="h-lic">Ce que comprendra <em>la licence.</em></h2>
+    <p class="sub">La licence se construit avec les premiers partenaires. Le contenu ci-dessous est la base de travail proposée.</p>
+    <ol class="fo-l">
+      <li style="--i:0"><span class="ic" style="background:#172E3A" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M7 9h18v12H7zM12 25h8M16 21v4M13 13l4 2-4 2z" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><b>Mode formateur</b><span>Choisir et régler les scénarios des vases communicants, lancer une séance de groupe, afficher un débriefing des décisions prises.</span></li>
+      <li style="--i:1"><span class="ic" style="background:#78A995" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M11 14a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM21 14a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM4 25c0-4 3-7 7-7s7 3 7 7M17 19c1-1 2.5-1.5 4-1.5 4 0 7 3 7 7" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><b>Groupes de stagiaires</b><span>Inviter un groupe par un code, suivre sa progression dans La Leçon du jour, repérer les notions mal comprises.</span></li>
+      <li style="--i:2"><span class="ic" style="background:#D77D68" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M6 7h8a3 3 0 0 1 3 3v15a2 2 0 0 0-2-2H6zM26 7h-8a3 3 0 0 0-3 3v15a2 2 0 0 1 2-2h9z" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><b>Guide d'animation</b><span>Des déroulés de séance prêts à l'emploi, avec les objectifs, les questions à poser et les erreurs fréquentes.</span></li>
+      <li style="--i:3"><span class="ic" style="background:#E9B65C" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 4l3 3h4v4l3 3-3 3v4h-4l-3 3-3-3H9v-4l-3-3 3-3V7h4zM12 15l3 3 5-6" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><b>Attestations</b><span>Une attestation de parcours par stagiaire, éditée par l'organisme de formation.</span></li>
+    </ol>
+  </section>
 
-  <h2>Ce que comprendra la licence</h2>
-  <p>La licence se construit avec les premiers partenaires. Le contenu ci-dessous est la base de travail proposée.</p>
-  <div class="scroll"><table class="t">
-    <thead><tr><th>Élément</th><th>Ce que cela permet</th></tr></thead>
-    <tbody>
-      <tr><td>Mode formateur</td><td>Choisir et régler les scénarios des vases communicants, lancer une séance de groupe, afficher un débriefing des décisions prises</td></tr>
-      <tr><td>Groupes de stagiaires</td><td>Inviter un groupe par un code, suivre sa progression dans La Leçon du jour, repérer les notions mal comprises</td></tr>
-      <tr><td>Guide d'animation</td><td>Des déroulés de séance prêts à l'emploi, avec les objectifs, les questions à poser et les erreurs fréquentes</td></tr>
-      <tr><td>Attestations</td><td>Une attestation de parcours par stagiaire, éditée par l'organisme de formation</td></tr>
-    </tbody></table></div>
+  <section aria-labelledby="h-qui">
+    <h2 id="h-qui">Pour qui</h2>
+    <ul class="fo-qui">
+      <li style="--i:0"><b>CNFPT et centres de gestion</b><span>Formations d'agent·es et préparation aux concours.</span></li>
+      <li style="--i:1"><b>Universités, IEP et IPAG</b><span>Instituts d'études politiques et instituts de préparation à l'administration générale.</span></li>
+      <li style="--i:2"><b>Formation des élu·es locaux·ales</b><span>Les organismes de formation des élu·es.</span></li>
+      <li style="--i:3"><b>Prépas aux concours</b><span>Écoles et organismes privés de préparation aux concours de la fonction publique.</span></li>
+    </ul>
+  </section>
 
-  <h2>Pour qui</h2>
-  <ul>
-    <li>Le CNFPT et les centres de gestion, pour les formations d'agents et la préparation aux concours.</li>
-    <li>Les universités, les instituts d'études politiques et les instituts de préparation à l'administration générale.</li>
-    <li>Les organismes de formation des élus locaux.</li>
-    <li>Les écoles et les organismes privés de préparation aux concours de la fonction publique.</li>
-  </ul>
+  <section class="fo-pil" aria-labelledby="h-pil">
+    <div><p class="pl-eyebrow">Le pilote gratuit</p><h2 id="h-pil">Préparons ensemble <em>votre prochaine séance.</em></h2>
+    <p>Vous animez une formation sur les finances locales dans les prochains mois ? Ma Petite Commune vous aide à préparer une séance avec ses outils, gratuitement, en échange de vos retours et de ceux de vos stagiaires. Ces retours fixeront le contenu et le prix de la licence.</p>
+    <div class="cta-row"><a class="pl-btn" href="autre-chose.html#formateur">Proposer un pilote →</a></div></div>
+    <ol class="fo-pas"><li><b>1</b><span>Vous décrivez votre séance et votre public</span></li><li><b>2</b><span>Nous choisissons ensemble les outils et les scénarios</span></li><li><b>3</b><span>Vous animez ; vos stagiaires donnent leur avis</span></li></ol>
+  </section>
 
-  <aside class="box commune"><span class="lab">Le pilote gratuit</span><p>Vous animez une formation sur les finances locales dans les prochains mois ? Ma Petite Commune vous aide à préparer une séance avec ses outils, gratuitement, en échange de vos retours et de ceux de vos stagiaires. Ces retours fixeront le contenu et le prix de la licence. <a href="autre-chose.html#formateur">Proposer un pilote →</a></p></aside>
+  <aside class="fo-note"><b>Accessibilité.</b> Le site n'est pas encore conforme au référentiel général d'amélioration de l'accessibilité (RGAA). La mise en conformité des outils proposés sous licence fait partie du travail prévu avec les premiers partenaires. <a href="accessibilite.html">Déclaration d'accessibilité</a>.</aside>
 
-  <aside class="box comprendre"><span class="lab">À savoir</span><h3>Accessibilité</h3><p>Le site n'est pas encore conforme au référentiel général d'amélioration de l'accessibilité (RGAA). La mise en conformité des outils proposés sous licence fait partie du travail prévu avec les premiers partenaires. <a href="accessibilite.html">Déclaration d'accessibilité</a>.</p></aside>
-
-  <nav class="also" aria-label="Pour continuer"><h2>Pour continuer</h2><ul><li><a href="apprendre.html">Les outils d'Apprendre</a></li><li><a href="offre.html">L'offre aux communes</a></li><li><a href="pourquoi.html">Pourquoi Ma Petite Commune</a></li></ul></nav>
-</article>
+  <nav class="fo-suite" aria-label="Pour continuer"><a href="apprendre.html">Les outils d'Apprendre →</a><a href="offre.html">L'offre aux communes →</a><a href="pourquoi.html">Pourquoi Ma Petite Commune →</a></nav>
+</main>
 
 <footer class="pl-foot"><div><span>Ma Petite Commune · les finances communales, en clair</span><nav class="pl-foot-links" aria-label="Informations"><a href="a-propos.html">Qui est derrière Ma Petite Commune</a><a href="methodologie.html">Méthodologie</a><a href="credits.html">Crédits et licences</a><a href="conditions.html">Conditions d'utilisation</a><a href="accessibilite.html">Accessibilité : non conforme</a><a href="mentions-legales.html">Mentions légales</a><a href="confidentialite.html">Confidentialité</a><a href="cookies.html">Cookies</a><a href="autre-chose.html">Contact</a></nav></div></footer><script src="pellucid-commun.js" defer></script>
+<script>(()=>{const calme=matchMedia("(prefers-reduced-motion: reduce)").matches;
+const blocs=[...document.querySelectorAll(".fo > *")];
+const compte=b=>{const v=+b.dataset.n,t0=performance.now();const pas=t=>{const p=Math.min(1,(t-t0)/1100),e=1-Math.pow(1-p,3);b.textContent=Math.round(v*e).toLocaleString("fr-FR");if(p<1)requestAnimationFrame(pas)};requestAnimationFrame(pas)};
+const voir=el=>{el.classList.add("vu");if(!calme)el.querySelectorAll("[data-n]").forEach(compte)};
+if(calme||!("IntersectionObserver"in window)){blocs.forEach(e=>e.classList.add("vu"));return}
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){voir(e.target);io.unobserve(e.target)}}),{threshold:.15});blocs.forEach(b=>io.observe(b));
+setTimeout(()=>blocs.forEach(b=>b.classList.contains("vu")||voir(b)),8000);})()</script>
 </body></html>

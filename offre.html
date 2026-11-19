@@ -1,9 +1,10 @@
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Offre communes · Ma Petite Commune</title>
-<meta name="description" content="Une analyse claire de la situation financière de votre commune, reliée aux projets que vous voulez mener et aux aides qui peuvent les financer. Présentée…"><link rel="stylesheet" href="fonts.css"><link rel="stylesheet" href="pellucid.css"><style>
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Offre communes · Ma Petite Commune</title><link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="description" content="Une analyse claire de la situation financière de votre commune, reliée aux projets que vous voulez mener et aux aides qui peuvent les financer. Présentée…"><link rel="stylesheet" href="fonts.css"><link rel="stylesheet" href="pellucid.css"><link rel="stylesheet" href="mpc-anim.css">
+<link rel="stylesheet" href="cfg.css"><style>
 html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 /* Une grille tarifaire lisible comme un tableau de budget : prix en chiffres alignés, livrables en clair */
 .of *,.of *::before,.of *::after{box-sizing:border-box}
-.of h2{font-family:"Bricolage Grotesque",var(--pl-display);font-weight:800;font-size:clamp(26px,3.4vw,36px);letter-spacing:-.02em;margin:0;line-height:1.05;text-wrap:balance}
+.of h2{font-family:var(--pl-display);font-weight:600;font-size:clamp(26px,3.4vw,36px);letter-spacing:-.02em;margin:0;line-height:1.05;text-wrap:balance}
 .of .sub{margin:8px 0 0;color:var(--pl-ink-2);max-width:62ch}
 .cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
 .pl-btn.ghost{background:transparent;color:var(--pl-ink);border-color:var(--pl-line)}
@@ -28,7 +29,7 @@ html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset
 .prod{background:var(--pl-panel);border:1px solid var(--pl-line);border-radius:6px;padding:22px;display:flex;flex-direction:column;gap:10px;min-width:0}
 .prod.main{grid-column:1 / -1}
 .prod header{display:flex;justify-content:space-between;align-items:baseline;gap:6px 16px;flex-wrap:wrap}
-.prod h3{margin:0;font-family:"Bricolage Grotesque",var(--pl-display);font-weight:800;font-size:23px;letter-spacing:-.01em;line-height:1.1}
+.prod h3{margin:0;font-family:var(--pl-display);font-weight:600;font-size:23px;letter-spacing:-.01em;line-height:1.1}
 .price{font:500 22px/1 var(--pl-mono);letter-spacing:-.02em;white-space:nowrap}
 .price small{font-size:13px;color:var(--pl-ink-2);letter-spacing:0}
 .prod p{margin:0;color:var(--pl-ink-2);font-size:15px}
@@ -37,7 +38,7 @@ html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset
 .grid-wrap{overflow-x:auto}
 table.grille{border-collapse:collapse;width:100%;min-width:420px;font-size:15px}
 .grille th,.grille td{padding:10px 12px;border-bottom:1px solid var(--pl-line);text-align:left}
-.grille thead th{font:700 12px/1.2 var(--pl-display);letter-spacing:.08em;text-transform:uppercase;color:var(--pl-ink-2)}
+.grille thead th{font:700 12px/1.2 var(--pl-label);letter-spacing:.08em;text-transform:uppercase;color:var(--pl-ink-2)}
 .grille td.n,.grille th.n{text-align:right;font-family:var(--pl-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
 .grille tbody tr:last-child td{border-bottom:0}
 
@@ -61,10 +62,62 @@ table.grille{border-collapse:collapse;width:100%;min-width:420px;font-size:15px}
 .end{display:flex;flex-wrap:wrap;gap:16px 32px;align-items:center;justify-content:space-between;border-top:3px solid var(--pl-ink);padding-top:22px}
 .end p{margin:0;max-width:58ch;color:var(--pl-ink-2)}
 .end strong{color:var(--pl-ink)}
+
+/* Étapes illustrées */
+.steps li{border:1px solid var(--pl-line);border-top:1px solid var(--pl-line);border-radius:14px;padding:0 0 20px;background:var(--pl-panel);overflow:hidden;gap:6px}
+.steps li::before{display:none}
+.steps li>b,.steps li>span{padding:0 22px}
+.steps li>b{font-family:var(--pl-display);font-weight:600;font-size:21px;line-height:1.15;margin-top:6px}
+.steps li>span{font-size:15px;line-height:1.5}
+.steps .ill{position:relative;background:#F5F1E8;height:132px;display:flex;align-items:flex-end;justify-content:center;margin-bottom:8px}
+.steps .ill svg{height:112px;width:auto;display:block;overflow:visible}
+.steps .ill i{position:absolute;left:18px;top:8px;font:600 46px/1 var(--pl-display);font-style:normal;color:#172E3A;opacity:.9}
+@media (min-width:1000px){.steps{gap:22px}.steps .ill{height:160px}.steps .ill svg{height:138px}.steps .ill i{font-size:58px}}
+.steps .a-bar{transform-box:fill-box;transform-origin:50% 100%}
+.steps .a-tilt,.steps .a-pop,.steps .a-loupe,.steps .a-flag,.steps .a-wave{transform-box:fill-box;transform-origin:50% 50%}
+.steps .a-flag{transform-origin:0 50%}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+  .steps li:hover .a-bar{animation:o-bar .6s cubic-bezier(.2,.8,.2,1.3) var(--d,0s) both}
+  .steps li:hover .a-tilt{animation:o-tilt .6s ease both}
+  .steps li:hover .a-pop{animation:o-pop .55s cubic-bezier(.2,.8,.2,1.5) .1s both}
+  .steps li:hover .a-loupe{animation:o-loupe .8s ease both}
+  .steps li:hover .a-flag{animation:o-flag .8s ease both}
+  .steps li:hover .a-wave{animation:o-wave .7s ease both}
+  .split>div:hover .a-ndl{animation:o-ndl .9s ease both}
+  .split>div:hover .sp-ic{transform:scale(1.08) rotate(-4deg)}
+}
+@keyframes o-bar{0%{transform:scaleY(.15)}100%{transform:scaleY(1)}}
+@keyframes o-tilt{0%,100%{transform:none}35%{transform:rotate(-6deg)}70%{transform:rotate(3deg)}}
+@keyframes o-pop{0%{transform:scale(.4);opacity:0}100%{transform:scale(1);opacity:1}}
+@keyframes o-loupe{0%,100%{transform:none}40%{transform:translate(-22px,6px)}75%{transform:translate(6px,-2px)}}
+@keyframes o-flag{0%,100%{transform:none}30%{transform:skewY(-10deg) scaleX(.8)}65%{transform:skewY(6deg)}}
+@keyframes o-wave{0%{opacity:0;transform:translateX(-6px)}100%{opacity:1;transform:none}}
+@keyframes o-ndl{0%{transform:rotate(0)}60%{transform:rotate(200deg)}100%{transform:rotate(180deg)}}
+/* Deux grosses tuiles */
+.split{gap:22px;margin-top:24px}
+.split>div{position:relative;background:var(--pl-panel);border:1px solid var(--pl-line);border-radius:16px;padding:28px 26px 26px;overflow:hidden}
+.split>div::before{content:"";position:absolute;inset:0 0 auto 0;height:6px;background:#78A995}
+.split>.sp-ail::before{background:#D77D68}
+.split .sp-ic{display:grid;place-items:center;width:56px;height:56px;border-radius:50%;margin-bottom:16px;transition:transform .35s cubic-bezier(.2,.8,.2,1.4)}
+.split .sp-ic svg{width:34px;height:34px}
+.split .a-ndl{transform-box:view-box;transform-origin:20px 20px}
+.split h3{font-family:var(--pl-display);font-weight:600;font-size:26px;line-height:1.1;margin:0 0 16px}
+.split ul{font-size:16px;gap:10px;padding-left:20px}
+.split li::marker{color:#78A995}
+.split .sp-ail li::marker{color:#D77D68}
+@media (min-width:1000px){.split>div{padding:40px 40px 36px}.split h3{font-size:32px}.split ul{font-size:17px;gap:12px}.split .sp-ic{width:68px;height:68px}.split .sp-ic svg{width:40px;height:40px}}
+.cfg-sec{padding:34px clamp(18px,3vw,36px);border-radius:28px;background:var(--mpc-sauge-doux)}
+.cfg-sec .cfg{margin-top:20px}
 </style></head><body class="pl">
-<header class="pl-nav"><div class="pl-nav-in"><a class="pl-brand" href="index.html"><svg viewBox="-4 -680 1961 700" aria-hidden="true"><g transform="scale(1,-1)"><path transform="translate(-40 0)" fill="var(--pl-ink)" d="M40 0V660H283L418 191H420L552 660H782V0H632V497H630L481 0H339L192 497H190V0Z"/><path transform="translate(747 0)" fill="var(--pl-accent)" d="M161 187V317H284Q345 317 375.0 341.5Q405 366 405 423Q405 477 377.5 503.5Q350 530 294 530H161V660H303Q360 660 409.0 646.5Q458 633 494.5 604.0Q531 575 551.5 531.0Q572 487 572 425Q572 346 536.5 293.0Q501 240 434.0 213.5Q367 187 270 187ZM40 0V660H202V0Z"/><path transform="translate(1338 0)" fill="var(--pl-ink)" d="M341 -14Q257 -14 197.0 13.0Q137 40 99.0 88.0Q61 136 43.5 197.5Q26 259 26 328Q26 399 44.0 462.0Q62 525 99.5 572.5Q137 620 196.0 647.0Q255 674 338 674Q410 674 462.0 653.5Q514 633 545.5 597.5Q577 562 589.0 516.0Q601 470 595 420L446 402Q448 445 435.5 476.0Q423 507 397.5 524.0Q372 541 333 541Q300 541 274.5 528.0Q249 515 231.5 489.0Q214 463 205.0 424.5Q196 386 196 335Q196 269 212.0 220.5Q228 172 261.0 145.5Q294 119 344 119Q390 119 416.5 140.0Q443 161 454.0 198.0Q465 235 461 281L614 268Q619 213 606.5 162.5Q594 112 561.5 72.0Q529 32 474.5 9.0Q420 -14 341 -14Z"/></g></svg>Ma Petite Commune</a><nav class="pl-links" id="pl-links" aria-label="Rubriques"><a href="index.html" class="pl-home">Accueil</a><a href="observer.html">Observer</a><a href="s-informer.html">S'informer</a><a href="apprendre.html">Apprendre</a><a href="offre.html" aria-current="page">Nos offres</a><a href="autre-chose.html" class="pl-cta">Contact</a></nav></div></header>
+<header class="pl-nav"><div class="pl-nav-in"><a class="pl-brand" href="index.html" aria-label="Ma Petite Commune, accueil"><svg viewBox="0 -84 251 88" aria-hidden="true"><g class="mk">
+<rect class="b" style="--k:0" x="36" y="-22" width="16" height="22" rx="3" fill="#F5F1E8"/>
+<rect class="b" style="--k:1" x="56" y="-40" width="16" height="40" rx="3" fill="#F5F1E8"/>
+<rect class="b" style="--k:2" x="76" y="-62" width="16" height="62" rx="3" fill="#78A995"/>
+<path class="c" pathLength="1" d="M7 -6 C 16 -14, 18 -58, 34 -57 C 47 -56, 50 -40, 63 -45 C 72 -49, 77 -61, 82 -68" fill="none" stroke="#D77D68" stroke-width="12.5" stroke-linecap="round"/>
+<circle class="p" cx="84" cy="-73" r="8" fill="#E9B65C"/>
+</g><path class="l" style="--k:0" d="M109.0 0.0V-70.0H141.0Q150.6 -70.0 157.55 -66.9Q164.5 -63.800000000000004 168.3 -57.95Q172.10000000000002 -52.1 172.10000000000002 -44.1Q172.10000000000002 -36.2 168.3 -30.400000000000002Q164.5 -24.6 157.55 -21.450000000000003Q150.6 -18.3 141.0 -18.3H120.0L128.8 -26.900000000000002V0.0ZM128.8 -24.8 120.0 -33.9H139.8Q146.0 -33.9 149.05 -36.6Q152.1 -39.300000000000004 152.1 -44.1Q152.1 -49.0 149.05 -51.7Q146.0 -54.400000000000006 139.8 -54.400000000000006H120.0L128.8 -63.5Z" fill="#F5F1E8"/><path class="l" style="--k:1" d="M215.6 1.4000000000000001Q207.29999999999998 1.4000000000000001 200.25 -1.25Q193.2 -3.9000000000000004 188.04999999999998 -8.8Q182.89999999999998 -13.700000000000001 180.0 -20.35Q177.1 -27.0 177.1 -35.0Q177.1 -43.0 180.0 -49.650000000000006Q182.89999999999998 -56.300000000000004 188.04999999999998 -61.2Q193.2 -66.10000000000001 200.25 -68.75Q207.29999999999998 -71.4 215.6 -71.4Q225.29999999999998 -71.4 232.95 -68.0Q240.6 -64.60000000000001 245.7 -58.2L233.1 -46.800000000000004Q229.7 -50.800000000000004 225.64999999999998 -52.900000000000006Q221.6 -55.0 216.6 -55.0Q212.29999999999998 -55.0 208.7 -53.6Q205.1 -52.2 202.55 -49.550000000000004Q200.0 -46.900000000000006 198.55 -43.2Q197.1 -39.5 197.1 -35.0Q197.1 -30.5 198.55 -26.8Q200.0 -23.1 202.55 -20.450000000000003Q205.1 -17.8 208.7 -16.4Q212.29999999999998 -15.0 216.6 -15.0Q221.6 -15.0 225.64999999999998 -17.1Q229.7 -19.200000000000003 233.1 -23.200000000000003L245.7 -11.8Q240.6 -5.5 232.95 -2.05Q225.29999999999998 1.4000000000000001 215.6 1.4000000000000001Z" fill="#D77D68"/></svg><span>Ma Petite<br>Commune</span></a><script>try{if(!sessionStorage.getItem("mpc-logo")){document.documentElement.classList.add("mpc-intro");sessionStorage.setItem("mpc-logo","1")}}catch(e){}</script><nav class="pl-links" id="pl-links" aria-label="Rubriques"><a href="index.html" class="pl-home">Accueil</a><a href="observer.html">Observer</a><a href="s-informer.html">S'informer</a><a href="apprendre.html">Apprendre</a><a href="offre.html" aria-current="page">Nos offres</a><a href="autre-chose.html" class="pl-cta">Contact</a></nav></div></header>
 <main class="pl-main of">
-  <nav class="offres-tabs" aria-label="Nos offres"><a href="offre.html" aria-current="page">Pour les communes</a><a href="formateurs.html">Pour les formateurs</a></nav>
+  <nav class="offres-tabs" aria-label="Nos offres"><a href="offre.html" aria-current="page">Pour les communes</a><a href="formateurs.html">Pour les formateur·rices</a></nav>
   <header>
     <p class="pl-eyebrow">Offre communes · moins de 3 500 habitants</p>
     <h1 class="pl-h1">Vos comptes, vos projets, leurs financements.</h1>
@@ -84,6 +137,8 @@ table.grille{border-collapse:collapse;width:100%;min-width:420px;font-size:15px}
       <div><a class="pl-btn" href="autre-chose.html#prediag">Recevoir le pré-diagnostic →</a></div>
     </div>
   </section>
+
+  <section class="cfg-sec fond-sauge" aria-labelledby="h-cfg"><p class="pl-eyebrow">Accompagnement personnalisé</p><h2 id="h-cfg">Composez votre offre</h2><p class="sub">À la carte ou en abonnement : choisissez, le total se calcule sous vos yeux.</p><div class="cfg" id="cfg"><div class="cfg-mode" role="tablist" aria-label="Formule"><button type="button" role="tab" id="t-carte" aria-selected="true" aria-controls="p-carte">À la carte</button><button type="button" role="tab" id="t-abo" aria-selected="false" aria-controls="p-abo">Abonnement</button><span class="cfg-glis" aria-hidden="true"></span></div><div class="cfg-corps"><div class="cfg-pan" role="tabpanel" id="p-carte" aria-labelledby="t-carte"><p class="cfg-intro">Cochez ce dont votre commune a besoin : le total se calcule aussitôt. Chaque prestation se commande sur devis à prix fixe ou par simple bon de commande.</p><div class="cfg-liste"><label class="cfg-l" for="o-diag"><input type="checkbox" id="o-diag" data-prix="390"><span class="cfg-case" aria-hidden="true"></span><span class="cfg-txt"><b>Diagnostic financier</b><span>La situation financière sur cinq ans, comparée à la strate, et ce que la commune peut investir et emprunter d'ici la fin du mandat.</span><em>Livré en 3 semaines</em></span><span class="cfg-p" data-base="390">390 €</span></label><label class="cfg-l" for="o-plan"><input type="checkbox" id="o-plan" data-prix="290"><span class="cfg-case" aria-hidden="true"></span><span class="cfg-txt"><b>Plan de financement</b><span>Pour un à trois projets : quelles aides solliciter, dans quel ordre, et le reste à charge.</span><em>Livré en 2 semaines</em></span><span class="cfg-p" data-base="290">290 €</span></label><label class="cfg-l" for="o-pres"><input type="checkbox" id="o-pres" data-prix="200"><span class="cfg-case" aria-hidden="true"></span><span class="cfg-txt"><b>Présentation en conseil municipal</b><span>L'analyse présentée au conseil, avec des supports lisibles, et les réponses aux questions des élu·es.</span><em>Déplacement compris dans le Gard et l'Hérault</em></span><span class="cfg-p" data-base="200">200 €</span></label><div class="cfg-l cfg-q"><span class="cfg-txt"><b>Montage de dossier de subvention</b><span>Rédaction et dépôt d'un dossier, pièces justificatives comprises. Un forfait par dossier, jamais au pourcentage.</span><em>500 € par dossier</em></span><span class="cfg-qte"><button type="button" class="carr-b" id="q-moins" aria-label="Un dossier de moins">−</button><output id="q-n" aria-live="polite">0</output><button type="button" class="carr-b" id="q-plus" aria-label="Un dossier de plus">+</button></span><span class="cfg-p" id="q-p" data-base="500">0 €</span></div></div><p class="cfg-pack" id="cfg-pack" hidden></p></div><div class="cfg-pan" role="tabpanel" id="p-abo" aria-labelledby="t-abo" hidden><p class="cfg-intro">Le suivi annuel : chaque année, à la sortie des comptes, la mise à jour du diagnostic et du tableau de bord, et une infographie du budget pour les habitant·es. Il commence par un diagnostic financier.</p><div class="cfg-ans"><label for="cfg-n">Durée du suivi <output id="cfg-n-v" for="cfg-n">6 ans</output></label><input type="range" id="cfg-n" min="1" max="6" value="6" step="1"><span class="cfg-bornes"><span>1 an</span><span>jusqu'en 2032</span></span></div><ol class="cfg-frise" id="cfg-frise" aria-label="Ce que vous payez chaque année"></ol><label class="cfg-l cfg-opt" for="o-pack-abo"><input type="checkbox" id="o-pack-abo"><span class="cfg-case" aria-hidden="true"></span><span class="cfg-txt"><b>Commencer par le pack début de mandat</b><span>Diagnostic, plan de financement, présentation au conseil et page « budget lisible », au lieu du seul diagnostic la première année.</span></span><span class="cfg-p" data-base="790">790 €</span></label></div></div><aside class="cfg-total" aria-live="polite"><label class="cfg-sol" for="o-sol"><input type="checkbox" id="o-sol"><span class="cfg-inter" aria-hidden="true"></span><span><b>Tarif solidaire</b> : ma commune a une épargne nette négative (moitié prix)</span></label><p class="cfg-tl" id="cfg-tl">Total</p><p class="cfg-tv"><span id="cfg-tv">0</span> €</p><p class="cfg-ts" id="cfg-ts">Prix nets, sans TVA en sus.</p><a class="pl-btn cfg-go" id="cfg-go" href="autre-chose.html#devis">Demander ce devis<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a><p class="cfg-free">Pas encore décidé ? <a href="autre-chose.html#prediag">Le pré-diagnostic est gratuit</a>, et la fiche A4 de votre commune s'affiche sans compte.</p></aside></div></section>
 
   <section aria-labelledby="h-prods">
     <h2 id="h-prods">Les prestations et leurs prix</h2>
@@ -105,14 +160,14 @@ table.grille{border-collapse:collapse;width:100%;min-width:420px;font-size:15px}
 
       <article class="prod" aria-labelledby="p-pack">
         <header><h3 id="p-pack">Pack début de mandat</h3><span class="price">790 €</span></header>
-        <p>Le diagnostic, le plan de financement et la présentation au conseil ensemble, avec une page « budget lisible » à publier pour les habitants.</p>
+        <p>Le diagnostic, le plan de financement et la présentation au conseil ensemble, avec une page « budget lisible » à publier pour les habitant·es.</p>
         <ul><li>Diagnostic financier complet</li><li>Plan de financement pour un à trois projets</li><li>Présentation en conseil municipal, offerte</li><li>Une page de présentation du budget pour le bulletin municipal</li></ul>
         <div class="meta"><span>Livré en 4 semaines</span><span>Au lieu de 880 € pour les trois prestations séparées</span></div>
       </article>
 
       <article class="prod" aria-labelledby="p-conseil">
         <header><h3 id="p-conseil">Présentation en conseil municipal</h3><span class="price">200 €</span></header>
-        <p>Je présente l'analyse au conseil, avec des supports lisibles, et je réponds aux questions des élus.</p>
+        <p>Je présente l'analyse au conseil, avec des supports lisibles, et je réponds aux questions des élu·es.</p>
         <div class="meta"><span>Déplacement compris dans le Gard et l'Hérault</span><span>Offerte dans le pack début de mandat</span></div>
       </article>
 
@@ -124,7 +179,7 @@ table.grille{border-collapse:collapse;width:100%;min-width:420px;font-size:15px}
 
       <article class="prod" aria-labelledby="p-suivi">
         <header><h3 id="p-suivi">Suivi annuel</h3><span class="price">290 € <small>par an</small></span></header>
-        <p>Chaque année, à la sortie des comptes : la mise à jour du diagnostic et du tableau de bord, et une infographie du budget pour les habitants.</p>
+        <p>Chaque année, à la sortie des comptes : la mise à jour du diagnostic et du tableau de bord, et une infographie du budget pour les habitant·es.</p>
         <div class="meta"><span>Pour les communes ayant fait un diagnostic</span></div>
       </article>
     </div>
@@ -134,22 +189,22 @@ table.grille{border-collapse:collapse;width:100%;min-width:420px;font-size:15px}
     <div>
       <p class="pl-eyebrow">Tarif solidaire</p>
       <h2 id="h-sol" style="color:var(--pl-ink)">Moitié prix pour les communes à épargne nette négative</h2>
-      <p style="color:var(--pl-ink-2)">Quand l'épargne d'une commune ne suffit plus à rembourser le capital de sa dette, c'est souvent qu'elle a le plus besoin d'un regard extérieur et le moins de marge pour le payer. Toutes les prestations sont alors à moitié prix. Le critère est objectif : l'épargne nette du dernier exercice publié, que la fiche A4 de la commune affiche. 4 067 communes étaient dans ce cas en 2025.</p>
+      <p style="color:var(--pl-ink-2)">Quand l'épargne d'une commune ne suffit plus à rembourser le capital de sa dette, c'est souvent qu'elle a le plus besoin d'un regard extérieur et le moins de marge pour le payer. Toutes les prestations sont alors à moitié prix. Le critère est objectif : l'épargne nette du dernier exercice publié, que la fiche A4 de la commune affiche. 3 979 communes étaient dans ce cas en 2025.</p>
     </div>
     <ul style="color:var(--pl-ink)"><li>Diagnostic financier : 195 € au lieu de 390 €</li><li>Plan de financement : 145 € au lieu de 290 €</li><li>Pack début de mandat : 395 € au lieu de 790 €</li><li>Suivi annuel : 145 € par an au lieu de 290 €</li></ul>
   </section>
 
-  <aside class="rule" style="max-width:none">Vous formez des élus ou des agents plutôt que d'administrer une commune ? Voyez <a href="formateurs.html" style="color:var(--pl-accent);font-weight:700">l'offre formateurs</a>.</aside>
+  <aside class="rule" style="max-width:none">Vous formez des élu·es ou des agent·es plutôt que d'administrer une commune ? Voyez <a href="formateurs.html" style="color:var(--pl-accent);font-weight:700">l'offre formateur·rices</a>.</aside>
 
   <section aria-labelledby="h-steps">
     <h2 id="h-steps">Comment ça se passe</h2>
     <ol class="steps">
-      <li><b>Un appel de vingt minutes</b><span>Pour cerner le besoin, le calendrier et qui décide.</span></li>
-      <li><b>Un devis à prix fixe</b><span>Sous le seuil de dispense de procédure, un bon de commande suffit.</span></li>
-      <li><b>Les données</b><span>Je récupère les comptes publics. Je vous demande le dernier compte administratif ou compte financier unique, l'état de la dette et la liste des projets.</span></li>
-      <li><b>L'analyse</b><span>Les calculs sont automatisés et vérifiés ; l'analyse et les recommandations sont écrites pour votre commune.</span></li>
-      <li><b>La restitution</b><span>En mairie dans le Gard et l'Hérault, en visioconférence ailleurs.</span></li>
-      <li><b>La facture</b><span>À la livraison, réglée par mandat administratif dans le délai de 30 jours.</span></li>
+      <li><div class="ill" aria-hidden="true"><i>1</i><svg viewBox="0 0 160 96"><circle class="a-pop" cx="118" cy="30" r="16" fill="#E9B65C"/><path d="M118 21v9l6 4" fill="none" stroke="#172E3A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><g class="a-tilt"><path d="M44 30c0-6 4-9 9-9h7l5 15-7 5c3 9 9 15 18 19l5-7 15 5v7c0 5-3 9-9 9C62 74 44 56 44 30z" fill="#fff"  stroke="#172E3A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g><path class="a-wave" d="M86 36c4 3 4 9 0 12M93 31c7 5 7 17 0 22" fill="none" stroke="#172E3A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><b>Un appel de vingt minutes</b><span>Pour cerner le besoin, le calendrier et qui décide.</span></li>
+      <li><div class="ill" aria-hidden="true"><i>2</i><svg viewBox="0 0 160 96"><g class="a-tilt"><path d="M52 12h44l14 14v58H52z" fill="#fff"  stroke="#172E3A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M96 12v14h14" fill="none" stroke="#172E3A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M62 36h30M62 46h36M62 56h22" fill="none" stroke="#172E3A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g><g class="a-pop"><circle cx="104" cy="70" r="15" fill="#E9B65C" stroke="#172E3A" stroke-width="2.4"/><path d="M109 64c-6-4-12 0-12 6s6 10 12 6M95 68h9M95 73h9" fill="none" stroke="#172E3A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g></svg></div><b>Un devis à prix fixe</b><span>Sous le seuil de dispense de procédure, un bon de commande suffit.</span></li>
+      <li><div class="ill" aria-hidden="true"><i>3</i><svg viewBox="0 0 160 96"><g class="a-tilt"><path d="M40 26h30l6 8h44v46H40z" fill="#fff"  stroke="#172E3A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g><rect class="a-bar" x="56" y="58" width="10" height="16" fill="#78A995"/><rect class="a-bar" x="72" y="48" width="10" height="26" fill="#D77D68" style="--d:.08s"/><rect class="a-bar" x="88" y="40" width="10" height="34" fill="#E9B65C" style="--d:.16s"/><path d="M50 74h60" fill="none" stroke="#172E3A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><b>Les données</b><span>Je récupère les comptes publics. Je vous demande le dernier compte administratif ou compte financier unique, l'état de la dette et la liste des projets.</span></li>
+      <li><div class="ill" aria-hidden="true"><i>4</i><svg viewBox="0 0 160 96"><path d="M36 80h88" fill="none" stroke="#172E3A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><rect class="a-bar" x="44" y="54" width="12" height="26" fill="#78A995"/><rect class="a-bar" x="62" y="40" width="12" height="40" fill="#78A995" style="--d:.08s"/><rect class="a-bar" x="80" y="48" width="12" height="32" fill="#D77D68" style="--d:.16s"/><g class="a-loupe"><circle cx="104" cy="34" r="15" fill="#fff" fill-opacity=".7" stroke="#172E3A" stroke-width="2.6"/><path d="M115 45l12 12" stroke="#172E3A" stroke-width="4" stroke-linecap="round"/></g></svg></div><b>L'analyse</b><span>Les calculs sont automatisés et vérifiés ; l'analyse et les recommandations sont écrites pour votre commune.</span></li>
+      <li><div class="ill" aria-hidden="true"><i>5</i><svg viewBox="0 0 160 96"><path d="M48 82V44h64v38M42 44l38-22 38 22z" fill="#fff"  stroke="#172E3A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M80 22V8" fill="none" stroke="#172E3A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path class="a-flag" d="M80 8h16l-4 5 4 5H80" fill="#D77D68" stroke="#172E3A" stroke-width="2"/><rect x="58" y="54" width="10" height="14" fill="#E9B65C"/><rect x="92" y="54" width="10" height="14" fill="#E9B65C"/><path d="M74 82V62h12v20M36 82h88" fill="none" stroke="#172E3A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><b>La restitution</b><span>En mairie dans le Gard et l'Hérault, en visioconférence ailleurs.</span></li>
+      <li><div class="ill" aria-hidden="true"><i>6</i><svg viewBox="0 0 160 96"><g class="a-tilt"><path d="M58 10h44v74l-7-5-8 5-7-5-8 5-7-5-7 5z" fill="#fff"  stroke="#172E3A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M68 26h24M68 36h24M68 46h14" fill="none" stroke="#172E3A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g><g class="a-pop"><circle cx="102" cy="62" r="14" fill="#78A995" stroke="#172E3A" stroke-width="2.4"/><path d="M95 62l5 5 9-10" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g></svg></div><b>La facture</b><span>À la livraison, réglée par mandat administratif dans le délai de 30 jours.</span></li>
     </ol>
   </section>
 
@@ -157,8 +212,8 @@ table.grille{border-collapse:collapse;width:100%;min-width:420px;font-size:15px}
     <h2 id="h-perim">En complément de l'ingénierie publique</h2>
     <p class="sub">De nombreux services publics aident déjà les petites communes, souvent gratuitement. Je propose ce qu'ils produisent rarement : une analyse financière reliée aux financements, sous forme de document à présenter au conseil.</p>
     <div class="split">
-      <div><h3>Ce que je fais</h3><ul><li>Le diagnostic financier comparé à la strate</li><li>La capacité d'investissement et d'emprunt sur le mandat</li><li>Le plan de financement, subvention par subvention</li><li>Le dossier de demande et la présentation au conseil</li></ul></div>
-      <div><h3>Ce que je vous conseille de demander ailleurs</h3><ul><li><b>Conseil budgétaire et comptable courant</b> : le conseiller aux décideurs locaux de la DGFiP</li><li><b>Question juridique ou financière ponctuelle</b> : Rural Consult, de la Banque des Territoires</li><li><b>Assistance technique aux projets d'équipement</b> : l'agence technique départementale ou le CAUE</li><li><b>Comptabilité, actes budgétaires, maîtrise d'œuvre</b> : hors de mon champ</li></ul></div>
+      <div class="sp-oui"><span class="sp-ic" aria-hidden="true" style="background:#78A995"><svg viewBox="0 0 40 40"><path d="M11 21l6 6 13-14" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>Ce que je fais</h3><ul><li>Le diagnostic financier comparé à la strate</li><li>La capacité d'investissement et d'emprunt sur le mandat</li><li>Le plan de financement, subvention par subvention</li><li>Le dossier de demande et la présentation au conseil</li></ul></div>
+      <div class="sp-ail"><span class="sp-ic" aria-hidden="true" style="background:#D77D68"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="11" fill="none" stroke="#fff" stroke-width="2.6"/><path class="a-ndl" d="M24 16l-6 2-2 6 6-2z" fill="#fff" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg></span><h3>Ce que je vous conseille de demander ailleurs</h3><ul><li><b>Conseil budgétaire et comptable courant</b> : le conseiller aux décideurs locaux de la DGFiP</li><li><b>Question juridique ou financière ponctuelle</b> : Rural Consult, de la Banque des Territoires</li><li><b>Assistance technique aux projets d'équipement</b> : l'agence technique départementale ou le CAUE</li><li><b>Comptabilité, actes budgétaires, maîtrise d'œuvre</b> : hors de mon champ</li></ul></div>
     </div>
     <p class="rule">Si l'agence départementale ou le conseiller de la DGFiP peut faire la même chose gratuitement dans le même délai, je vous y oriente avant tout devis.</p>
   </section>
@@ -176,4 +231,6 @@ table.grille{border-collapse:collapse;width:100%;min-width:420px;font-size:15px}
 </main>
 <footer class="pl-foot"><div><span>Ma Petite Commune · les finances communales, en clair</span><nav class="pl-foot-links" aria-label="Informations"><a href="a-propos.html">Qui est derrière Ma Petite Commune</a><a href="methodologie.html">Méthodologie</a><a href="credits.html">Crédits et licences</a><a href="conditions.html">Conditions d'utilisation</a><a href="accessibilite.html">Accessibilité : non conforme</a><a href="mentions-legales.html">Mentions légales</a><a href="confidentialite.html">Confidentialité</a><a href="cookies.html">Cookies</a><a href="autre-chose.html">Contact</a></nav></div></footer>
 <script src="pellucid-commun.js" defer></script>
+<script src="mpc-anim.js" defer></script>
+<script src="cfg.js" defer></script>
 </body></html>

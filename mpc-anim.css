@@ -1,0 +1,68 @@
+/* Ma Petite Commune — effets communs (arrivée, survol, gras dynamique), repris de l'accueil.
+   Règles : une animation d'arrivée ne se joue qu'une fois ; au survol, rien ne tourne en boucle ;
+   presque rien sur écran tactile ; rien du tout si le système demande de limiter les animations. */
+
+/* ---------- Arrivée : apparition en cascade ---------- */
+.mpc-a{opacity:0;transform:translateY(28px)}
+.mpc-a.mpc-vu{opacity:1;transform:none;transition:opacity .55s ease,transform .7s cubic-bezier(.2,.8,.2,1.08);transition-delay:calc(var(--mpc-i,0) * 90ms)}
+.mpc-a.mpc-fini{transition-delay:0s}
+
+/* Haut de page : sur-titre, titre et chapeau arrivent l'un après l'autre au chargement */
+.mpc-h{animation:mpcMonte .7s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--mpc-i,0) * 110ms + 60ms)}
+@keyframes mpcMonte{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+/* Barres horizontales des articles : elles se remplissent à l'arrivée */
+.mpc-g .fill{transform-origin:0 50%;transform:scaleX(0)}
+.mpc-g.mpc-vu .fill{transform:none;transition:transform 1s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--mpc-i,0) * 120ms + 150ms)}
+/* Schémas et graphiques : dévoilement de gauche à droite */
+.mpc-r{clip-path:inset(0 100% 0 0)}
+.mpc-r.mpc-vu{clip-path:inset(0 0 0 0);transition:clip-path 1.1s cubic-bezier(.3,.6,.2,1) .15s}
+/* Calcul pas à pas (CPEB…) : les termes se posent dans l'ordre */
+.mpc-eq>*{opacity:0;transform:translateY(10px) scale(.96)}
+.mpc-eq.mpc-vu>*{opacity:1;transform:none;transition:opacity .35s,transform .45s cubic-bezier(.2,.8,.2,1.3);transition-delay:calc(var(--mpc-i,0) * 140ms + 100ms)}
+
+/* ---------- Survol : cartes et encadrés ---------- */
+.mpc-c{transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s,background-color .3s}
+.mpc-c .vig svg,.mpc-c .art svg,.mpc-c>svg{transition:transform .45s cubic-bezier(.2,.8,.2,1.4)}
+@media (hover:hover){
+  .mpc-c:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(23,46,58,.13),inset 0 -4px 0 var(--mpc-terra)}
+  .mpc-c:hover .vig svg,.mpc-c:hover .art svg{transform:scale(1.05) rotate(-1.5deg)}
+  /* Encadrés et lignes de lecture : le fond s'éclaircit */
+  .mpc-e{transition:background-color .25s,box-shadow .25s}
+  .mpc-e:hover{background-color:#FFFFFF!important;box-shadow:0 6px 18px rgba(23,46,58,.08)}
+  .mpc-l:hover>td,.mpc-l:hover>th{background:var(--mpc-safran-doux)}
+  .mpc-g .hb{transition:transform .25s}
+  .mpc-g .hb:hover{transform:translateX(4px)}
+  .mpc-g .hb:hover .fill{filter:brightness(1.12)}
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .mpc-e:hover{background-color:#1E3540!important}}
+:root[data-theme="dark"] .mpc-e:hover{background-color:#1E3540!important}
+
+/* ---------- Boutons : remplissage de gauche à droite, flèche qui avance ---------- */
+body.pl .pl-btn{position:relative;overflow:hidden;isolation:isolate;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s,color .25s,border-color .25s}
+body.pl .pl-btn::before{content:"";position:absolute;inset:-2px;z-index:-1;background:var(--mpc-terra-txt);transform:scaleX(0);transform-origin:0 50%;transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+body.pl .pl-btn.ghost::before{background:var(--pl-ink)}
+body.pl .pl-btn svg{transition:transform .3s cubic-bezier(.2,.8,.2,1.4)}
+@media (hover:hover){
+  body.pl .pl-btn:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(23,46,58,.18);background:var(--pl-ink);border-color:var(--mpc-terra-txt);color:#fff}
+  body.pl .pl-btn:hover::before{transform:scaleX(1)}
+  body.pl .pl-btn.ghost:hover{background:transparent;border-color:var(--pl-ink);color:var(--pl-bg)}
+  body.pl .pl-btn:hover svg:last-child{transform:translateX(5px)}
+}
+
+/* ---------- Liens dans le texte : soulignement qui s'épaissit et se colore ---------- */
+.art p a:not([class]),.art li a:not([class]),.pl-main p a:not([class]){text-decoration:none;background:linear-gradient(currentColor,currentColor) no-repeat 0 100%/100% 1px,linear-gradient(var(--mpc-safran),var(--mpc-safran)) no-repeat 0 100%/0% 3px;transition:background-size .35s cubic-bezier(.2,.7,.2,1),color .2s}
+@media (hover:hover){.art p a:not([class]):hover,.art li a:not([class]):hover,.pl-main p a:not([class]):hover{background-size:100% 1px,100% 3px;color:var(--mpc-terra-txt)}}
+
+/* ---------- Gras dynamique : les mots s'épaississent près de la souris (sans décaler les lignes) ---------- */
+.mpc-gm{-webkit-text-stroke:calc(var(--g,0) * .9px) currentColor;transition:-webkit-text-stroke-width .18s}
+
+/* ---------- Gardes-fous ---------- */
+@media (prefers-reduced-motion:reduce){
+  .mpc-a,.mpc-h,.mpc-eq>*{opacity:1!important;transform:none!important;animation:none!important;transition:none!important}
+  .mpc-g .fill{transform:none!important;transition:none!important}
+  .mpc-r{clip-path:none!important;transition:none!important}
+  .mpc-c,.mpc-c svg,body.pl .pl-btn,body.pl .pl-btn::before{transition:none!important}
+  .mpc-c:hover,body.pl .pl-btn:hover{transform:none!important}
+}
+@media print{.mpc-a,.mpc-h,.mpc-eq>*{opacity:1!important;transform:none!important}.mpc-r{clip-path:none!important}.mpc-g .fill{transform:none!important}}

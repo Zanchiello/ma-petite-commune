@@ -1,5 +1,5 @@
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>La Leçon du jour · Ma Petite Commune</title>
-<meta name="description" content="La Leçon du jour : une courte leçon sur les finances communales, puis quelques questions pour la retenir. Une erreur ne coûte rien."><link rel="stylesheet" href="fonts.css"><link rel="stylesheet" href="pellucid.css"><style>
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>La Leçon du jour · Ma Petite Commune</title><link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="description" content="La Leçon du jour : une courte leçon sur les finances communales, puis quelques questions pour la retenir. Une erreur ne coûte rien."><link rel="stylesheet" href="fonts.css"><link rel="stylesheet" href="pellucid.css"><link rel="stylesheet" href="mpc-anim.css"><style>
 /* La Leçon du jour (anciennement Le Fil) : un parcours vertical d'unités, une leçon plein écran, une goutte d'eau pour mascotte */
 :root{
   --bg:#F1F3F0; --panel:#FBFCFA; --ink:#121614; --ink-2:#59615C; --line:#D6DBD5; --line-2:#C3CAC2;
@@ -216,7 +216,36 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--accent);outline
 .sheet-src{margin-top:22px;padding-top:10px;border-top:1px solid #ccc;font-size:12px;color:#555}
 .att{text-align:center}.att ul{display:inline-flex;text-align:left}.att-who{font-size:22px;font-weight:700;margin:18px 0 6px}.att-date{margin-top:18px}
 @media print{body>*:not(.sheet:not([hidden])){display:none!important}.sheet{position:static;background:none;padding:0;overflow:visible}.sheet-bar{display:none}.sheet-page{padding:0;border-radius:0;max-width:none}}
-</style></head><body><header class="pl-nav"><div class="pl-nav-in"><a class="pl-brand" href="index.html"><svg viewBox="-4 -680 1961 700" aria-hidden="true"><g transform="scale(1,-1)"><path transform="translate(-40 0)" fill="var(--pl-ink)" d="M40 0V660H283L418 191H420L552 660H782V0H632V497H630L481 0H339L192 497H190V0Z"/><path transform="translate(747 0)" fill="var(--pl-accent)" d="M161 187V317H284Q345 317 375.0 341.5Q405 366 405 423Q405 477 377.5 503.5Q350 530 294 530H161V660H303Q360 660 409.0 646.5Q458 633 494.5 604.0Q531 575 551.5 531.0Q572 487 572 425Q572 346 536.5 293.0Q501 240 434.0 213.5Q367 187 270 187ZM40 0V660H202V0Z"/><path transform="translate(1338 0)" fill="var(--pl-ink)" d="M341 -14Q257 -14 197.0 13.0Q137 40 99.0 88.0Q61 136 43.5 197.5Q26 259 26 328Q26 399 44.0 462.0Q62 525 99.5 572.5Q137 620 196.0 647.0Q255 674 338 674Q410 674 462.0 653.5Q514 633 545.5 597.5Q577 562 589.0 516.0Q601 470 595 420L446 402Q448 445 435.5 476.0Q423 507 397.5 524.0Q372 541 333 541Q300 541 274.5 528.0Q249 515 231.5 489.0Q214 463 205.0 424.5Q196 386 196 335Q196 269 212.0 220.5Q228 172 261.0 145.5Q294 119 344 119Q390 119 416.5 140.0Q443 161 454.0 198.0Q465 235 461 281L614 268Q619 213 606.5 162.5Q594 112 561.5 72.0Q529 32 474.5 9.0Q420 -14 341 -14Z"/></g></svg>Ma Petite Commune</a><nav class="pl-links" id="pl-links" aria-label="Rubriques"><a href="index.html" class="pl-home">Accueil</a><a href="observer.html">Observer</a><a href="s-informer.html">S'informer</a><a href="apprendre.html" aria-current="page">Apprendre</a><a href="offre.html">Nos offres</a><a href="autre-chose.html" class="pl-cta">Contact</a></nav></div></header>
+</style><style id="da-v1">/* Nouvelle DA V1 Newsreader : jetons remappés */
+:root{--bg:#F5F1E8;--panel:#FFFFFF;--ink:#172E3A;--ink-2:#586971;--line:#E4DDCF;--line-2:#D2C8B5;--accent:#172E3A;--accent-dk:#0E1E26;--accent-soft:#E3E8EA;--ok:#3F6F5A;--ok-dk:#2F5544;--ok-soft:#D9E7E1;--bad:#A84530;--bad-dk:#843523;--bad-soft:#F4DBD5;--gold:#806433;--gold-soft:#F9EBD1;--heart:#C2412D;--u1:#2E5A6E;--u2:#49675B;--u3:#806433;--u4:#8A5043;--u5:#586971;--f-display:"Manrope",system-ui,sans-serif;--f-body:"Manrope",system-ui,sans-serif;--f-mono:"Manrope",system-ui,sans-serif;}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0F1F28;--panel:#162A35;--ink:#F5F1E8;--ink-2:#A9B8BE;--line:#2A3F4A;--line-2:#34505D;--accent:#E9B65C;--accent-dk:#C99A45;--accent-soft:#3A2E17;--ok:#8FBCA9;--ok-dk:#5E8C78;--ok-soft:#1B3029;--bad:#E39A88;--bad-dk:#B66E5E;--bad-soft:#3A2722;--gold:#E9B65C;--gold-soft:#3A2E17;--heart:#F06A7B;--u1:#2E5A6E;--u2:#49675B;--u3:#806433;--u4:#8A5043;--u5:#586971;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0F1F28;--panel:#162A35;--ink:#F5F1E8;--ink-2:#A9B8BE;--line:#2A3F4A;--line-2:#34505D;--accent:#E9B65C;--accent-dk:#C99A45;--accent-soft:#3A2E17;--ok:#8FBCA9;--ok-dk:#5E8C78;--ok-soft:#1B3029;--bad:#E39A88;--bad-dk:#B66E5E;--bad-soft:#3A2722;--gold:#E9B65C;--gold-soft:#3A2E17;--heart:#F06A7B;--u1:#2E5A6E;--u2:#49675B;--u3:#806433;--u4:#8A5043;--u5:#586971;color-scheme:dark}
+h1,.l-title,.l-q{font-family:var(--pl-display)!important;font-weight:600!important;font-stretch:normal!important;letter-spacing:-.01em!important}
+/* ===== Nouvelle DA : habillage (fonctionnement inchangé) ===== */
+.intro{background:#172E3A;color:#F5F1E8;border-radius:28px;padding:clamp(22px,3vw,36px);margin-bottom:18px}
+.intro .eyebrow{color:#E9B65C!important}
+.intro h1{color:#F5F1E8!important}
+.intro p{color:#D5DEDA!important}
+.intro .tracks button{background:rgba(245,241,232,.08);border-color:rgba(245,241,232,.3);color:#F5F1E8;border-radius:16px;transition:transform .25s cubic-bezier(.2,.8,.2,1.3),background .25s}
+.intro .tracks button small{color:#C9D6D0}
+.intro .tracks button:hover{transform:translateY(-2px);background:rgba(245,241,232,.16)}
+.intro .tracks button[aria-pressed="true"]{background:#E9B65C;border-color:#E9B65C;color:#172E3A}
+.intro .tracks button[aria-pressed="true"] small{color:#172E3A}
+.intro .epreuves button{border-radius:999px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .intro{background:#1F3A48}}
+:root[data-theme="dark"] .intro{background:#1F3A48}
+.side .card{border-radius:22px!important;transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s}
+.side .card h3{font-size:20px!important}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){.side .card:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(23,46,58,.1)}}
+@media (prefers-reduced-motion:no-preference){.intro>*{animation:fiMonte .6s cubic-bezier(.2,.8,.2,1) both}.intro>*:nth-child(2){animation-delay:.07s}.intro>*:nth-child(3){animation-delay:.14s}.intro>*:nth-child(4){animation-delay:.22s}.side>*{animation:fiMonte .6s cubic-bezier(.2,.8,.2,1) both}.side>*:nth-child(2){animation-delay:.1s}.side>*:nth-child(3){animation-delay:.18s}.side>*:nth-child(4){animation-delay:.26s}.side>*:nth-child(5){animation-delay:.34s}}
+@keyframes fiMonte{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+</style></head><body><header class="pl-nav"><div class="pl-nav-in"><a class="pl-brand" href="index.html" aria-label="Ma Petite Commune, accueil"><svg viewBox="0 -84 251 88" aria-hidden="true"><g class="mk">
+<rect class="b" style="--k:0" x="36" y="-22" width="16" height="22" rx="3" fill="#F5F1E8"/>
+<rect class="b" style="--k:1" x="56" y="-40" width="16" height="40" rx="3" fill="#F5F1E8"/>
+<rect class="b" style="--k:2" x="76" y="-62" width="16" height="62" rx="3" fill="#78A995"/>
+<path class="c" pathLength="1" d="M7 -6 C 16 -14, 18 -58, 34 -57 C 47 -56, 50 -40, 63 -45 C 72 -49, 77 -61, 82 -68" fill="none" stroke="#D77D68" stroke-width="12.5" stroke-linecap="round"/>
+<circle class="p" cx="84" cy="-73" r="8" fill="#E9B65C"/>
+</g><path class="l" style="--k:0" d="M109.0 0.0V-70.0H141.0Q150.6 -70.0 157.55 -66.9Q164.5 -63.800000000000004 168.3 -57.95Q172.10000000000002 -52.1 172.10000000000002 -44.1Q172.10000000000002 -36.2 168.3 -30.400000000000002Q164.5 -24.6 157.55 -21.450000000000003Q150.6 -18.3 141.0 -18.3H120.0L128.8 -26.900000000000002V0.0ZM128.8 -24.8 120.0 -33.9H139.8Q146.0 -33.9 149.05 -36.6Q152.1 -39.300000000000004 152.1 -44.1Q152.1 -49.0 149.05 -51.7Q146.0 -54.400000000000006 139.8 -54.400000000000006H120.0L128.8 -63.5Z" fill="#F5F1E8"/><path class="l" style="--k:1" d="M215.6 1.4000000000000001Q207.29999999999998 1.4000000000000001 200.25 -1.25Q193.2 -3.9000000000000004 188.04999999999998 -8.8Q182.89999999999998 -13.700000000000001 180.0 -20.35Q177.1 -27.0 177.1 -35.0Q177.1 -43.0 180.0 -49.650000000000006Q182.89999999999998 -56.300000000000004 188.04999999999998 -61.2Q193.2 -66.10000000000001 200.25 -68.75Q207.29999999999998 -71.4 215.6 -71.4Q225.29999999999998 -71.4 232.95 -68.0Q240.6 -64.60000000000001 245.7 -58.2L233.1 -46.800000000000004Q229.7 -50.800000000000004 225.64999999999998 -52.900000000000006Q221.6 -55.0 216.6 -55.0Q212.29999999999998 -55.0 208.7 -53.6Q205.1 -52.2 202.55 -49.550000000000004Q200.0 -46.900000000000006 198.55 -43.2Q197.1 -39.5 197.1 -35.0Q197.1 -30.5 198.55 -26.8Q200.0 -23.1 202.55 -20.450000000000003Q205.1 -17.8 208.7 -16.4Q212.29999999999998 -15.0 216.6 -15.0Q221.6 -15.0 225.64999999999998 -17.1Q229.7 -19.200000000000003 233.1 -23.200000000000003L245.7 -11.8Q240.6 -5.5 232.95 -2.05Q225.29999999999998 1.4000000000000001 215.6 1.4000000000000001Z" fill="#D77D68"/></svg><span>Ma Petite<br>Commune</span></a><script>try{if(!sessionStorage.getItem("mpc-logo")){document.documentElement.classList.add("mpc-intro");sessionStorage.setItem("mpc-logo","1")}}catch(e){}</script><nav class="pl-links" id="pl-links" aria-label="Rubriques"><a href="index.html" class="pl-home">Accueil</a><a href="observer.html">Observer</a><a href="s-informer.html">S'informer</a><a href="apprendre.html" aria-current="page">Apprendre</a><a href="offre.html">Nos offres</a><a href="autre-chose.html" class="pl-cta">Contact</a></nav></div></header>
 
 <main class="app" id="app">
   <div>
@@ -2545,4 +2574,5 @@ window.__fil={get R(){return R}, TRACKS, setTrack:id=>{S.track=id;openPop=null;r
 })();
 </script>
 <script src="pellucid-commun.js" defer></script>
+<script src="mpc-anim.js" defer></script>
 </body></html>

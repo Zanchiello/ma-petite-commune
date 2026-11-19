@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -84 96 88" role="img" aria-labelledby="mpc-m"><title id="mpc-m">MPC</title><style>
+svg *{transform-box:fill-box}
+.b{transform-origin:50% 100%}.p{transform-origin:50% 100%}.c{stroke-dasharray:1;stroke-dashoffset:0}
+@media (prefers-reduced-motion:no-preference){
+.b{animation:mpcB .45s cubic-bezier(.3,1.35,.5,1) calc(var(--k) * .09s) both}
+.c{animation:mpcC .6s cubic-bezier(.6,0,.35,1) .22s both}
+.p{animation:mpcP .5s cubic-bezier(.3,1.5,.5,1) .78s both}
+.l{animation:mpcL .45s cubic-bezier(.2,.8,.2,1) calc(.45s + var(--k) * .07s) both}
+.t{animation:mpcL .5s cubic-bezier(.2,.8,.2,1) calc(.8s + var(--k) * .1s) both}
+.toit{stroke-dasharray:1;animation:mpcC .45s ease .85s both}
+.dr{transform-origin:0 50%;animation:mpcD .4s cubic-bezier(.3,1.4,.5,1) 1.2s both}
+.sep{transform-origin:50% 50%;animation:mpcS .4s ease .6s both}
+svg:hover .b{animation-name:mpcB2}svg:hover .c{animation-name:mpcC2}svg:hover .p{animation-name:mpcP2}
+}
+@keyframes mpcB{from{transform:scaleY(0)}to{transform:none}}@keyframes mpcB2{from{transform:scaleY(0)}to{transform:none}}
+@keyframes mpcC{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}@keyframes mpcC2{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes mpcP{0%{transform:translateY(-26px);opacity:0}55%{transform:translateY(0) scale(1.15,.8);opacity:1}75%{transform:translateY(-4px)}100%{transform:none;opacity:1}}
+@keyframes mpcP2{0%{transform:translateY(-26px);opacity:0}55%{transform:translateY(0) scale(1.15,.8);opacity:1}75%{transform:translateY(-4px)}100%{transform:none;opacity:1}}
+@keyframes mpcL{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes mpcD{from{transform:scaleX(0)}to{transform:none}}
+@keyframes mpcS{from{transform:scaleY(0)}to{transform:none}}
+</style><g class="mk">
+<rect class="b" style="--k:0" x="36" y="-22" width="16" height="22" rx="3" fill="#F5F1E8"/>
+<rect class="b" style="--k:1" x="56" y="-40" width="16" height="40" rx="3" fill="#F5F1E8"/>
+<rect class="b" style="--k:2" x="76" y="-62" width="16" height="62" rx="3" fill="#78A995"/>
+<path class="c" pathLength="1" d="M7 -6 C 16 -14, 18 -58, 34 -57 C 47 -56, 50 -40, 63 -45 C 72 -49, 77 -61, 82 -68" fill="none" stroke="#D77D68" stroke-width="12.5" stroke-linecap="round"/>
+<circle class="p" cx="84" cy="-73" r="8" fill="#E9B65C"/>
+</g></svg>
