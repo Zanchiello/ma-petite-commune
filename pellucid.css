@@ -160,3 +160,6 @@ body.pl [hidden]{display:none!important}
 @keyframes mpcP{0%{transform:translateY(-26px);opacity:0}55%{transform:translateY(0) scale(1.15,.8);opacity:1}75%{transform:translateY(-4px)}100%{transform:none;opacity:1}}
 @keyframes mpcP2{0%{transform:translateY(-26px);opacity:0}55%{transform:translateY(0) scale(1.15,.8);opacity:1}75%{transform:translateY(-4px)}100%{transform:none;opacity:1}}
 @keyframes mpcL{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* Les vignettes illustrées gardent un fond crème : on y garde l'encre du thème clair, sinon les traits disparaissent en mode nuit */
+.vig,.dk-vig,.dk-ac-v,.dk-ill .vig,.une-ill,.art-vig{--pl-ink:#172E3A;--pl-ink-2:#586971;--pl-line:#E4DDCF;--pl-panel:#FFFFFF;--pl-bg:#F5F1E8;--pl-accent:#8A5043;--pl-accent-soft:#F4DBD5;color:#172E3A}
