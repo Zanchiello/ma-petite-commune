@@ -1,4 +1,4 @@
-<!doctype html><html lang="fr" class="aimante"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<!doctype html><html lang="fr" class="aimante"><head><meta charset="utf-8"><script>try{var t=localStorage.getItem("mpc-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Ma Petite Commune · Comment se portent les finances de ma petite commune ?</title><link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="description" content="Les finances des 22 925 communes de 200 à 3 500 habitants, en clair : trouvez votre commune, comparez-la, suivez les réformes et apprenez à lire son budget.">
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -758,6 +758,31 @@ dialog.vl::backdrop{background:rgba(23,46,58,.55);backdrop-filter:blur(3px)}
 .vl-tab{translate:0 var(--sy,0px);rotate:var(--sr,0deg);transform-origin:100% 50%}
 .vl-tab.vl-cache{right:-120px;pointer-events:none}
 @media (max-width:760px){.vl-tab{padding:12px 12px 12px 14px}.vl-tab span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}.vl-ic{width:26px;height:32px}}
+
+/* ===== Bouton jour / nuit (en haut de l'accueil) ===== */
+.th-sw{position:absolute;top:18px;right:clamp(16px,3vw,40px);z-index:4;display:inline-flex;align-items:center;gap:10px;padding:6px 14px 6px 6px;border-radius:999px;border:2px solid rgba(245,241,232,.3);background:rgba(245,241,232,.08);color:#F5F1E8;font:800 13.5px var(--pl-body);cursor:pointer;transition:background .25s,border-color .25s,transform .25s}
+.th-sw:hover{background:rgba(245,241,232,.16);border-color:#E9B65C;transform:translateY(-1px)}
+.th-sw:focus-visible{outline:3px solid #E9B65C;outline-offset:3px}
+.th-r{position:relative;width:34px;height:34px;border-radius:50%;background:#E9B65C;color:#172E3A;overflow:hidden;transition:background .5s}
+.th-r svg{position:absolute;inset:7px;width:20px;height:20px;transition:transform .6s cubic-bezier(.3,1.4,.5,1),opacity .4s}
+.th-moon{transform:translateY(30px) rotate(-60deg);opacity:0}
+.th-l{position:relative;display:grid}
+.th-l>span{grid-area:1/1;transition:opacity .3s,transform .4s cubic-bezier(.2,.8,.2,1)}
+.th-n{opacity:0;transform:translateY(8px)}
+.th-sw[aria-pressed="true"] .th-r{background:#C9D6D0}
+.th-sw[aria-pressed="true"] .th-sun{transform:translateY(-30px) rotate(90deg);opacity:0}
+.th-sw[aria-pressed="true"] .th-moon{transform:none;opacity:1}
+.th-sw[aria-pressed="true"] .th-j{opacity:0;transform:translateY(-8px)}
+.th-sw[aria-pressed="true"] .th-n{opacity:1;transform:none}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){.th-sw:hover .th-sun{transform:rotate(45deg)}.th-sw[aria-pressed="true"]:hover .th-moon{transform:rotate(-15deg)}}
+html.th-transition,html.th-transition *{transition:background-color .45s ease,color .45s ease,border-color .45s ease,fill .45s ease!important}
+@media (prefers-reduced-motion:reduce){.th-r svg,.th-l>span{transition:none}}
+@media (max-width:760px){.th-sw{top:12px;right:12px;padding:4px 10px 4px 4px}.th-r{width:30px;height:30px}.th-r svg{inset:6px;width:18px;height:18px}}
+@media (prefers-reduced-motion:no-preference){.th-sw{animation:thIn .5s cubic-bezier(.2,.8,.2,1.3) .4s both}}
+@keyframes thIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+@media (max-width:760px){.hero-in{padding-top:66px}}
+</style><style>/* jumelles du mode sombre choisi */
+:root[data-theme="dark"] .univ{color:var(--mpc-bleu)}
 </style></head><body class="pl accueil">
 <header class="pl-nav"><div class="pl-nav-in"><a class="pl-brand" href="index.html" aria-label="Ma Petite Commune, accueil"><svg viewBox="0 -84 251 88" aria-hidden="true"><g class="mk">
 <rect class="b" style="--k:0" x="36" y="-22" width="16" height="22" rx="3" fill="#F5F1E8"/>
@@ -767,7 +792,7 @@ dialog.vl::backdrop{background:rgba(23,46,58,.55);backdrop-filter:blur(3px)}
 <circle class="p" cx="84" cy="-73" r="8" fill="#E9B65C"/>
 </g><path class="l" style="--k:0" d="M109.0 0.0V-70.0H141.0Q150.6 -70.0 157.55 -66.9Q164.5 -63.800000000000004 168.3 -57.95Q172.10000000000002 -52.1 172.10000000000002 -44.1Q172.10000000000002 -36.2 168.3 -30.400000000000002Q164.5 -24.6 157.55 -21.450000000000003Q150.6 -18.3 141.0 -18.3H120.0L128.8 -26.900000000000002V0.0ZM128.8 -24.8 120.0 -33.9H139.8Q146.0 -33.9 149.05 -36.6Q152.1 -39.300000000000004 152.1 -44.1Q152.1 -49.0 149.05 -51.7Q146.0 -54.400000000000006 139.8 -54.400000000000006H120.0L128.8 -63.5Z" fill="#F5F1E8"/><path class="l" style="--k:1" d="M215.6 1.4000000000000001Q207.29999999999998 1.4000000000000001 200.25 -1.25Q193.2 -3.9000000000000004 188.04999999999998 -8.8Q182.89999999999998 -13.700000000000001 180.0 -20.35Q177.1 -27.0 177.1 -35.0Q177.1 -43.0 180.0 -49.650000000000006Q182.89999999999998 -56.300000000000004 188.04999999999998 -61.2Q193.2 -66.10000000000001 200.25 -68.75Q207.29999999999998 -71.4 215.6 -71.4Q225.29999999999998 -71.4 232.95 -68.0Q240.6 -64.60000000000001 245.7 -58.2L233.1 -46.800000000000004Q229.7 -50.800000000000004 225.64999999999998 -52.900000000000006Q221.6 -55.0 216.6 -55.0Q212.29999999999998 -55.0 208.7 -53.6Q205.1 -52.2 202.55 -49.550000000000004Q200.0 -46.900000000000006 198.55 -43.2Q197.1 -39.5 197.1 -35.0Q197.1 -30.5 198.55 -26.8Q200.0 -23.1 202.55 -20.450000000000003Q205.1 -17.8 208.7 -16.4Q212.29999999999998 -15.0 216.6 -15.0Q221.6 -15.0 225.64999999999998 -17.1Q229.7 -19.200000000000003 233.1 -23.200000000000003L245.7 -11.8Q240.6 -5.5 232.95 -2.05Q225.29999999999998 1.4000000000000001 215.6 1.4000000000000001Z" fill="#D77D68"/></svg><span>Ma Petite<br>Commune</span></a><script>try{if(!sessionStorage.getItem("mpc-logo")){document.documentElement.classList.add("mpc-intro");sessionStorage.setItem("mpc-logo","1")}}catch(e){}</script><nav class="pl-links" id="pl-links" aria-label="Rubriques"><a href="index.html" class="pl-home" >Accueil</a><a href="observer.html">Observer</a><a href="s-informer.html">S'informer</a><a href="apprendre.html">Apprendre</a><a href="offre.html">Nos offres</a><a href="autre-chose.html" class="pl-cta">Contact</a></nav></div></header>
 <main id="contenu">
-<section class="hero" aria-labelledby="t-hero"><button type="button" class="vl-tab" id="vl-tab" aria-haspopup="dialog" aria-controls="vl"><svg class="vl-ic" viewBox="0 0 32 40" aria-hidden="true"><path class="vl-f2" d="M8 6h16l6 6v24H8z" fill="#F5F1E8" stroke="#172E3A" stroke-width="2" transform="rotate(8 19 21)"/><path d="M3 3h17l6 6v28H3z" fill="#fff" stroke="#172E3A" stroke-width="2.2" stroke-linejoin="round"/><rect class="vl-b" x="7" y="24" width="4" height="8" fill="#78A995"/><rect class="vl-b" style="--d:.06s" x="13" y="18" width="4" height="14" fill="#D77D68"/><rect class="vl-b" style="--d:.12s" x="19" y="21" width="4" height="11" fill="#172E3A"/></svg><span>Télécharger un graphique</span><svg class="vl-fl" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="w hero-in">
+<section class="hero" aria-labelledby="t-hero"><button type="button" class="th-sw" id="th-sw" aria-label="Passer en mode nuit" aria-pressed="false" title="Mode jour ou nuit"><span class="th-r" aria-hidden="true"><svg class="th-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></g></svg><svg class="th-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="currentColor"/></svg></span><span class="th-l"><span class="th-j">Jour</span><span class="th-n">Nuit</span></span></button><button type="button" class="vl-tab" id="vl-tab" aria-haspopup="dialog" aria-controls="vl"><svg class="vl-ic" viewBox="0 0 32 40" aria-hidden="true"><path class="vl-f2" d="M8 6h16l6 6v24H8z" fill="#F5F1E8" stroke="#172E3A" stroke-width="2" transform="rotate(8 19 21)"/><path d="M3 3h17l6 6v28H3z" fill="#fff" stroke="#172E3A" stroke-width="2.2" stroke-linejoin="round"/><rect class="vl-b" x="7" y="24" width="4" height="8" fill="#78A995"/><rect class="vl-b" style="--d:.06s" x="13" y="18" width="4" height="14" fill="#D77D68"/><rect class="vl-b" style="--d:.12s" x="19" y="21" width="4" height="11" fill="#172E3A"/></svg><span>Télécharger un graphique</span><svg class="vl-fl" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="w hero-in">
 <p class="sur sur-hero">Les finances locales, <span class="allume">en clair</span></p>
 <h1 id="t-hero">Comment se portent les finances de <em>ma petite commune</em> ?</h1>
 <p class="hero-lede">Deux communes sur trois comptent moins de 3 500 habitants. Ma Petite Commune aide leurs élu·es, leurs agent·es et leurs habitant·es à lire leur budget, à suivre les réformes et à se comparer. <a href="pourquoi.html">Pourquoi Ma Petite Commune ?</a></p>
@@ -1258,6 +1283,22 @@ fetch("carte-departements.json").then(r => r.json()).then(d => { CARTE = d; draw
   dlg.addEventListener("click", e => { if (e.target === dlg) { const r = dlg.getBoundingClientRect(); if (e.clientX < r.left) fermer(); } });
   dlg.addEventListener("close", () => { rendre(); tab.focus(); });
   addEventListener("pointerdown", e => { if (dlg.open && e.clientX < dlg.getBoundingClientRect().left) fermer(); });
+})();
+
+/* ===== Bouton jour / nuit ===== */
+(() => {
+  const b = document.getElementById("th-sw"); if (!b) return;
+  const root = document.documentElement, sys = matchMedia("(prefers-color-scheme: dark)");
+  const nuit = () => (root.getAttribute("data-theme") || (sys.matches ? "dark" : "light")) === "dark";
+  const maj = () => { const n = nuit(); b.setAttribute("aria-pressed", String(n)); b.setAttribute("aria-label", n ? "Passer en mode jour" : "Passer en mode nuit"); };
+  b.addEventListener("click", () => {
+    const t = nuit() ? "light" : "dark";
+    if (!matchMedia("(prefers-reduced-motion: reduce)").matches) { root.classList.add("th-transition"); setTimeout(() => root.classList.remove("th-transition"), 600); }
+    root.setAttribute("data-theme", t);
+    try { localStorage.setItem("mpc-theme", t); } catch (e) {}
+    maj();
+  });
+  sys.addEventListener("change", maj); maj();
 })();
 </script>
 <script src="atelier.js" defer></script>
