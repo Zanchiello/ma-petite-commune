@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#172E3A"/><g transform="translate(3 57) scale(.62)"><g class="mk">
+<rect class="b" style="--k:0" x="36" y="-22" width="16" height="22" rx="3" fill="#F5F1E8"/>
+<rect class="b" style="--k:1" x="56" y="-40" width="16" height="40" rx="3" fill="#F5F1E8"/>
+<rect class="b" style="--k:2" x="76" y="-62" width="16" height="62" rx="3" fill="#78A995"/>
+<path class="c" pathLength="1" d="M7 -6 C 16 -14, 18 -58, 34 -57 C 47 -56, 50 -40, 63 -45 C 72 -49, 77 -61, 82 -68" fill="none" stroke="#D77D68" stroke-width="12.5" stroke-linecap="round"/>
+<circle class="p" cx="84" cy="-73" r="8" fill="#E9B65C"/>
+</g></g></svg>

@@ -1,5 +1,5 @@
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Les vases communicants · Ma Petite Commune</title>
-<meta name="description" content="Les vases communicants : un jeu pour comprendre le budget communal. Bougez un levier et suivez les conséquences, jusqu&#x27;à la dette de l&#x27;an prochain."><link rel="stylesheet" href="fonts.css"><link rel="stylesheet" href="pellucid.css">
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Les vases communicants · Ma Petite Commune</title><link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="description" content="Les vases communicants : un jeu pour comprendre le budget communal. Bougez un levier et suivez les conséquences, jusqu&#x27;à la dette de l&#x27;an prochain."><link rel="stylesheet" href="fonts.css"><link rel="stylesheet" href="pellucid.css"><link rel="stylesheet" href="mpc-anim.css">
 <meta name="claude:viewport-fit-sides" content="cover">
 
 <link rel="stylesheet" href="fonts.css">
@@ -217,7 +217,52 @@ svg .flow{fill:none;stroke-width:3;stroke-linecap:round;stroke-dasharray:6 7;ani
 .gloss dd{margin:2px 0 0;font-size:13.5px;color:var(--ink-2);max-width:62ch}
 .foot{font-size:12.5px;color:var(--ink-2)}
 .foot a{color:var(--water)}
-</style></head><body><header class="pl-nav"><div class="pl-nav-in"><a class="pl-brand" href="index.html"><svg viewBox="-4 -680 1961 700" aria-hidden="true"><g transform="scale(1,-1)"><path transform="translate(-40 0)" fill="var(--pl-ink)" d="M40 0V660H283L418 191H420L552 660H782V0H632V497H630L481 0H339L192 497H190V0Z"/><path transform="translate(747 0)" fill="var(--pl-accent)" d="M161 187V317H284Q345 317 375.0 341.5Q405 366 405 423Q405 477 377.5 503.5Q350 530 294 530H161V660H303Q360 660 409.0 646.5Q458 633 494.5 604.0Q531 575 551.5 531.0Q572 487 572 425Q572 346 536.5 293.0Q501 240 434.0 213.5Q367 187 270 187ZM40 0V660H202V0Z"/><path transform="translate(1338 0)" fill="var(--pl-ink)" d="M341 -14Q257 -14 197.0 13.0Q137 40 99.0 88.0Q61 136 43.5 197.5Q26 259 26 328Q26 399 44.0 462.0Q62 525 99.5 572.5Q137 620 196.0 647.0Q255 674 338 674Q410 674 462.0 653.5Q514 633 545.5 597.5Q577 562 589.0 516.0Q601 470 595 420L446 402Q448 445 435.5 476.0Q423 507 397.5 524.0Q372 541 333 541Q300 541 274.5 528.0Q249 515 231.5 489.0Q214 463 205.0 424.5Q196 386 196 335Q196 269 212.0 220.5Q228 172 261.0 145.5Q294 119 344 119Q390 119 416.5 140.0Q443 161 454.0 198.0Q465 235 461 281L614 268Q619 213 606.5 162.5Q594 112 561.5 72.0Q529 32 474.5 9.0Q420 -14 341 -14Z"/></g></svg>Ma Petite Commune</a><nav class="pl-links" id="pl-links" aria-label="Rubriques"><a href="index.html" class="pl-home">Accueil</a><a href="observer.html">Observer</a><a href="s-informer.html">S'informer</a><a href="apprendre.html" aria-current="page">Apprendre</a><a href="offre.html">Nos offres</a><a href="autre-chose.html" class="pl-cta">Contact</a></nav></div></header>
+
+.real{position:relative;display:flex;flex-direction:column;gap:6px;margin:14px 0 0;padding:14px;border:1px solid var(--line);border-radius:6px;background:var(--bg);max-width:640px}
+.real-back{align-self:flex-start;margin-top:4px}
+.real label{display:flex;flex-direction:column;gap:2px;font-size:15px}
+.real label small{font-size:13px;color:var(--ink-2)}
+.real-field{display:flex;align-items:center;gap:8px;border:1.5px solid var(--ink);border-radius:6px;padding:0 10px;background:var(--panel)}
+.real-field:focus-within{outline:2px solid var(--water);outline-offset:1px}
+.real-field svg{width:17px;height:17px;flex:none;color:var(--ink-2)}
+.real-field input{flex:1;min-width:0;border:0;background:transparent;color:var(--ink);font:16px var(--f-body);padding:10px 0;outline:none}
+.real-list{position:absolute;z-index:30;left:14px;right:14px;top:calc(100% - 8px);margin:0;padding:4px;list-style:none;background:var(--panel);border:1px solid var(--line);border-radius:6px;box-shadow:0 10px 26px rgba(0,0,0,.16);max-height:300px;overflow:auto}
+.real-list li{display:flex;flex-wrap:wrap;justify-content:space-between;gap:2px 10px;padding:8px 10px;border-radius:4px;cursor:pointer;font-size:14.5px}
+.real-list li small{color:var(--ink-2)}
+.real-list li:hover,.real-list li[aria-selected="true"]{background:color-mix(in srgb,var(--water) 14%,transparent)}
+.real-list li.none{cursor:default;color:var(--ink-2)}
+.real-msg{font-size:13.5px;color:var(--ink-2);max-width:80ch}
+.real-msg b{color:var(--ink)}
+.real-msg ul{margin:6px 0 0;padding-left:18px}
+</style><style id="da-v1">/* Nouvelle DA V1 Newsreader : jetons remappés */
+:root{--ground:#EDE6D8;--panel:#F5F1E8;--ink:#172E3A;--ink-2:#586971;--line:#D2C8B5;--water:#2E5A6E;--water-soft:#DCE5E9;--debt:#806433;--debt-soft:#F1DFB9;--ok:#3F6F5A;--warn:#806433;--alert:#A84530;--alert-soft:#F4DBD5;--b1:#49675B;--b2:#78A995;--b3:#A9C8BB;--b4:#D9E7E1;--d1:#586971;--d2:#8C979B;--d3:#B7BFC2;--glass:#FFFFFF;--f-display:"Manrope",system-ui,sans-serif;--f-body:"Manrope",system-ui,sans-serif;--f-mono:"Manrope",system-ui,sans-serif;}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--ground:#0F1F28;--panel:#162A35;--ink:#F5F1E8;--ink-2:#A9B8BE;--line:#2A3F4A;--water:#8FB4C4;--water-soft:#1E3540;--debt:#E9B65C;--debt-soft:#3A2E17;--ok:#8FBCA9;--warn:#E9B65C;--alert:#E39A88;--alert-soft:#3A2722;--b1:#5E8C78;--b2:#476B5C;--b3:#365246;--b4:#273C33;--d1:#5D6E75;--d2:#4A5960;--d3:#3A474D;--glass:#13252F;color-scheme:dark}}
+:root[data-theme="dark"]{--ground:#0F1F28;--panel:#162A35;--ink:#F5F1E8;--ink-2:#A9B8BE;--line:#2A3F4A;--water:#8FB4C4;--water-soft:#1E3540;--debt:#E9B65C;--debt-soft:#3A2E17;--ok:#8FBCA9;--warn:#E9B65C;--alert:#E39A88;--alert-soft:#3A2722;--b1:#5E8C78;--b2:#476B5C;--b3:#365246;--b4:#273C33;--d1:#5D6E75;--d2:#4A5960;--d3:#3A474D;--glass:#13252F;color-scheme:dark}
+h1{font-family:var(--pl-display)!important;font-weight:600!important;font-stretch:normal!important;letter-spacing:-.01em!important}
+/* ===== Nouvelle DA : habillage (fonctionnement inchangé) ===== */
+header.top{background:#172E3A;color:#F5F1E8;border-radius:28px;padding:clamp(20px,3vw,32px) clamp(20px,3vw,36px)!important;border:0!important;align-items:center}
+header.top .eyebrow{color:#E9B65C!important}
+header.top h1{color:#F5F1E8!important;font-size:clamp(36px,5vw,58px)!important}
+header.top h1 em{color:#E9B65C!important}
+header.top .commune strong{color:#F5F1E8}
+header.top .commune span{color:#C9D6D0}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) header.top{background:#1F3A48}}
+:root[data-theme="dark"] header.top{background:#1F3A48}
+.missions button{border-radius:16px!important;border-width:2px!important;transition:transform .25s cubic-bezier(.2,.8,.2,1.3),background .25s,border-color .25s}
+.missions button:hover{transform:translateY(-2px);border-color:var(--ink)!important}
+.missions button[aria-pressed="true"],.missions button[aria-current="true"],.missions button.on{background:#172E3A!important;color:#F5F1E8!important;border-color:#172E3A!important}
+.missions button[aria-pressed="true"] .n,.missions button[aria-current="true"] .n,.missions button.on .n{color:#E9B65C!important}
+.brief,.box{border-radius:20px!important}
+.btn{border-radius:999px}
+@media (prefers-reduced-motion:no-preference){header.top{animation:vaMonte .6s cubic-bezier(.2,.8,.2,1) both}.missions button{animation:vaMonte .5s cubic-bezier(.2,.8,.2,1) both}.missions button:nth-child(2){animation-delay:.06s}.missions button:nth-child(3){animation-delay:.12s}.missions button:nth-child(4){animation-delay:.18s}.missions button:nth-child(5){animation-delay:.24s}}
+@keyframes vaMonte{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+</style></head><body><header class="pl-nav"><div class="pl-nav-in"><a class="pl-brand" href="index.html" aria-label="Ma Petite Commune, accueil"><svg viewBox="0 -84 251 88" aria-hidden="true"><g class="mk">
+<rect class="b" style="--k:0" x="36" y="-22" width="16" height="22" rx="3" fill="#F5F1E8"/>
+<rect class="b" style="--k:1" x="56" y="-40" width="16" height="40" rx="3" fill="#F5F1E8"/>
+<rect class="b" style="--k:2" x="76" y="-62" width="16" height="62" rx="3" fill="#78A995"/>
+<path class="c" pathLength="1" d="M7 -6 C 16 -14, 18 -58, 34 -57 C 47 -56, 50 -40, 63 -45 C 72 -49, 77 -61, 82 -68" fill="none" stroke="#D77D68" stroke-width="12.5" stroke-linecap="round"/>
+<circle class="p" cx="84" cy="-73" r="8" fill="#E9B65C"/>
+</g><path class="l" style="--k:0" d="M109.0 0.0V-70.0H141.0Q150.6 -70.0 157.55 -66.9Q164.5 -63.800000000000004 168.3 -57.95Q172.10000000000002 -52.1 172.10000000000002 -44.1Q172.10000000000002 -36.2 168.3 -30.400000000000002Q164.5 -24.6 157.55 -21.450000000000003Q150.6 -18.3 141.0 -18.3H120.0L128.8 -26.900000000000002V0.0ZM128.8 -24.8 120.0 -33.9H139.8Q146.0 -33.9 149.05 -36.6Q152.1 -39.300000000000004 152.1 -44.1Q152.1 -49.0 149.05 -51.7Q146.0 -54.400000000000006 139.8 -54.400000000000006H120.0L128.8 -63.5Z" fill="#F5F1E8"/><path class="l" style="--k:1" d="M215.6 1.4000000000000001Q207.29999999999998 1.4000000000000001 200.25 -1.25Q193.2 -3.9000000000000004 188.04999999999998 -8.8Q182.89999999999998 -13.700000000000001 180.0 -20.35Q177.1 -27.0 177.1 -35.0Q177.1 -43.0 180.0 -49.650000000000006Q182.89999999999998 -56.300000000000004 188.04999999999998 -61.2Q193.2 -66.10000000000001 200.25 -68.75Q207.29999999999998 -71.4 215.6 -71.4Q225.29999999999998 -71.4 232.95 -68.0Q240.6 -64.60000000000001 245.7 -58.2L233.1 -46.800000000000004Q229.7 -50.800000000000004 225.64999999999998 -52.900000000000006Q221.6 -55.0 216.6 -55.0Q212.29999999999998 -55.0 208.7 -53.6Q205.1 -52.2 202.55 -49.550000000000004Q200.0 -46.900000000000006 198.55 -43.2Q197.1 -39.5 197.1 -35.0Q197.1 -30.5 198.55 -26.8Q200.0 -23.1 202.55 -20.450000000000003Q205.1 -17.8 208.7 -16.4Q212.29999999999998 -15.0 216.6 -15.0Q221.6 -15.0 225.64999999999998 -17.1Q229.7 -19.200000000000003 233.1 -23.200000000000003L245.7 -11.8Q240.6 -5.5 232.95 -2.05Q225.29999999999998 1.4000000000000001 215.6 1.4000000000000001Z" fill="#D77D68"/></svg><span>Ma Petite<br>Commune</span></a><script>try{if(!sessionStorage.getItem("mpc-logo")){document.documentElement.classList.add("mpc-intro");sessionStorage.setItem("mpc-logo","1")}}catch(e){}</script><nav class="pl-links" id="pl-links" aria-label="Rubriques"><a href="index.html" class="pl-home">Accueil</a><a href="observer.html">Observer</a><a href="s-informer.html">S'informer</a><a href="apprendre.html" aria-current="page">Apprendre</a><a href="offre.html">Nos offres</a><a href="autre-chose.html" class="pl-cta">Contact</a></nav></div></header>
 
 <div class="wrap">
   <header class="top">
@@ -226,8 +271,8 @@ svg .flow{fill:none;stroke-width:3;stroke-linecap:round;stroke-dasharray:6 7;ani
       <h1>Les vases <em>communicants</em></h1>
     </div>
     <div class="commune">
-      <strong>Saint-Aubin-sur-Loirette</strong>
-      <span>Commune fictive · 1 480 habitants · nomenclature M57</span>
+      <strong id="c-name">Saint-Aubin-sur-Loirette</strong>
+      <span id="c-sub">Commune fictive · 1 480 habitants · nomenclature M57</span>
     </div>
   </header>
 
@@ -238,6 +283,16 @@ svg .flow{fill:none;stroke-width:3;stroke-linecap:round;stroke-dasharray:6 7;ani
       <div class="eyebrow" id="m-eyebrow">Mission</div>
       <h2 id="m-title" style="font-size:22px;font-stretch:78%;margin-top:4px"></h2>
       <p id="m-brief"></p>
+      <div class="real" id="real-box" hidden>
+        <label for="real-q"><b>Partir d'une commune réelle</b><small>Ses derniers comptes publiés remplacent les hypothèses de Saint-Aubin-sur-Loirette.</small></label>
+        <div class="real-field">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+          <input id="real-q" type="search" placeholder="Nom de la commune ou code Insee" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="real-list" aria-autocomplete="list">
+        </div>
+        <ul id="real-list" class="real-list" role="listbox" hidden></ul>
+        <div class="real-msg" id="real-msg" aria-live="polite"></div>
+        <button class="btn ghost real-back" type="button" id="real-back" hidden>Revenir à la commune fictive</button>
+      </div>
     </div>
     <div>
       <div class="eyebrow">Objectifs</div>
@@ -287,7 +342,7 @@ svg .flow{fill:none;stroke-width:3;stroke-linecap:round;stroke-dasharray:6 7;ani
       <section class="box" aria-labelledby="h-dep">
         <h2 id="h-dep">Dépenses <small>section de fonctionnement</small></h2>
         <div class="lever">
-          <div class="row"><span class="lbl" id="l-etp">Agents (équivalents temps plein)</span></div>
+          <div class="row"><span class="lbl" id="l-etp">Agent·es (équivalents temps plein)</span></div>
           <div class="stepper" role="group" aria-labelledby="l-etp">
             <button type="button" id="etp-minus" aria-label="Un agent de moins">−</button>
             <output id="o-etp" class="num"></output>
@@ -835,7 +890,7 @@ function startGame(keepLevers){
   if(keep){ Object.assign(L,{tarif:keep.tarif,sobriete:keep.sobriete}); }
   hist=[]; journal=[]; finished=false; prevSnap=null;
   $("m-eyebrow").textContent=M.sandbox?"Mode libre":M.multi?"Mission pluriannuelle":`Mission ${mIdx+1} · un exercice`;
-  $("m-title").textContent=M.titre; $("m-brief").textContent=M.brief;
+  $("m-title").textContent=M.titre; $("m-brief").textContent=M.brief; showCommune();
   $("yearbar").hidden=!M.multi; $("journal-box").hidden=!M.multi;
   $("btn-valid").hidden=!!M.multi;
   buildMissions(); buildProjects(); buildHyp(); syncInputs();
@@ -1043,7 +1098,7 @@ function buildHyp(){
   const g=$("hyp-grid"), sb=!!M.sandbox;
   $("hyp-sub").textContent=sb?"modifiables":"fixées pour cette mission";
   $("hyp-note").textContent=sb?(hist.length?"Modifier une hypothèse recommence la simulation en 2027.":"Chaque valeur se répercute immédiatement dans les vases. Si vous avez déjà voté des budgets, modifier une hypothèse recommence la simulation en 2027."):"Ces valeurs décrivent la commune. Elles deviennent modifiables dans le bac à sable.";
-  $("hyp-actions").hidden=!sb;
+  $("hyp-actions").hidden=!sb; $("real-box").hidden=!sb;
   g.innerHTML=HYP_FIELDS.map(([leg,fs])=>`<fieldset><legend>${leg}</legend>${fs.map(([key,lab,u,step])=>
     `<label class="hf" for="hy-${key}"><span>${lab}</span><input type="number" id="hy-${key}" step="${step}" value="${H[key]}" ${sb?"":"disabled"}><small>${u}</small></label>`).join("")}</fieldset>`).join("");
   if(!sb) return;
@@ -1064,10 +1119,90 @@ function buildHyp(){
     syncInputs(); buildProjects(); prevSnap=null; update();
   }));
 }
-$("btn-hyp-reset").addEventListener("click",()=>{ sandboxHyp={...HYP0}; H=sandboxHyp; startGame(); });
+$("btn-hyp-reset").addEventListener("click",()=>{ setReal(null); sandboxHyp={...HYP0}; H=sandboxHyp; startGame(); });
+
+/* ---------- Partir d'une commune réelle (bac à sable) ----------
+   Les comptes viennent d'Observer (OFGL, dernier exercice publié). Quelques valeurs que les comptes ne donnent pas
+   sont estimées : nombre d'agents (coût moyen de 39 k€), partage subventions / contributions, foyers propriétaires. */
+const PROJ0 = PROJETS.map(p=>({...p}));
+const SB_IDX = MISSIONS.findIndex(m=>m.sandbox), SB_BRIEF = MISSIONS[SB_IDX].brief, SB_TITRE = MISSIONS[SB_IDX].titre;
+let REAL = null, NAMES = null, KIT = null;
+const nz = t=>(t||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[-'’]/g," ").replace(/\s+/g," ").trim();
+const getJSON = url=>fetch(url).then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); });
+const loadNames = ()=>NAMES||(NAMES=getJSON("communes.json").then(j=>j.c.map(r=>({n:r[0],c:r[1],d:j.d[r[2]],p:r[3],k:nz(r[0])}))));
+const loadKit = ()=>KIT||(KIT=getJSON("vases-communes.json"));
+const rrfOf = h=>(h.tfpbBase*h.tfpbTaux+h.tfnbBase*h.tfnbTaux+h.thrsBase*h.thrsTaux)/100+h.autresImpots+h.dgf+h.services+h.autres;
+function scaleProjects(f){
+  PROJETS.forEach((p,i)=>{ const p0=PROJ0[i];
+    if(f===1){ Object.assign(p,p0); return; }
+    const cout=Math.max(5,Math.round(p0.cout*f/5)*5), impact=Math.round(p0.impact*f);
+    const eff=impact<0?`Économise ${-impact} k€ par an.`:impact>0?`Coûtera ${impact} k€ par an en fonctionnement.`:"";
+    Object.assign(p,{cout,impact,desc:`${p0.desc.split(". ")[0].replace(/\.$/,"")}. Subventions : ${p0.subv} %. ${eff} Coût ramené à la taille de la commune.`.trim()});
+  });
+}
+const C0=[$("c-name").textContent,$("c-sub").textContent];
+function showCommune(){ const r=REAL&&M&&M.sandbox?REAL:null;
+  $("c-name").textContent=r?r.n:C0[0]; $("c-sub").textContent=r?`Commune réelle · ${r.d} · ${nf0.format(r.p)} habitants · comptes ${r.an}`:C0[1]; }
+$("real-back").addEventListener("click",()=>$("btn-hyp-reset").click());
+function setReal(r){
+  REAL=r; const m=MISSIONS[SB_IDX];
+  if(!r){ scaleProjects(1); m.brief=SB_BRIEF; m.titre=SB_TITRE; $("real-msg").innerHTML=""; $("real-q").value=""; $("real-back").hidden=true; showCommune(); return; }
+  m.titre=`Bac à sable : ${r.n}`; $("real-back").hidden=false;
+  m.brief=`Les vases sont remplis avec les comptes ${r.an} de ${r.n} (${r.d}, ${nf0.format(r.p)} habitants). Votez ses prochains budgets, ajoutez ses vrais projets et déroulez les années jusqu'en 2036.`; showCommune();
+}
+async function loadReal(c){
+  const msg=$("real-msg"); msg.textContent="Chargement des comptes…";
+  let kit; try{ kit=await loadKit(); }catch(e){ msg.textContent="Les comptes n'ont pas pu être chargés. Réessayez dans un instant."; return; }
+  const row=kit.c[c.c]; if(!row){ msg.textContent=`Pas de comptes complets pour ${c.n}.`; return; }
+  const v={}; kit.fields.forEach((f,i)=>v[f]=row[i]);
+  const etp=v.personnel>=1?Math.max(1,Math.round(v.personnel/39)):0, coutEtp=etp?Math.round(v.personnel/etp*10)/10:39;
+  const subvAssoc=Math.round(v.subvContrib*0.4*10)/10, contrib=Math.round((v.subvContrib-subvAssoc)*10)/10;
+  sandboxHyp={...HYP0, tfpbBase:v.tfpbBase, tfpbTaux:v.tfpbTaux||HYP0.tfpbTaux, tfnbBase:v.tfnbBase, tfnbTaux:v.tfnbTaux||HYP0.tfnbTaux,
+    thrsBase:v.thrsBase, thrsTaux:v.thrsTaux||0, autresImpots:v.autresImpots, dgf:v.dgf, services:v.services, autres:v.autres,
+    coutEtp, etp, general:v.general, subvAssoc, contrib, encours:v.encours, tauxDette:v.tauxDette||HYP0.tauxDette,
+    capital:Math.min(v.capital,v.encours), reserves:v.reserves, fctva1:v.fctva, fctva2:v.fctva,
+    foyers:Math.max(10,Math.round(c.p/2.2*0.7/10)*10)};
+  setReal({...c, an:v.an}); scaleProjects(rrfOf(sandboxHyp)/rrfOf(HYP0));
+  if(mIdx!==SB_IDX) loadMission(SB_IDX); else { H=sandboxHyp; startGame(); }
+  $("real-q").value=c.n;
+  msg.innerHTML=`<b>Source</b> : comptes ${v.an} publiés par l'OFGL, repris d'<a href="observer.html#commune-${c.c}">Observer</a>. Recettes de fonctionnement : ${k(rrfOf(sandboxHyp))}, encours de dette : ${k(v.encours)}.
+    <ul><li>Estimés, faute de détail dans les comptes : ${etp} agents à ${nf1.format(coutEtp)} k€ en moyenne, le partage entre subventions aux associations et contributions obligatoires (40 / 60), ${nf0.format(sandboxHyp.foyers)} foyers propriétaires.</li>
+    <li>Le FCTVA de 2027 et 2028 est supposé égal à celui de ${v.an}. Les projets proposés sont ramenés à la taille de la commune.</li></ul>`;
+}
+(()=>{
+  const q=$("real-q"), ul=$("real-list"); let hits=[], cur=-1;
+  const show=async()=>{
+    const v=nz(q.value); if(v.length<2){ ul.hidden=true; q.setAttribute("aria-expanded","false"); return; }
+    let all; try{ all=await loadNames(); }catch(e){ ul.innerHTML='<li class="none">La liste des communes n’a pas pu être chargée.</li>'; ul.hidden=false; return; }
+    const a=[], b=[];
+    if(/^[0-9][0-9ab][0-9]{0,3}$/.test(v)) all.forEach(c=>{ if(c.c.toLowerCase().startsWith(v)&&a.length<8) a.push(c); });
+    else for(const c of all){ if(c.k.startsWith(v)) a.push(c); else if(v.length>2&&c.k.includes(v)&&b.length<8) b.push(c); if(a.length>=8) break; }
+    hits=a.concat(b).slice(0,8); cur=-1;
+    ul.innerHTML=hits.length?hits.map((c,i)=>`<li role="option" id="ro-${i}" data-i="${i}"><b>${esc(c.n)}</b><small>${esc(c.d)} · ${nf0.format(c.p)} hab.</small></li>`).join("")
+      :'<li class="none">Aucune commune de 200 à 3 500 habitants à ce nom.</li>';
+    ul.hidden=false; q.setAttribute("aria-expanded","true");
+  };
+  q.addEventListener("focus",()=>{ loadNames().catch(()=>{}); });
+  q.addEventListener("input",show);
+  q.addEventListener("keydown",e=>{
+    if(ul.hidden||!hits.length) return;
+    if(e.key==="ArrowDown"||e.key==="ArrowUp"){ e.preventDefault(); cur=(cur+(e.key==="ArrowDown"?1:-1)+hits.length)%hits.length;
+      [...ul.children].forEach((li,i)=>li.setAttribute("aria-selected",String(i===cur))); q.setAttribute("aria-activedescendant","ro-"+cur); }
+    else if(e.key==="Enter"){ e.preventDefault(); ul.hidden=true; loadReal(hits[Math.max(cur,0)]); }
+    else if(e.key==="Escape") ul.hidden=true;
+  });
+  ul.addEventListener("pointerdown",e=>{ const li=e.target.closest("li[data-i]"); if(li){ e.preventDefault(); ul.hidden=true; loadReal(hits[+li.dataset.i]); } });
+  q.addEventListener("blur",()=>setTimeout(()=>{ ul.hidden=true; q.setAttribute("aria-expanded","false"); },120));
+})();
+/* Arrivée depuis Observer : vases-communicants.html#commune-30001 */
+const routeReal=async()=>{ const m=/^commune-([0-9][0-9AB][0-9]{3})$/i.exec(location.hash.slice(1)); if(!m) return;
+  try{ const all=await loadNames(); const c=all.find(x=>x.c===m[1].toUpperCase()); if(c){ loadMission(SB_IDX); await loadReal(c); $("real-box").scrollIntoView({block:"center"}); } }catch(e){} };
+addEventListener("hashchange",routeReal);
 
 loadMission(0);
+routeReal();
 })();
 </script>
 <footer class="pl-foot"><div><span>Ma Petite Commune · les finances communales, en clair</span><nav class="pl-foot-links" aria-label="Informations"><a href="a-propos.html">Qui est derrière Ma Petite Commune</a><a href="methodologie.html">Méthodologie</a><a href="credits.html">Crédits et licences</a><a href="conditions.html">Conditions d'utilisation</a><a href="accessibilite.html">Accessibilité : non conforme</a><a href="mentions-legales.html">Mentions légales</a><a href="confidentialite.html">Confidentialité</a><a href="cookies.html">Cookies</a><a href="autre-chose.html">Contact</a></nav></div></footer><script src="pellucid-commun.js" defer></script>
+<script src="mpc-anim.js" defer></script>
 </body></html>

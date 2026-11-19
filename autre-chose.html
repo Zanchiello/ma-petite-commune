@@ -1,5 +1,104 @@
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Contact · Ma Petite Commune</title>
-<meta name="description" content="Un pré-diagnostic de votre commune, une question sur une prestation, sur les données ou sur la méthode, une erreur à signaler : appelez-moi, ou laissez…"><link rel="stylesheet" href="fonts.css"><link rel="stylesheet" href="pellucid.css"><style>html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style></head><body class="pl"><header class="pl-nav"><div class="pl-nav-in"><a class="pl-brand" href="index.html"><svg viewBox="-4 -680 1961 700" aria-hidden="true"><g transform="scale(1,-1)"><path transform="translate(-40 0)" fill="var(--pl-ink)" d="M40 0V660H283L418 191H420L552 660H782V0H632V497H630L481 0H339L192 497H190V0Z"/><path transform="translate(747 0)" fill="var(--pl-accent)" d="M161 187V317H284Q345 317 375.0 341.5Q405 366 405 423Q405 477 377.5 503.5Q350 530 294 530H161V660H303Q360 660 409.0 646.5Q458 633 494.5 604.0Q531 575 551.5 531.0Q572 487 572 425Q572 346 536.5 293.0Q501 240 434.0 213.5Q367 187 270 187ZM40 0V660H202V0Z"/><path transform="translate(1338 0)" fill="var(--pl-ink)" d="M341 -14Q257 -14 197.0 13.0Q137 40 99.0 88.0Q61 136 43.5 197.5Q26 259 26 328Q26 399 44.0 462.0Q62 525 99.5 572.5Q137 620 196.0 647.0Q255 674 338 674Q410 674 462.0 653.5Q514 633 545.5 597.5Q577 562 589.0 516.0Q601 470 595 420L446 402Q448 445 435.5 476.0Q423 507 397.5 524.0Q372 541 333 541Q300 541 274.5 528.0Q249 515 231.5 489.0Q214 463 205.0 424.5Q196 386 196 335Q196 269 212.0 220.5Q228 172 261.0 145.5Q294 119 344 119Q390 119 416.5 140.0Q443 161 454.0 198.0Q465 235 461 281L614 268Q619 213 606.5 162.5Q594 112 561.5 72.0Q529 32 474.5 9.0Q420 -14 341 -14Z"/></g></svg>Ma Petite Commune</a><nav class="pl-links" id="pl-links" aria-label="Rubriques"><a href="index.html" class="pl-home">Accueil</a><a href="observer.html">Observer</a><a href="s-informer.html">S'informer</a><a href="apprendre.html">Apprendre</a><a href="offre.html">Nos offres</a><a href="autre-chose.html" class="pl-cta" aria-current="page">Contact</a></nav></div></header><style>
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Contact · Ma Petite Commune</title><link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="description" content="Un pré-diagnostic de votre commune, une question sur une prestation, sur les données ou sur la méthode, une erreur à signaler : appelez-moi, ou laissez…"><link rel="stylesheet" href="fonts.css"><link rel="stylesheet" href="pellucid.css"><link rel="stylesheet" href="mpc-anim.css"><style>html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.ct{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:28px;align-items:start;max-width:1240px}
+@media (max-width:980px){.ct{grid-template-columns:1fr}}
+.ct-hero{position:sticky;top:20px;background:#172E3A;color:#F5F1E8;border-radius:28px;padding:clamp(24px,3.4vw,40px);display:flex;flex-direction:column;gap:16px;overflow:hidden}
+@media (max-width:980px){.ct-hero{position:static}}
+.ct-hero .crumb{margin:0}.ct-hero .crumb a{color:#C9D6D0}
+.ct-hero .pl-eyebrow{color:#E9B65C;margin:6px 0 0}
+.ct-hero .pl-h1{color:#F5F1E8;margin:0;font-size:clamp(40px,5vw,64px)}
+.ct-hero .pl-h1 em{color:#E9B65C}
+.ct-hero .lead{margin:0;color:#D5DEDA;font-size:17px;line-height:1.55}
+.ct-hero .lead a{color:#F5F1E8;text-decoration-color:#D77D68;text-underline-offset:3px}
+.ct-ill{width:100%;max-width:420px;height:auto;overflow:visible;margin:4px 0}
+.ct-tel{display:flex;align-items:center;gap:16px;padding:16px 20px;border-radius:20px;background:#E9B65C;color:#172E3A;text-decoration:none;align-self:flex-start;box-shadow:0 10px 24px rgba(0,0,0,.25);transition:transform .3s cubic-bezier(.2,.8,.2,1.3),box-shadow .3s}
+.ct-tel-ic{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:#172E3A;color:#E9B65C}
+.ct-tel-ic svg{width:24px;height:24px}
+.ct-tel small{display:block;font-weight:700;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase}
+.ct-tel b{font:600 clamp(26px,3vw,32px)/1.1 var(--pl-display);font-variant-numeric:tabular-nums}
+.ct-tel:focus-visible{outline:3px solid #F5F1E8;outline-offset:3px}
+.ct-zone{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;font-size:14.5px;color:#D5DEDA}
+.ct-zone b{color:#F5F1E8}.ct-zone li{display:flex;align-items:center;gap:10px}
+.ct-zone i{width:10px;height:10px;border-radius:50%;background:#78A995;flex:none}.ct-zone i.v{background:transparent;border:2px solid #D5DEDA}
+.ct-suite{list-style:none;margin:6px 0 0;padding:16px 0 0;border-top:1px solid rgba(245,241,232,.18);display:flex;flex-direction:column;gap:12px}
+.ct-suite li{display:flex;gap:14px;align-items:flex-start;font-size:14.5px;line-height:1.5;color:#D5DEDA}
+.ct-suite b{flex:none;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;border:2px solid #E9B65C;color:#E9B65C;font:600 17px var(--pl-display)}
+.ct-suite strong{color:#F5F1E8}
+/* formulaire */
+.ct-form{max-width:none!important;border-radius:28px!important;padding:clamp(22px,3vw,36px)!important;display:flex;flex-direction:column;gap:18px}
+.ct-form h2{font:600 clamp(28px,3vw,36px)/1.05 var(--pl-display);margin:0}
+.ct-form legend{font-weight:800;margin-bottom:10px}
+.ct-form .chips{display:grid!important;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.ct-form .chips label{display:block}
+.ct-form .chips input{position:absolute;opacity:0;width:1px;height:1px}
+.ct-form .chips span{position:relative;display:flex!important;align-items:center;gap:10px;height:100%;padding:12px 14px!important;border-radius:16px!important;border:2px solid var(--pl-line)!important;background:var(--pl-panel)!important;color:var(--pl-ink)!important;font-weight:600;font-size:14.5px;line-height:1.3;cursor:pointer;transition:border-color .2s,background .25s,color .25s,transform .25s cubic-bezier(.2,.8,.2,1.3)}
+.ct-form .chips span svg{flex:none;width:22px;height:22px;color:var(--mpc-terra-txt);transition:transform .35s cubic-bezier(.2,.8,.2,1.5)}
+.ct-form .chips input:checked+span{background:#172E3A!important;border-color:#172E3A!important;color:#F5F1E8!important}
+.ct-form .chips input:checked+span svg{color:#E9B65C}
+.ct-form .chips .ck{position:absolute;top:-7px;right:-7px;width:22px;height:22px;border-radius:50%;background:#E9B65C;transform:scale(0);transition:transform .35s cubic-bezier(.2,.8,.2,1.6)}
+.ct-form .chips .ck::after{content:"";position:absolute;left:7px;top:5px;width:5px;height:9px;border:solid #172E3A;border-width:0 2.5px 2.5px 0;transform:rotate(45deg)}
+.ct-form .chips input:checked+span .ck{transform:scale(1)}
+.ct-form .chips input:focus-visible+span{outline:3px solid var(--mpc-terra-txt);outline-offset:2px}
+@media (hover:hover){.ct-form .chips span:hover{border-color:var(--pl-ink)!important;transform:translateY(-2px)}.ct-form .chips span:hover svg{transform:rotate(-10deg) scale(1.12)}}
+.ct-form .f{font-weight:800}
+.ct-form .f input,.ct-form .f textarea{border-radius:14px!important;border:2px solid transparent!important;min-height:50px;transition:border-color .2s,box-shadow .25s,background .2s}
+.ct-form .f input:hover,.ct-form .f textarea:hover{border-color:var(--pl-line)!important}
+.ct-form .f input:focus,.ct-form .f textarea:focus{outline:none;border-color:#172E3A!important;box-shadow:0 0 0 5px rgba(233,182,92,.35)}
+:root[data-theme="dark"] .ct-form .f input:focus,:root[data-theme="dark"] .ct-form .f textarea:focus{border-color:#E9B65C!important}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .ct-form .f input:focus,:root:not([data-theme="light"]) .ct-form .f textarea:focus{border-color:#E9B65C!important}:root:not([data-theme="light"]) .ct-form .chips input:checked+span{background:#E9B65C!important;border-color:#E9B65C!important;color:#172E3A!important}:root:not([data-theme="light"]) .ct-form .chips input:checked+span svg{color:#172E3A}}
+.ct-form .send{display:inline-flex;align-items:center;gap:10px;align-self:flex-start;min-height:54px;padding:0 28px;font-size:16.5px;overflow:hidden}
+.send-av{width:20px;height:20px}
+.ct-form .legal a{color:var(--pl-ink);font-weight:700}
+.ct-form .msg{border-radius:14px}
+.ct-form .row2{align-items:end}
+.ct-form textarea{min-height:130px!important}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .ct-hero{background:#1F3A48;box-shadow:inset 0 0 0 1px rgba(245,241,232,.08)}}
+:root[data-theme="dark"] .ct-hero{background:#1F3A48}
+/* animations : arrivée une fois, survol une fois */
+.ct-ill *{transform-box:fill-box}
+.ct-env,.ct-av,.ct-bulle,.ct-pt,.ct-fen{transform-origin:50% 50%}.ct-mairie{transform-origin:50% 100%}
+.ct-tr{stroke-dashoffset:0}
+@media (prefers-reduced-motion:no-preference){
+ .ct-hero>*{animation:ctMonte .6s cubic-bezier(.2,.8,.2,1) both}
+ .ct-hero>*:nth-child(2){animation-delay:.05s}.ct-hero>*:nth-child(3){animation-delay:.12s}.ct-hero>*:nth-child(4){animation-delay:.2s}.ct-hero>*:nth-child(5){animation-delay:.28s}.ct-hero>*:nth-child(6){animation-delay:.5s}.ct-hero>*:nth-child(7){animation-delay:.6s}.ct-hero>*:nth-child(8){animation-delay:.7s}
+ .ct-form{animation:ctMonte .7s cubic-bezier(.2,.8,.2,1) .25s both}
+ .ct-form .chips label{animation:ctPop .45s cubic-bezier(.2,.8,.2,1.4) calc(.45s + var(--i,0) * 45ms) both}
+ .ct-mairie{animation:ctPop .55s cubic-bezier(.2,.8,.2,1.3) .45s both}
+ .ct-fen{animation:ctAllume .5s ease calc(1.6s + var(--d,0s)) both}
+ .ct-env{animation:ctMonte .5s cubic-bezier(.2,.8,.2,1.3) .5s both}
+ .ct-tr{animation:ctTrace 1s ease .8s both}
+ .ct-av{animation:ctVol 1s cubic-bezier(.4,0,.2,1) .8s both}
+ .ct-bulle{animation:ctPop .5s cubic-bezier(.2,.8,.2,1.5) 1.7s both}
+ .ct-pt{animation:ctPt .5s ease calc(2s + var(--d,0s)) both}
+ .ct-suite li{animation:ctMonte .5s cubic-bezier(.2,.8,.2,1) calc(.8s + var(--i) * .1s) both}
+ .ct-form.parti .send-av{animation:ctPart .9s cubic-bezier(.5,0,.2,1) both}
+}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+ .ct-hero:hover .ct-av{animation:ctVol2 1s cubic-bezier(.4,0,.2,1) both}
+ .ct-hero:hover .ct-tr{animation:ctTrace2 1s ease both}
+ .ct-hero:hover .ct-pt{animation:ctPt2 .5s ease calc(.8s + var(--d,0s)) both}
+ .ct-tel:hover{transform:translateY(-3px) rotate(-1deg);box-shadow:0 16px 30px rgba(0,0,0,.32)}
+ .ct-tel:hover .ct-tel-ic svg{animation:ctSonne .6s ease both}
+ .ct-form .send:hover .send-av{animation:ctNudge .5s ease both}
+}
+@keyframes ctMonte{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@keyframes ctPop{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+@keyframes ctAllume{0%{fill:#3B5260}60%{fill:#FFE2A6}100%{fill:#E9B65C}}
+@keyframes ctTrace{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}@keyframes ctTrace2{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes ctVol{0%{opacity:0;transform:translate(-160px,40px) rotate(-25deg)}20%{opacity:1}100%{opacity:1;transform:none}}
+@keyframes ctVol2{0%{transform:translate(-160px,40px) rotate(-25deg)}100%{transform:none}}
+@keyframes ctPt{0%{opacity:0;transform:translateY(4px)}50%{opacity:1;transform:translateY(-3px)}100%{opacity:1;transform:none}}
+@keyframes ctPt2{0%,100%{transform:none}50%{transform:translateY(-4px)}}
+@keyframes ctSonne{0%,100%{transform:none}20%{transform:rotate(-16deg)}40%{transform:rotate(14deg)}60%{transform:rotate(-10deg)}80%{transform:rotate(6deg)}}
+@keyframes ctNudge{0%,100%{transform:none}50%{transform:translate(4px,-4px)}}
+@keyframes ctPart{0%{transform:none;opacity:1}60%{transform:translate(60px,-40px) rotate(10deg);opacity:0}61%{transform:translate(-30px,20px);opacity:0}100%{transform:none;opacity:1}}
+</style></head><body class="pl"><header class="pl-nav"><div class="pl-nav-in"><a class="pl-brand" href="index.html" aria-label="Ma Petite Commune, accueil"><svg viewBox="0 -84 251 88" aria-hidden="true"><g class="mk">
+<rect class="b" style="--k:0" x="36" y="-22" width="16" height="22" rx="3" fill="#F5F1E8"/>
+<rect class="b" style="--k:1" x="56" y="-40" width="16" height="40" rx="3" fill="#F5F1E8"/>
+<rect class="b" style="--k:2" x="76" y="-62" width="16" height="62" rx="3" fill="#78A995"/>
+<path class="c" pathLength="1" d="M7 -6 C 16 -14, 18 -58, 34 -57 C 47 -56, 50 -40, 63 -45 C 72 -49, 77 -61, 82 -68" fill="none" stroke="#D77D68" stroke-width="12.5" stroke-linecap="round"/>
+<circle class="p" cx="84" cy="-73" r="8" fill="#E9B65C"/>
+</g><path class="l" style="--k:0" d="M109.0 0.0V-70.0H141.0Q150.6 -70.0 157.55 -66.9Q164.5 -63.800000000000004 168.3 -57.95Q172.10000000000002 -52.1 172.10000000000002 -44.1Q172.10000000000002 -36.2 168.3 -30.400000000000002Q164.5 -24.6 157.55 -21.450000000000003Q150.6 -18.3 141.0 -18.3H120.0L128.8 -26.900000000000002V0.0ZM128.8 -24.8 120.0 -33.9H139.8Q146.0 -33.9 149.05 -36.6Q152.1 -39.300000000000004 152.1 -44.1Q152.1 -49.0 149.05 -51.7Q146.0 -54.400000000000006 139.8 -54.400000000000006H120.0L128.8 -63.5Z" fill="#F5F1E8"/><path class="l" style="--k:1" d="M215.6 1.4000000000000001Q207.29999999999998 1.4000000000000001 200.25 -1.25Q193.2 -3.9000000000000004 188.04999999999998 -8.8Q182.89999999999998 -13.700000000000001 180.0 -20.35Q177.1 -27.0 177.1 -35.0Q177.1 -43.0 180.0 -49.650000000000006Q182.89999999999998 -56.300000000000004 188.04999999999998 -61.2Q193.2 -66.10000000000001 200.25 -68.75Q207.29999999999998 -71.4 215.6 -71.4Q225.29999999999998 -71.4 232.95 -68.0Q240.6 -64.60000000000001 245.7 -58.2L233.1 -46.800000000000004Q229.7 -50.800000000000004 225.64999999999998 -52.900000000000006Q221.6 -55.0 216.6 -55.0Q212.29999999999998 -55.0 208.7 -53.6Q205.1 -52.2 202.55 -49.550000000000004Q200.0 -46.900000000000006 198.55 -43.2Q197.1 -39.5 197.1 -35.0Q197.1 -30.5 198.55 -26.8Q200.0 -23.1 202.55 -20.450000000000003Q205.1 -17.8 208.7 -16.4Q212.29999999999998 -15.0 216.6 -15.0Q221.6 -15.0 225.64999999999998 -17.1Q229.7 -19.200000000000003 233.1 -23.200000000000003L245.7 -11.8Q240.6 -5.5 232.95 -2.05Q225.29999999999998 1.4000000000000001 215.6 1.4000000000000001Z" fill="#D77D68"/></svg><span>Ma Petite<br>Commune</span></a><script>try{if(!sessionStorage.getItem("mpc-logo")){document.documentElement.classList.add("mpc-intro");sessionStorage.setItem("mpc-logo","1")}}catch(e){}</script><nav class="pl-links" id="pl-links" aria-label="Rubriques"><a href="index.html" class="pl-home">Accueil</a><a href="observer.html">Observer</a><a href="s-informer.html">S'informer</a><a href="apprendre.html">Apprendre</a><a href="offre.html">Nos offres</a><a href="autre-chose.html" class="pl-cta" aria-current="page">Contact</a></nav></div></header><style>
 /* Une demande de rappel : texte à gauche, formulaire en carte */
 :root{ --ok:#2A8A4E; --ok-soft:#DDF1E2; --bad:#C2412D; --bad-soft:#F7DDD7; }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){ --ok:#55BE7B; --ok-soft:#173022; --bad:#EE7A63; --bad-soft:#3A1E18; }}
@@ -11,7 +110,7 @@
 .lead{font-size:clamp(18px,2.2vw,21px);line-height:1.6;max-width:62ch;margin:18px 0 0}
 .lead a{color:var(--pl-accent)}
 .card{background:var(--pl-panel);border:1px solid var(--pl-line);border-radius:8px;padding:22px;display:flex;flex-direction:column;gap:14px;min-width:0}
-.card h2{font-family:var(--pl-display);font-stretch:75%;font-weight:800;font-size:26px;line-height:1;margin:0}
+.card h2{font-family:var(--pl-display);font-weight:600;font-size:26px;line-height:1;margin:0}
 label.f{display:flex;flex-direction:column;gap:5px;font-size:14px;font-weight:700}
 label.f small{font-weight:400;color:var(--pl-ink-2)}
 input[type=email],input[type=text],textarea{font:16px var(--pl-body);color:var(--pl-ink);background:var(--pl-bg);border:1px solid var(--pl-line);border-radius:6px;padding:10px 12px;width:100%;min-width:0}
@@ -39,27 +138,40 @@ legend{font-size:14px;font-weight:700;padding:0;margin-bottom:6px}
 .phone b{font:500 24px/1 var(--pl-mono);letter-spacing:.04em;user-select:all}
 </style>
 
-<main class="ac">
-  <div>
+<main class="ac ct">
+  <section class="ct-hero" aria-labelledby="h-ct">
     <p class="crumb"><a href="index.html">← Accueil</a></p>
-    <p class="pl-eyebrow" style="margin-top:18px">Me contacter</p>
-    <h1 class="pl-h1">Contact</h1>
+    <p class="pl-eyebrow">Me contacter</p>
+    <h1 class="pl-h1" id="h-ct">Parlons de <em>votre commune.</em></h1>
     <p class="lead">Un pré-diagnostic de votre commune, une question sur une <a href="offre.html">prestation</a>, sur les données ou sur la méthode, une erreur à signaler : appelez-moi, ou laissez votre e-mail et je vous rappelle.</p>
-    <p class="phone"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8 9.8a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z"/></svg><span><small>M'appeler</small><b><a href="tel:+33640785578">06 40 78 55 78</a></b></span></p>
-  </div>
+    <svg class="ct-ill" viewBox="0 0 320 150" aria-hidden="true">
+<path class="ct-tr" pathLength="1" d="M70 112 C 120 40, 190 30, 240 70" fill="none" stroke="#E9B65C" stroke-width="2.6" stroke-dasharray=".015 .03" stroke-linecap="round"/>
+<g class="ct-env"><rect x="30" y="92" width="56" height="38" rx="5" fill="#F5F1E8"/><path d="M32 95l26 20 26-20" fill="none" stroke="#172E3A" stroke-width="2.6" stroke-linejoin="round"/></g>
+<g class="ct-av"><path d="M226 62l30-14-10 30-6-10z" fill="#E9B65C" stroke="#F5F1E8" stroke-width="2" stroke-linejoin="round"/></g>
+<g class="ct-mairie"><path d="M232 138V100h64v38" fill="#172E3A" stroke="#F5F1E8" stroke-width="2.6" stroke-linejoin="round"/><path d="M226 100l38-22 38 22z" fill="#172E3A" stroke="#F5F1E8" stroke-width="2.6" stroke-linejoin="round"/><circle cx="264" cy="91" r="3.5" fill="#F5F1E8"/><rect class="ct-fen" x="242" y="110" width="10" height="12" fill="#E9B65C"/><rect class="ct-fen" style="--d:.12s" x="276" y="110" width="10" height="12" fill="#E9B65C"/><path d="M258 138v-18h12v18" fill="none" stroke="#F5F1E8" stroke-width="2.4"/><path d="M220 138h88" fill="none" stroke="#F5F1E8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g class="ct-bulle"><rect x="118" y="6" width="74" height="30" rx="15" fill="#78A995"/><path d="M140 36l-4 9 12-9z" fill="#78A995"/><circle class="ct-pt" cx="141" cy="21" r="3.6" fill="#172E3A"/><circle class="ct-pt" style="--d:.12s" cx="155" cy="21" r="3.6" fill="#172E3A"/><circle class="ct-pt" style="--d:.24s" cx="169" cy="21" r="3.6" fill="#172E3A"/></g>
+</svg>
+    <a class="ct-tel" href="tel:+33640785578"><span class="ct-tel-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/></svg></span><span><small>M'appeler</small><b>06 40 78 55 78</b></span></a>
+    <ul class="ct-zone"><li><i></i><span><b>Gard et Hérault</b> : restitution sur place, en mairie</span></li><li><i class="v"></i><span><b>Ailleurs en France</b> : restitution en visioconférence</span></li></ul>
+    <ol class="ct-suite" aria-label="Ce qui se passe ensuite">
+      <li style="--i:0"><b>1</b><span><strong>Un appel de vingt minutes</strong> pour cerner le besoin, le calendrier et qui décide.</span></li>
+      <li style="--i:1"><b>2</b><span><strong>Un devis à prix fixe</strong> : sous le seuil de dispense de procédure, un bon de commande suffit.</span></li>
+      <li style="--i:2"><b>3</b><span><strong>Le pré-diagnostic reste gratuit</strong> et sans engagement.</span></li>
+    </ol>
+  </section>
 
-  <form class="card" style="max-width:700px" id="contact" novalidate aria-labelledby="h-form">
+  <form class="card ct-form" id="contact" novalidate aria-labelledby="h-form">
       <h2 id="h-form">Je vous rappelle</h2>
       <fieldset>
         <legend>C'est pour…</legend>
         <div class="chips">
-          <label><input type="radio" name="sujet" value="Un pré-diagnostic gratuit" data-k="prediag" checked><span>Un pré-diagnostic gratuit</span></label>
-          <label><input type="radio" name="sujet" value="Un diagnostic ou un plan de financement" data-k="offre"><span>Un diagnostic ou un plan de financement</span></label>
-          <label><input type="radio" name="sujet" value="Une présentation en conseil" data-k="conseil"><span>Une présentation en conseil</span></label>
-          <label><input type="radio" name="sujet" value="Une licence ou un pilote formateur" data-k="formateur"><span>Une licence ou un pilote formateur</span></label>
-          <label><input type="radio" name="sujet" value="Les données ou la méthode" data-k="donnees"><span>Les données ou la méthode</span></label>
-          <label><input type="radio" name="sujet" value="Une erreur à signaler" data-k="erreur"><span>Une erreur à signaler</span></label>
-          <label><input type="radio" name="sujet" value="Autre chose" data-k="autre"><span>Autre chose</span></label>
+          <label style="--i:0"><input type="radio" name="sujet" value="Un pré-diagnostic gratuit" data-k="prediag" checked><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6l4 4v14H5V3h4M9 13l2 2 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><i class="ck" aria-hidden="true"></i>Un pré-diagnostic gratuit</span></label>
+          <label style="--i:1"><input type="radio" name="sujet" value="Un diagnostic ou un plan de financement" data-k="offre"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V6M16 20v-8M22 20H2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><i class="ck" aria-hidden="true"></i>Un diagnostic ou un plan de financement</span></label>
+          <label style="--i:2"><input type="radio" name="sujet" value="Une présentation en conseil" data-k="conseil"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V10l7-5 7 5v11M10 21v-5h4v5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><i class="ck" aria-hidden="true"></i>Une présentation en conseil</span></label>
+          <label style="--i:3"><input type="radio" name="sujet" value="Une licence ou un pilote formateur" data-k="formateur"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5zM6 11v5c3 2 9 2 12 0v-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><i class="ck" aria-hidden="true"></i>Une licence ou un pilote formateur·rice</span></label>
+          <label style="--i:4"><input type="radio" name="sujet" value="Les données ou la méthode" data-k="donnees"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c5 0 8 1.5 8 3s-3 3-8 3-8-1.5-8-3 3-3 8-3zM4 6v12c0 1.5 3 3 8 3s8-1.5 8-3V6M4 12c0 1.5 3 3 8 3s8-1.5 8-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><i class="ck" aria-hidden="true"></i>Les données ou la méthode</span></label>
+          <label style="--i:5"><input type="radio" name="sujet" value="Une erreur à signaler" data-k="erreur"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l10 18H2zM12 10v5M12 18v.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><i class="ck" aria-hidden="true"></i>Une erreur à signaler</span></label>
+          <label style="--i:6"><input type="radio" name="sujet" value="Autre chose" data-k="autre"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><i class="ck" aria-hidden="true"></i>Autre chose</span></label>
         </div>
       </fieldset>
       <p class="ctx" id="ctx" hidden></p>
@@ -69,7 +181,7 @@ legend{font-size:14px;font-weight:700;padding:0;margin-bottom:6px}
         <label class="f" for="commune">Commune concernée <small>facultatif pour le pré-diagnostic, mais utile</small><input type="text" id="commune" name="commune"></label>
       </div>
       <label class="f" for="message">Quelques mots <small>facultatif</small><textarea id="message" name="message" placeholder="Vos projets, ce dont vous avez besoin, vos disponibilités pour que je vous rappelle…"></textarea></label>
-      <button class="pl-btn send" type="submit" id="send">Envoyer</button>
+      <button class="pl-btn send" type="submit" id="send"><span class="send-t">Envoyer</span><svg class="send-av" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l18-8-6 18-3-7z" fill="currentColor"/></svg></button>
       <p class="msg" id="form-msg" hidden role="status"></p>
       <p class="legal">Votre adresse sert uniquement à vous recontacter au sujet de cette demande. Voir la <a href="confidentialite.html">politique de confidentialité</a>.</p>
   </form>
@@ -88,8 +200,10 @@ try {
   /* le sujet arrive par l'ancre (#prediag), la commune par la session (Observer) ou, sur le site final, par l'adresse */
   const q = new URLSearchParams(location.search);
   let s = {}; try { s = JSON.parse(sessionStorage.getItem("pellucid-demande") || "{}") || {}; sessionStorage.removeItem("pellucid-demande"); } catch (e2) {}
-  const k = (location.hash || "").slice(1) || q.get("sujet") || s.sujet;
+  let k = (location.hash || "").slice(1) || q.get("sujet") || s.sujet;
+  if (k === "devis") k = "offre";
   if (k) { const r = document.querySelector(`input[name="sujet"][data-k="${CSS.escape(k)}"]`); if (r) r.checked = true; }
+  if (s.message && !$("message").value) $("message").value = String(s.message).slice(0, 1500);   /* sélection faite dans le configurateur de l'accueil */
   const com = q.get("commune") || s.commune;
   if (com) $("commune").value = String(com).slice(0, 120);
   ctx.code = String(q.get("code") || s.code || "").slice(0, 10); ctx.dep = String(q.get("dep") || s.dep || "").slice(0, 60);
@@ -120,7 +234,7 @@ let db = null, uid = null, canWrite = true;
     if (user) { uid = await user.id(); const w = await user.can("data.write"); if (w === false) canWrite = false; }
   } catch (e) { db = null; }
 })();
-function say(text, ok){ const m=$("form-msg"); m.textContent=text; m.className="msg "+(ok?"ok":"bad"); m.hidden=false; }
+function say(text, ok){ const m=$("form-msg"); m.textContent=text; m.className="msg "+(ok?"ok":"bad"); m.hidden=false; if(ok){ const f=$("contact"); f.classList.remove("parti"); void f.offsetWidth; f.classList.add("parti"); } }
 $("contact").addEventListener("submit", async e => {
   e.preventDefault();
   const email = $("email").value.trim();
@@ -138,7 +252,7 @@ $("contact").addEventListener("submit", async e => {
     say("Votre messagerie s'ouvre avec la demande déjà rédigée : il ne reste qu'à l'envoyer. Si rien ne s'ouvre, écrivez à " + ADR + " ou appelez le 06 40 78 55 78.", true);
     return;
   }
-  const btn = $("send"); btn.disabled = true; btn.textContent = "Envoi…";
+  const btn = $("send"); btn.disabled = true; btn.querySelector(".send-t").textContent = "Envoi…";
   const sameCommune = norm($("commune").value) === norm(ctx.nomInitial);
   const data = {
     email, nom: $("nom").value.trim().slice(0,120), commune: $("commune").value.trim().slice(0,120),
@@ -156,9 +270,10 @@ $("contact").addEventListener("submit", async e => {
   } catch (err) {
     say("La demande n'a pas pu être enregistrée. Réessayez dans un instant, ou appelez-moi.", false);
   }
-  btn.disabled = false; btn.textContent = "Envoyer";
+  btn.disabled = false; btn.querySelector(".send-t").textContent = "Envoyer";
 });
 })();
 </script>
 <footer class="pl-foot"><div><span>Ma Petite Commune · les finances communales, en clair</span><nav class="pl-foot-links" aria-label="Informations"><a href="a-propos.html">Qui est derrière Ma Petite Commune</a><a href="methodologie.html">Méthodologie</a><a href="credits.html">Crédits et licences</a><a href="conditions.html">Conditions d'utilisation</a><a href="accessibilite.html">Accessibilité : non conforme</a><a href="mentions-legales.html">Mentions légales</a><a href="confidentialite.html">Confidentialité</a><a href="cookies.html">Cookies</a><a href="autre-chose.html">Contact</a></nav></div></footer><script src="pellucid-commun.js" defer></script>
+<script src="mpc-anim.js" defer></script>
 </body></html>
