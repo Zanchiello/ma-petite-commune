@@ -14,6 +14,17 @@
     fit: { t: "Impôts et taxes par habitant", u: "€", d: 0, sens: 0, def: "Produit des impôts et taxes, rapporté à la population." },
     cap: { t: "Capacité de désendettement", u: "ans", d: 1, sens: -1, def: "Nombre d'années d'épargne brute nécessaires pour rembourser toute la dette." }
   };
+  // Postes d'« Anatomie d'un budget » (Observer), en euros par habitant, disponibles de 2022 à 2025
+  const ANAT = [
+    ["Fonctionnement · recettes", [["il", "Impôts locaux"], ["ia", "Fiscalité reversée et autres impôts"], ["ce", "Dotation globale de fonctionnement"], ["sr", "Autres dotations et participations"], ["vb", "Produits des services et du domaine"], ["ra", "Autres produits"]]],
+    ["Fonctionnement · dépenses", [["pe", "Personnel"], ["ac", "Achats et charges externes"], ["di", "Contingents et subventions versées"], ["cf", "Charges financières (intérêts)"], ["da", "Autres charges"]]],
+    ["Investissement · ressources", [["fc", "FCTVA"], ["sd", "Subventions d'investissement reçues"], ["ar", "Autres ressources d'investissement"], ["em", "Emprunts nouveaux"]]],
+    ["Investissement · emplois", [["se", "Subventions d'équipement versées"], ["ad", "Autres emplois d'investissement"], ["rb", "Remboursement du capital de la dette"]]],
+    ["Soldes", [["rrf", "Recettes de fonctionnement"], ["drf", "Dépenses de fonctionnement"], ["eb", "Épargne brute"]]]
+  ];
+  ANAT.forEach(([g, l]) => l.forEach(([k, t]) => { IND[k] = { t: t + " par habitant", u: "€", d: 0, sens: k === "eb" ? 1 : 0, debut: 2022, g,
+    def: (k === "eb" ? "Recettes moins dépenses de fonctionnement, " : k === "rrf" || k === "drf" ? "Total de la section, " : "Poste d'« Anatomie d'un budget » dans Observer, ") + "rapporté à la population. Disponible de 2022 à 2025." }; }));
+  IND.eq.g = "Investissement · emplois";
   const STRATE = { all: "communes de 200 à 3 499 habitants", "2": "communes de 200 à 499 habitants", "3": "communes de 500 à 1 999 habitants", "4": "communes de 2 000 à 3 499 habitants" };
   const FORME = { courbe: "Évolution", barres: "Évolution", carte: "Carte des départements", classement: "Classement des départements" };
   const BLEU = "#172E3A", CREME = "#F5F1E8", SAUGE = "#78A995", TERRA = "#D77D68", SAFRAN = "#E9B65C", TERRA_T = "#8A5043", SAUGE_T = "#49675B", GRIS = "#586971";
@@ -23,32 +34,35 @@
 
   let C = null, COM = null;   // COM : commune choisie {n, c, dc, p, s, v}
   const DEP = {};             // fichiers par département, chargés à la demande
-  const IDX = ["teb", "dh", "eq", "fit", "cap"];
-  const sels = ["at-ind", "at-forme", "at-per", "at-strate", "at-de", "at-a"].map($);
+  const sels = ["at-ind", "at-forme", "at-per", "at-strate", "at-de", "at-a", "at-ref"].map($);
+  const REF = () => $("at-ref").value === "moy" ? "moy" : "med";
+  const refMot = E => E.ref === "moy" ? "moyenne" : "médiane";
+  const NAT = E => C[E.ref === "moy" ? "national_moy" : "national"][E.ind], DEPV = E => C[E.ref === "moy" ? "vals_annees_moy" : "vals_annees"][E.ind];
 
   /* ---------- Données de la vue choisie ---------- */
   function etat() {
     const ind = $("at-ind").value, forme = $("at-forme").value, per = $("at-per").value, st = per === "com" && COM ? String(COM.s) : $("at-strate").value;
     let a = +$("at-de").value, b = +$("at-a").value; if (a > b) [a, b] = [b, a];
-    return { ind, I: IND[ind], forme, per, st, a, b };
+    const deb = IND[ind].debut || 2018; a = Math.max(a, deb); b = Math.max(b, deb);
+    return { ind, I: IND[ind], forme, per, st, a, b, ref: REF() };
   }
   function serie(E) {
     const ia = E.a - 2018, ib = E.b - 2018;
-    if (E.per === "com" && COM) return COM.v[IDX.indexOf(E.ind)].slice(ia, ib + 1);
-    if (E.per === "fr") return C.national[E.ind][E.st].slice(ia, ib + 1);
-    const g = +E.per; return C.vals_annees[E.ind][E.st].slice(ia, ib + 1).map(r => r[g]);
+    if (E.per === "com" && COM) { const j = COM.ind.indexOf(E.ind), v = COM.v[j] || []; const plein = j < 5 ? v : Array(COM.depuis - 2018).fill(null).concat(v); return plein.slice(ia, ib + 1); }
+    if (E.per === "fr") return NAT(E)[E.st].slice(ia, ib + 1);
+    const g = +E.per; return DEPV(E)[E.st].slice(ia, ib + 1).map(r => r[g]);
   }
   function perNom(E) { if (E.forme === "carte" || E.forme === "classement" || E.per === "fr") return "France";
     if (E.per === "com" && COM) return COM.n + " (" + COM.dn + ", " + nf(COM.p) + " hab.)"; const g = C.geo[+E.per]; return g.n + " (" + g.c + ")"; }
-  const mediane = E => C.national[E.ind][String(COM.s)].slice(E.a - 2018, E.b - 2017);   // communes de même taille, France
+  const mediane = E => NAT(E)[String(COM.s)].slice(E.a - 2018, E.b - 2017);   // communes de même taille, France (médiane ou moyenne)
 
   /* ---------- Page A4 (595 × 842) en SVG ---------- */
   function page(E, fontesCss = "") {
     const W = 595, H = 842, I = E.I;
     const carto = E.forme === "carte" || E.forme === "classement";
     const unec = !carto && E.per === "com" && COM;
-    const titre = I.t + (carto ? "" : unec ? " · " + COM.n : " de la commune médiane");
-    const sous = (carto ? "Médiane des communes de chaque département · " + E.b : perNom(E) + " · " + (E.a === E.b ? E.a : E.a + "-" + E.b)) + " · " + (unec ? "comparée aux " + STRATE[E.st] : STRATE[E.st]);
+    const titre = I.t + (carto ? "" : unec ? " · " + COM.n : E.ref === "moy" ? ", moyenne des communes" : " de la commune médiane");
+    const sous = (carto ? (E.ref === "moy" ? "Moyenne" : "Médiane") + " des communes de chaque département · " + E.b : perNom(E) + " · " + (E.a === E.b ? E.a : E.a + "-" + E.b)) + " · " + (unec ? "comparée aux " + STRATE[E.st] : STRATE[E.st]);
     let corps = "", cle = "";
     if (!carto) {
       const s = serie(E), ok = s.filter(v => v != null);
@@ -71,7 +85,7 @@
       if (med) { const pm = med.map((v, i) => v == null ? null : `${X(i).toFixed(1)},${Y(v).toFixed(1)}`).filter(Boolean).join(" ");
         corps += `<polyline class="at-m" points="${pm}" fill="none" stroke="${GRIS}" stroke-width="2" stroke-dasharray="5 4" stroke-linejoin="round"/>`
           + `<rect x="${x0}" y="${y1 + 32}" width="14" height="8" rx="2" fill="${E.forme === "barres" ? SAUGE : SAUGE_T}"/><text x="${x0 + 20}" y="${y1 + 40}" font-family="Manrope" font-weight="700" font-size="10" fill="${BLEU}">${esc(COM.n)}</text>`
-          + `<path d="M${x0 + 30 + COM.n.length * 6} ${y1 + 36}H${x0 + 54 + COM.n.length * 6}" stroke="${GRIS}" stroke-width="2" stroke-dasharray="5 4"/><text x="${x0 + 60 + COM.n.length * 6}" y="${y1 + 40}" font-family="Manrope" font-size="10" fill="${GRIS}">Médiane des ${esc(STRATE[E.st])}, France</text>`; }
+          + `<path d="M${x0 + 30 + COM.n.length * 6} ${y1 + 36}H${x0 + 54 + COM.n.length * 6}" stroke="${GRIS}" stroke-width="2" stroke-dasharray="5 4"/><text x="${x0 + 60 + COM.n.length * 6}" y="${y1 + 40}" font-family="Manrope" font-size="10" fill="${GRIS}">${E.ref === "moy" ? "Moyenne" : "Médiane"} des ${esc(STRATE[E.st])}, France</text>`; }
       if (E.forme === "barres") {
         const bw = Math.min(46, (x1 - x0 - 40) / n * 0.62);
         s.forEach((v, i) => { if (v == null) return; const y = Y(v), last = i === n - 1;
@@ -85,8 +99,8 @@
             + `<text class="at-t" x="${X(i).toFixed(1)}" y="${(Y(v) - 11).toFixed(1)}" text-anchor="middle" font-family="Manrope" font-weight="800" font-size="10.5" fill="${last ? TERRA_T : BLEU}">${nf(v, I.d)}</text>`; });
       }
     } else {
-      const yi = E.b - 2018, v = C.vals_annees[E.ind][E.st][yi];
-      const tous = C.vals_annees[E.ind][E.st].flat().filter(x => x != null).sort((p, q) => p - q);
+      const yi = E.b - 2018, v = DEPV(E)[E.st][yi];
+      const tous = DEPV(E)[E.st].flat().filter(x => x != null).sort((p, q) => p - q);
       const qt = [.2, .4, .6, .8].map(p => tous[Math.floor(p * (tous.length - 1))]);
       const SC = ["#DFE2E3", "#B0B8BC", "#7D8A91", "#4A5C65", "#172E3A"];
       const cls = x => x == null ? "#D3D3D3" : SC[qt.filter(t => x > t).length];
@@ -97,7 +111,7 @@
         corps += `<svg x="40" y="285" width="515" height="420" viewBox="0 0 622 597">` + C.geo.map((g, k) => `<path class="at-d" style="--k:${(k % 12)}" d="${g.p}" fill="${cls(v[k])}" stroke="${CREME}" stroke-width="1"/>`).join("") + `</svg>`;
         const lim = [tous[0], ...qt, tous[tous.length - 1]];
         SC.forEach((c, k) => { const x = 40 + k * 103; corps += `<rect x="${x}" y="716" width="12" height="12" rx="2" fill="${c}"/><text x="${x + 17}" y="726" font-family="Manrope" font-size="9.5" fill="${GRIS}">${nf(lim[k], E.I.d)} à ${nf(lim[k + 1], E.I.d)} ${E.I.u}</text>`; });
-        corps += `<text x="40" y="746" font-family="Manrope" font-size="9.5" fill="${GRIS}">Gris : moins de 10 communes suivies. Échelle commune aux années 2018 à 2025.</text>`;
+        corps += `<text x="40" y="746" font-family="Manrope" font-size="9.5" fill="${GRIS}">Gris : moins de 10 communes suivies. Échelle commune aux années ${E.I.debut || 2018} à 2025.</text>`;
       } else {
         const haut = paires.slice(0, 10), bas = paires.slice(-10).reverse(), mx = paires[0][1];
         const col = (liste, x, lab, coul) => { let o = `<text x="${x}" y="300" font-family="Manrope" font-weight="800" font-size="12" fill="${BLEU}">${lab}</text>`;
@@ -121,7 +135,7 @@
 ${corps}
 <path d="M40 778H555" stroke="${BLEU}" stroke-opacity=".15"/>
 <text x="40" y="796" font-family="Manrope" font-size="9" fill="${GRIS}">Source : DGFiP, comptes individuels des communes (budget principal) ; calculs Ma Petite Commune, d'après les données d'Observer.</text>
-<text x="40" y="810" font-family="Manrope" font-size="9" fill="${GRIS}">Médianes des communes de 200 à 3 500 habitants suivies par Observer. Départements de moins de 10 communes non représentés.</text>
+<text x="40" y="810" font-family="Manrope" font-size="9" fill="${GRIS}">${E.ref === "moy" ? "Moyennes simples" : "Médianes"} des communes de 200 à 3 500 hab. suivies par Observer. Départements de moins de 10 communes non représentés.</text>
 <text x="40" y="826" font-family="Manrope" font-weight="700" font-size="9" fill="${BLEU}">commentseportentlesfinancesdemapetitecommune.com · téléchargé le ${esc(date)}</text>
 </svg>`;
   }
@@ -134,6 +148,8 @@ ${corps}
     $("at-strate").disabled = carto ? false : E.per === "com"; document.querySelector(".at-strate-l").classList.toggle("at-off", !carto && E.per === "com");
     document.querySelector(".at-per-l").classList.toggle("at-off", carto); document.querySelector(".at-de-l").classList.toggle("at-off", carto);
     $("at-a-lab").textContent = carto ? "Année" : "à";
+    const deb = E.I.debut || 2018; [$("at-de"), $("at-a")].forEach(s => { [...s.options].forEach(o => { o.disabled = +o.value < deb; }); if (+s.value < deb) s.value = String(s === $("at-de") ? deb : 2025); });
+    $("at-msg").textContent = deb > 2018 ? "Ce poste est disponible de " + deb + " à 2025." : ($("at-msg").textContent.startsWith("Ce poste") ? "" : $("at-msg").textContent);
     const f = $("at-feuille");
     f.innerHTML = page(E);
     f.classList.remove("joue"); void f.offsetWidth; if (!calme) f.classList.add("joue");
@@ -141,7 +157,7 @@ ${corps}
   }
   const slug = t => String(t).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
   const nomFichier = E => { const carto = E.forme === "carte" || E.forme === "classement";
-    return ["mpc", E.ind, E.forme, carto ? "departements-" + E.b : (E.per === "fr" ? "france" : E.per === "com" && COM ? slug(COM.n) + "-" + COM.c : C.geo[+E.per].c) + "-" + E.a + "-" + E.b, !carto && E.per === "com" ? "" : E.st === "all" ? "" : "strate" + E.st].filter(Boolean).join("-"); };
+    return ["mpc", E.ind, E.forme, E.ref === "moy" ? "moyenne" : "", carto ? "departements-" + E.b : (E.per === "fr" ? "france" : E.per === "com" && COM ? slug(COM.n) + "-" + COM.c : C.geo[+E.per].c) + "-" + E.a + "-" + E.b, !carto && E.per === "com" ? "" : E.st === "all" ? "" : "strate" + E.st].filter(Boolean).join("-"); };
 
   /* ---------- Exports ---------- */
   let fontes = null;
@@ -180,11 +196,11 @@ ${corps}
   }
   function csvDe(E) {
     const I = E.I, l = [];
-    if (E.forme === "carte" || E.forme === "classement") { l.push(["code", "departement", I.t + " (" + I.u + ")", "annee", "strate"]); const v = C.vals_annees[E.ind][E.st][E.b - 2018]; C.geo.forEach((g, k) => l.push([g.c, g.n, v[k] == null ? "" : String(v[k]).replace(".", ","), E.b, STRATE[E.st]])); }
-    else if (E.per === "com" && COM) { const m = mediane(E); l.push(["annee", "commune", "code_insee", I.t + " (" + I.u + ")", "mediane des " + STRATE[E.st] + " (France)"]);
+    if (E.forme === "carte" || E.forme === "classement") { l.push(["code", "departement", I.t + " (" + I.u + ", " + refMot(E) + " des communes)", "annee", "strate"]); const v = DEPV(E)[E.st][E.b - 2018]; C.geo.forEach((g, k) => l.push([g.c, g.n, v[k] == null ? "" : String(v[k]).replace(".", ","), E.b, STRATE[E.st]])); }
+    else if (E.per === "com" && COM) { const m = mediane(E); l.push(["annee", "commune", "code_insee", I.t + " (" + I.u + ")", refMot(E) + " des " + STRATE[E.st] + " (France)"]);
       serie(E).forEach((v, i) => l.push([E.a + i, COM.n, COM.c, v == null ? "" : String(v).replace(".", ","), m[i] == null ? "" : String(m[i]).replace(".", ",")])); }
-    else { l.push(["annee", "perimetre", I.t + " (" + I.u + ")", "strate"]); serie(E).forEach((v, i) => l.push([E.a + i, perNom(E), v == null ? "" : String(v).replace(".", ","), STRATE[E.st]])); }
-    l.push([]); l.push(["Source : DGFiP, comptes individuels des communes ; calculs Ma Petite Commune (médianes)."]);
+    else { l.push(["annee", "perimetre", I.t + " (" + I.u + ", " + refMot(E) + " des communes)", "strate"]); serie(E).forEach((v, i) => l.push([E.a + i, perNom(E), v == null ? "" : String(v).replace(".", ","), STRATE[E.st]])); }
+    l.push([]); l.push(["Source : DGFiP, comptes individuels des communes ; calculs Ma Petite Commune (" + (E.ref === "moy" ? "moyennes simples" : "médianes") + ")."]);
     return new Blob(["﻿" + l.map(r => r.map(c => /[;"\n]/.test(String(c)) ? '"' + String(c).replace(/"/g, '""') + '"' : c).join(";")).join("\r\n")], { type: "text/csv;charset=utf-8" });
   }
   async function exporter(fmt, bouton) {
@@ -216,7 +232,7 @@ ${corps}
     $("at-com").value = c.n; $("at-com-l").hidden = true; $("at-com").setAttribute("aria-expanded", "false");
     try { if (!DEP[c.dc]) DEP[c.dc] = await (await fetch("donnees-communes/" + c.dc + ".json")).json();
       const r = DEP[c.dc].c[c.c]; if (!r) { $("at-msg").textContent = "Pas de comptes pour cette commune."; return; }
-      COM = Object.assign({}, c, { s: r[0], v: r.slice(1) });
+      COM = Object.assign({}, c, { s: r[0], v: r.slice(1), ind: DEP[c.dc].ind, depuis: DEP[c.dc].nouveaux_depuis || 2022 });
       let o = $("at-per").querySelector('option[value="com"]'); if (!o) { o = new Option("", "com"); $("at-per").insertBefore(o, $("at-per").options[1]); }
       o.textContent = c.n + " (" + c.dn + ")"; $("at-per").value = "com"; $("at-msg").textContent = ""; $("at-com-x").hidden = false;
       if ($("at-forme").value === "carte" || $("at-forme").value === "classement") $("at-forme").value = "courbe";
@@ -245,6 +261,11 @@ ${corps}
   /* ---------- Mise en route ---------- */
   fetch("carte-departements.json").then(r => r.json()).then(d => {
     C = d;
+    // liste des indicateurs : les cinq historiques, puis les postes d'Anatomie par groupe
+    const choix = $("at-ind").value, grp = {}; Object.entries(IND).forEach(([k, i]) => { if (i.g) (grp[i.g] = grp[i.g] || []).push(k); });
+    $("at-ind").innerHTML = `<optgroup label="Indicateurs clés (2018 à 2025)">${["teb", "dh", "eq", "fit", "cap"].map(k => `<option value="${k}">${esc(IND[k].t)}</option>`).join("")}</optgroup>`
+      + ANAT.map(([g]) => `<optgroup label="${esc(g)} (2022 à 2025)">${grp[g].filter(k => k !== "eq").map(k => `<option value="${k}">${esc(IND[k].t)}</option>`).join("")}</optgroup>`).join("");
+    $("at-ind").value = choix;
     $("at-per").insertAdjacentHTML("beforeend", C.geo.map((g, k) => [g.n, k, g.c]).sort((p, q) => p[0].localeCompare(q[0], "fr")).map(([n, k, c]) => `<option value="${k}">${esc(n)} (${c})</option>`).join(""));
     sels.forEach(s => s.addEventListener("change", apercu)); brancherCommune();
     zone.querySelectorAll("[data-fmt]").forEach(b => b.addEventListener("click", () => exporter(b.dataset.fmt, b)));
