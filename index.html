@@ -629,11 +629,11 @@
 .atelier .sur{color:#6B4A2E}
 .at-lede{margin:-8px 0 0;max-width:62ch;font-size:18px;line-height:1.55;color:var(--pl-ink)}
 .at-grille{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:32px;align-items:start}
-@media (max-width:900px){.at-grille{grid-template-columns:1fr}}
+@media (max-width:900px){.at-grille{grid-template-columns:minmax(0,1fr)}}
 .at-form{display:flex;flex-direction:column;gap:14px;padding:24px;border-radius:24px;background:rgba(255,255,255,.55);backdrop-filter:blur(2px)}
 .at-champ{display:flex;flex-direction:column;gap:6px;font-weight:800;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#6B4A2E;transition:opacity .3s}
 .at-champ.at-off{opacity:.4}
-.at-champ select{min-height:48px;padding:0 14px;border-radius:14px;border:2px solid transparent;background:#fff;color:var(--mpc-bleu);font:600 16px var(--pl-body);letter-spacing:0;text-transform:none;cursor:pointer;transition:border-color .2s,box-shadow .2s}
+.at-champ select{width:100%;min-width:0;max-width:100%;text-overflow:ellipsis;min-height:48px;padding:0 14px;border-radius:14px;border:2px solid transparent;background:#fff;color:var(--mpc-bleu);font:600 16px var(--pl-body);letter-spacing:0;text-transform:none;cursor:pointer;transition:border-color .2s,box-shadow .2s}
 .at-champ select:hover{border-color:var(--mpc-bleu)}
 .at-champ select:focus-visible{outline:3px solid var(--mpc-terra-txt);outline-offset:2px}
 .at-periode{display:grid;grid-template-columns:1fr 1fr;gap:12px}
@@ -866,6 +866,7 @@ html.th-transition,html.th-transition *{transition:background-color .45s ease,co
 <label class="at-champ at-per-l"><span>Périmètre</span><select id="at-per"><option value="fr">France entière</option></select></label>
 <div class="at-champ at-com-w"><label for="at-com">Ou une commune</label><div class="at-com-in"><input id="at-com" type="text" placeholder="Nom ou code Insee" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="at-com-l"><button type="button" id="at-com-x" aria-label="Revenir à la France entière" hidden>✕</button></div><ul id="at-com-l" role="listbox" aria-label="Communes proposées" hidden></ul></div>
 <label class="at-champ at-strate-l"><span>Taille de commune</span><select id="at-strate"><option value="all">Toutes (200 à 3 499 hab.)</option><option value="2">200 à 499 hab.</option><option value="3">500 à 1 999 hab.</option><option value="4">2 000 à 3 499 hab.</option></select></label>
+<label class="at-champ at-ref-l"><span>Comparer à la</span><select id="at-ref"><option value="med">Médiane des communes</option><option value="moy">Moyenne des communes</option></select></label>
 <div class="at-periode"><label class="at-champ at-de-l"><span>De</span><select id="at-de"><option value="2018" selected>2018</option><option value="2019">2019</option><option value="2020">2020</option><option value="2021">2021</option><option value="2022">2022</option><option value="2023">2023</option><option value="2024">2024</option><option value="2025">2025</option></select></label><label class="at-champ"><span id="at-a-lab">à</span><select id="at-a"><option value="2018">2018</option><option value="2019">2019</option><option value="2020">2020</option><option value="2021">2021</option><option value="2022">2022</option><option value="2023">2023</option><option value="2024">2024</option><option value="2025" selected>2025</option></select></label></div>
 <div class="at-dl"><p class="at-dl-t">Télécharger cette page</p>
 <div class="at-fmts"><button type="button" data-fmt="pdf"><b>PDF</b><span>à imprimer</span></button><button type="button" data-fmt="png"><b>PNG</b><span>image</span></button><button type="button" data-fmt="svg"><b>SVG</b><span>retouchable</span></button><button type="button" data-fmt="csv"><b>CSV</b><span>données</span></button></div>
