@@ -90,17 +90,17 @@
     const logo = (document.querySelector(".pl-brand svg") || { innerHTML: "" }).innerHTML;
     let y = 106, o = "";
     const surTitre = item.g === "com" ? "Observer · " + com.nom : "Observer · " + GROUPES[item.g][1] + " · " + filtres();
-    o += `<text x="36" y="${y}" font-family="Manrope" font-weight="800" font-size="9.5" letter-spacing="1.4" fill="${TERRA_T}">${esc(surTitre.toUpperCase())}</text>`; y += 26;
-    o += `<text x="36" y="${y}" font-family="Newsreader" font-weight="600" font-size="22" fill="${BLEU}">${esc(titre)}</text>`; y += 18;
+    o += `<text x="36" y="${y}" font-family="Work Sans" font-weight="800" font-size="9.5" letter-spacing="1.4" fill="${TERRA_T}">${esc(surTitre.toUpperCase())}</text>`; y += 26;
+    o += `<text x="36" y="${y}" font-family="Besley" font-weight="600" font-size="22" fill="${BLEU}">${esc(titre)}</text>`; y += 18;
     const sous = [vue, txt($(item.cap)) || (item.g === "com" ? com.ctx : "")].filter(Boolean).join(" — ");
-    couper(sous, 10.5, 770).slice(0, 2).forEach(l => { o += `<text x="36" y="${y}" font-family="Manrope" font-size="10.5" fill="${GRIS}">${esc(l)}</text>`; y += 14; });
+    couper(sous, 10.5, 770).slice(0, 2).forEach(l => { o += `<text x="36" y="${y}" font-family="Work Sans" font-size="10.5" fill="${GRIS}">${esc(l)}</text>`; y += 14; });
     y += 6;
     // chiffres clés (jusqu'à quatre)
     const K = item.kpi ? kpis(item.kpi).slice(0, 4) : [];
     if (K.length) { const kw = (770 - (K.length - 1) * 10) / K.length;
       K.forEach((k, i) => { const x = 36 + i * (kw + 10);
-        o += `<rect x="${x}" y="${y}" width="${kw}" height="50" rx="6" fill="${CREME}"/><text x="${x + 10}" y="${y + 15}" font-family="Manrope" font-size="8" fill="${GRIS}">${esc(couper(k.k, 8, kw - 20)[0] || "")}</text>`
-          + `<text x="${x + 10}" y="${y + 34}" font-family="Newsreader" font-weight="600" font-size="17" fill="${BLEU}">${esc(k.v)}</text><text x="${x + 10}" y="${y + 45}" font-family="Manrope" font-size="7.5" fill="${GRIS}">${esc(couper(k.d, 7.5, kw - 20)[0] || "")}</text>`; });
+        o += `<rect x="${x}" y="${y}" width="${kw}" height="50" rx="6" fill="${CREME}"/><text x="${x + 10}" y="${y + 15}" font-family="Work Sans" font-size="8" fill="${GRIS}">${esc(couper(k.k, 8, kw - 20)[0] || "")}</text>`
+          + `<text x="${x + 10}" y="${y + 34}" font-family="Besley" font-weight="600" font-size="17" fill="${BLEU}">${esc(k.v)}</text><text x="${x + 10}" y="${y + 45}" font-family="Work Sans" font-size="7.5" fill="${GRIS}">${esc(couper(k.d, 7.5, kw - 20)[0] || "")}</text>`; });
       y += 62; }
     // légende
     const L = item.leg ? legende(item.leg) : [];
@@ -110,10 +110,10 @@
       const L2 = [...el.querySelectorAll("li")].map(ligneListe), cause = L2.some(r => r[2]), pas = cause ? 24 : 15;
       const col = 2, n = Math.min(L2.length, Math.floor((dispo - 16) / pas) * col), parCol = Math.ceil(n / col);
       L2.slice(0, n).forEach((r, i) => { const x = 36 + Math.floor(i / parCol) * 390, yy = y + 12 + (i % parCol) * pas;
-        o += `<text x="${x}" y="${yy}" font-family="Manrope" font-size="9" fill="${GRIS}">${i + 1}.</text><text x="${x + 18}" y="${yy}" font-family="Manrope" font-weight="700" font-size="9" fill="${BLEU}">${esc(r[0])}</text>`
-          + `<text x="${x + 150}" y="${yy}" font-family="Manrope" font-size="8" fill="${GRIS}">${esc(r[1])}</text><text x="${x + 372}" y="${yy}" text-anchor="end" font-family="Manrope" font-weight="800" font-size="9" fill="${TERRA_T}">${esc(r[3])}</text>`
-          + (r[2] ? `<text x="${x + 18}" y="${yy + 10}" font-family="Manrope" font-size="7.5" fill="${GRIS}">${esc(r[2].length > 80 ? r[2].slice(0, 79) + "…" : r[2])}</text>` : ""); });
-      if (L2.length > n) o += `<text x="36" y="${y + 14 + parCol * pas}" font-family="Manrope" font-size="8.5" fill="${GRIS}">… et ${L2.length - n} autres, dans le fichier CSV.</text>`;
+        o += `<text x="${x}" y="${yy}" font-family="Work Sans" font-size="9" fill="${GRIS}">${i + 1}.</text><text x="${x + 18}" y="${yy}" font-family="Work Sans" font-weight="700" font-size="9" fill="${BLEU}">${esc(r[0])}</text>`
+          + `<text x="${x + 150}" y="${yy}" font-family="Work Sans" font-size="8" fill="${GRIS}">${esc(r[1])}</text><text x="${x + 372}" y="${yy}" text-anchor="end" font-family="Work Sans" font-weight="800" font-size="9" fill="${TERRA_T}">${esc(r[3])}</text>`
+          + (r[2] ? `<text x="${x + 18}" y="${yy + 10}" font-family="Work Sans" font-size="7.5" fill="${GRIS}">${esc(r[2].length > 80 ? r[2].slice(0, 79) + "…" : r[2])}</text>` : ""); });
+      if (L2.length > n) o += `<text x="36" y="${y + 14 + parCol * pas}" font-family="Work Sans" font-size="8.5" fill="${GRIS}">… et ${L2.length - n} autres, dans le fichier CSV.</text>`;
     } else if (el.tagName === "CANVAS") {
       let gw = 770, gh = gw * el.height / el.width; if (gh > dispo) { gh = dispo; gw = gh * el.width / el.height; }
       o += `<image x="${36 + (770 - gw) / 2}" y="${y}" width="${gw}" height="${gh}" href="${el.toDataURL("image/png")}" preserveAspectRatio="xMidYMid meet"/>`; y += gh;
@@ -121,29 +121,29 @@
       const cartes = [...el.querySelectorAll(".jc")], col = 4, gw = (770 - (col - 1) * 10) / col, rangs = Math.ceil(cartes.length / col), gh = Math.min(120, (dispo - (rangs - 1) * 8) / rangs);
       cartes.forEach((cj, i) => { const x = 36 + (i % col) * (gw + 10), yy = y + Math.floor(i / col) * (gh + 8), s = cj.querySelector("svg");
         o += `<rect x="${x}" y="${yy}" width="${gw}" height="${gh}" rx="6" fill="${cj.classList.contains("me") ? "#F9EBD1" : CREME}"/>`
-          + `<text x="${x + 8}" y="${yy + 14}" font-family="Manrope" font-weight="800" font-size="9.5" fill="${BLEU}">${esc(txt(cj.querySelector(".jn")))}</text><text x="${x + 8}" y="${yy + 25}" font-family="Manrope" font-size="7.5" fill="${GRIS}">${esc(txt(cj.querySelector("small")))}</text>`;
+          + `<text x="${x + 8}" y="${yy + 14}" font-family="Work Sans" font-weight="800" font-size="9.5" fill="${BLEU}">${esc(txt(cj.querySelector(".jn")))}</text><text x="${x + 8}" y="${yy + 25}" font-family="Work Sans" font-size="7.5" fill="${GRIS}">${esc(txt(cj.querySelector("small")))}</text>`;
         if (s) { const f = figer(s), sh = gh - 44, sw = Math.min(gw - 16, sh * f.vw / f.vh); o += `<svg x="${x + 8}" y="${yy + 30}" width="${sw}" height="${sh}" viewBox="${f.svg.getAttribute("viewBox")}">${interieur(f.svg)}</svg>`; }
-        o += `<text x="${x + 8}" y="${yy + gh - 5}" font-family="Manrope" font-size="7" fill="${GRIS}">${esc((couper(txt(cj.querySelector(".jd")), 7, gw - 16)[0] || ""))}</text>`; });
+        o += `<text x="${x + 8}" y="${yy + gh - 5}" font-family="Work Sans" font-size="7" fill="${GRIS}">${esc((couper(txt(cj.querySelector(".jd")), 7, gw - 16)[0] || ""))}</text>`; });
     } else {
       const svgs = [...el.querySelectorAll("svg")].filter(s => !s.closest("button, label"));
       const s = svgs.sort((p, q) => q.getBoundingClientRect().width * q.getBoundingClientRect().height - p.getBoundingClientRect().width * p.getBoundingClientRect().height)[0];
       if (s) { const f = figer(s); let gw = 770, gh = gw * f.vh / f.vw; if (gh > dispo) { gh = dispo; gw = gh * f.vw / f.vh; }
         o += `<svg x="${36 + (770 - gw) / 2}" y="${y}" width="${gw}" height="${gh}" viewBox="${f.svg.getAttribute("viewBox")}" preserveAspectRatio="xMidYMid meet">${interieur(f.svg)}</svg>`; y += gh; }
-      else o += `<text x="36" y="${y + 20}" font-family="Manrope" font-size="11" fill="${GRIS}">Graphique indisponible pour cette commune.</text>`;
+      else o += `<text x="36" y="${y + 20}" font-family="Work Sans" font-size="11" fill="${GRIS}">Graphique indisponible pour cette commune.</text>`;
     }
     if (L.length) { let x = 36; const yl = H - 62 - 12;
       L.forEach(k => { const w = 26 + k.t.length * 5.2; if (x + w > 806) return;
         o += k.ligne ? `<path d="M${x} ${yl - 3}H${x + 16}" stroke="${k.coul}" stroke-width="2.5"${k.tirets ? ' stroke-dasharray="4 3"' : ""}/>` : `<rect x="${x}" y="${yl - 8}" width="14" height="10" rx="2" fill="${k.coul}" fill-opacity="${k.op}"/>`;
-        o += `<text x="${x + 20}" y="${yl}" font-family="Manrope" font-size="9" fill="${BLEU}">${esc(k.t)}</text>`; x += w + 10; }); }
+        o += `<text x="${x + 20}" y="${yl}" font-family="Work Sans" font-size="9" fill="${BLEU}">${esc(k.t)}</text>`; x += w + 10; }); }
     return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}">${fontes ? `<style>${fontes}</style>` : ""}
 <rect width="${W}" height="${H}" fill="#FFFFFF"/><rect width="${W}" height="62" fill="${BLEU}"/>
 <svg x="32" y="12" width="76" height="39" viewBox="${document.querySelector(".pl-brand svg").getAttribute("viewBox")}" preserveAspectRatio="xMinYMid meet">${logo}</svg>
 <text x="114" y="30" font-family="Montserrat" font-weight="800" font-size="10" fill="${CREME}">Ma Petite</text><text x="114" y="43" font-family="Montserrat" font-weight="800" font-size="10" fill="${CREME}">Commune</text>
-<text x="${W - 34}" y="36" text-anchor="end" font-family="Manrope" font-weight="700" font-size="9.5" fill="${SAFRAN}">Les finances locales, en clair</text>
+<text x="${W - 34}" y="36" text-anchor="end" font-family="Work Sans" font-weight="700" font-size="9.5" fill="${SAFRAN}">Les finances locales, en clair</text>
 ${o}
 <path d="M36 ${H - 40}H${W - 36}" stroke="${BLEU}" stroke-opacity=".15"/>
-<text x="36" y="${H - 26}" font-family="Manrope" font-size="8" fill="${GRIS}">Source : DGFiP, comptes individuels des communes (budget principal), et sources citées dans Observer ; calculs Ma Petite Commune.</text>
-<text x="36" y="${H - 14}" font-family="Manrope" font-weight="700" font-size="8" fill="${BLEU}">commentseportentlesfinancesdemapetitecommune.com · Observer · téléchargé le ${esc(date)}</text>
+<text x="36" y="${H - 26}" font-family="Work Sans" font-size="8" fill="${GRIS}">Source : DGFiP, comptes individuels des communes (budget principal), et sources citées dans Observer ; calculs Ma Petite Commune.</text>
+<text x="36" y="${H - 14}" font-family="Work Sans" font-weight="700" font-size="8" fill="${BLEU}">commentseportentlesfinancesdemapetitecommune.com · Observer · téléchargé le ${esc(date)}</text>
 </svg>`;
   }
 
@@ -152,7 +152,7 @@ ${o}
   async function fontes() {
     if (FONTES) return FONTES;
     const b64 = async u => { const b = new Uint8Array(await (await fetch(u)).arrayBuffer()); let s = ""; for (let i = 0; i < b.length; i += 0x8000) s += String.fromCharCode.apply(null, b.subarray(i, i + 0x8000)); return btoa(s); };
-    const F = [["Newsreader", "200 800", "fonts/newsreader-latin-opsz-normal.woff2"], ["Manrope", "400", "fonts/manrope-latin-400-normal.woff2"], ["Manrope", "700", "fonts/manrope-latin-700-normal.woff2"], ["Manrope", "800", "fonts/manrope-latin-800-normal.woff2"], ["Montserrat", "800", "fonts/montserrat-latin-800-normal.woff2"]];
+    const F = [["Besley", "400 900", "fonts/besley-latin-wght-normal.woff2"], ["Work Sans", "100 900", "fonts/work-sans-latin-wght-normal.woff2"], ["Montserrat", "800", "fonts/montserrat-latin-800-normal.woff2"]];
     return (FONTES = (await Promise.all(F.map(async ([f, w, u]) => `@font-face{font-family:'${f}';font-weight:${w};src:url(data:font/woff2;base64,${await b64(u)}) format('woff2')}`))).join(""));
   }
   async function toile(svg, pw, ph, ech) {
@@ -285,24 +285,24 @@ ${o}
   async function pdfTexte(B, titre) {
     const PW = 595, PH = 842, X = 48, LW = 499, F = await fontes(), pages = []; let o = "", y = 0;
     const neuve = () => { if (o) pages.push(o); o = ""; y = 70; };
-    const ligne = (t, taille, poids, coul, fam = "Manrope", ecart = 1.45) => { couper(t, taille, LW).forEach(l => { if (y + taille * ecart > PH - 60) neuve(); y += taille * ecart; o += `<text x="${X}" y="${y.toFixed(1)}" font-family="${fam}" font-weight="${poids}" font-size="${taille}" fill="${coul}">${esc(l)}</text>`; }); };
+    const ligne = (t, taille, poids, coul, fam = "Work Sans", ecart = 1.45) => { couper(t, taille, LW).forEach(l => { if (y + taille * ecart > PH - 60) neuve(); y += taille * ecart; o += `<text x="${X}" y="${y.toFixed(1)}" font-family="${fam}" font-weight="${poids}" font-size="${taille}" fill="${coul}">${esc(l)}</text>`; }); };
     neuve();
     B.forEach(b => {
-      if (b.t === "h1") { y += 6; ligne(b.v, 24, 600, BLEU, "Newsreader", 1.2); y += 6; }
-      else if (b.t === "h2") { if (y > PH - 160) neuve(); y += 14; ligne(b.v, 16, 600, BLEU, "Newsreader", 1.3); o += `<path d="M${X} ${y + 5}H${X + LW}" stroke="${TERRA}" stroke-width="1"/>`; y += 8; }
+      if (b.t === "h1") { y += 6; ligne(b.v, 24, 600, BLEU, "Besley", 1.2); y += 6; }
+      else if (b.t === "h2") { if (y > PH - 160) neuve(); y += 14; ligne(b.v, 16, 600, BLEU, "Besley", 1.3); o += `<path d="M${X} ${y + 5}H${X + LW}" stroke="${TERRA}" stroke-width="1"/>`; y += 8; }
       else if (b.t === "h3") { y += 6; ligne(b.v, 11, 800, TERRA_T); }
       else if (b.t === "kpi") ligne("• " + b.k + " : " + b.v + (b.d ? " (" + b.d + ")" : ""), 9.5, 400, BLEU);
       else if (b.t === "li") ligne("• " + b.v, 9.5, 400, BLEU);
       else if (b.t === "table") { const nc = Math.max(...b.v.map(r => r.length)), cw = LW / nc; y += 4;
         b.v.forEach((r, i) => { if (y + 15 > PH - 60) neuve(); y += 14; if (i === 0) o += `<rect x="${X}" y="${y - 10}" width="${LW}" height="14" fill="${CREME}"/>`;
-          r.forEach((c, k) => { o += `<text x="${X + 4 + k * cw}" y="${y.toFixed(1)}" font-family="Manrope" font-weight="${i === 0 ? 800 : 400}" font-size="7.5" fill="${BLEU}">${esc(c.length > cw / 4 ? c.slice(0, Math.floor(cw / 4) - 1) + "…" : c)}</text>`; }); });
+          r.forEach((c, k) => { o += `<text x="${X + 4 + k * cw}" y="${y.toFixed(1)}" font-family="Work Sans" font-weight="${i === 0 ? 800 : 400}" font-size="7.5" fill="${BLEU}">${esc(c.length > cw / 4 ? c.slice(0, Math.floor(cw / 4) - 1) + "…" : c)}</text>`; }); });
         y += 6; }
       else ligne(b.v, 9.5, 400, GRIS);
     });
     pages.push(o);
     const res = [];
     for (let i = 0; i < pages.length; i++) {
-      const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${PW} ${PH}" width="${PW}" height="${PH}"><style>${F}</style><rect width="${PW}" height="${PH}" fill="#fff"/><rect width="${PW}" height="34" fill="${BLEU}"/><text x="${X}" y="22" font-family="Montserrat" font-weight="800" font-size="10" fill="${CREME}">Ma Petite Commune</text><text x="${PW - X}" y="22" text-anchor="end" font-family="Manrope" font-size="9" fill="${SAFRAN}">${esc(titre)}</text>${pages[i]}<text x="${PW - X}" y="${PH - 28}" text-anchor="end" font-family="Manrope" font-size="8" fill="${GRIS}">${i + 1} / ${pages.length}</text><text x="${X}" y="${PH - 28}" font-family="Manrope" font-size="8" fill="${GRIS}">commentseportentlesfinancesdemapetitecommune.com</text></svg>`;
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${PW} ${PH}" width="${PW}" height="${PH}"><style>${F}</style><rect width="${PW}" height="${PH}" fill="#fff"/><rect width="${PW}" height="34" fill="${BLEU}"/><text x="${X}" y="22" font-family="Montserrat" font-weight="800" font-size="10" fill="${CREME}">Ma Petite Commune</text><text x="${PW - X}" y="22" text-anchor="end" font-family="Work Sans" font-size="9" fill="${SAFRAN}">${esc(titre)}</text>${pages[i]}<text x="${PW - X}" y="${PH - 28}" text-anchor="end" font-family="Work Sans" font-size="8" fill="${GRIS}">${i + 1} / ${pages.length}</text><text x="${X}" y="${PH - 28}" font-family="Work Sans" font-size="8" fill="${GRIS}">commentseportentlesfinancesdemapetitecommune.com</text></svg>`;
       const c = await toile(svg, PW, PH, 2.2), j = new Uint8Array(await (await blobDe(c, "image/jpeg", 0.9)).arrayBuffer());
       res.push({ jpeg: j, w: c.width, h: c.height, pw: PW, ph: PH });
     }
@@ -320,35 +320,35 @@ ${o}
   /* ---------- Interface : bouton sur chaque graphique et bibliothèque ---------- */
   const st = document.createElement("style");
   st.textContent = `
-.ox-btn{display:inline-flex;width:auto!important;flex:0 0 auto;align-self:flex-start;justify-content:center;white-space:nowrap;align-items:center;gap:6px;min-height:34px;padding:0 12px;border-radius:999px;border:1.5px solid currentColor;background:transparent;color:var(--text-secondary,#586971);font:700 13px Manrope,system-ui,sans-serif;cursor:pointer;margin:6px 0;transition:background .2s,color .2s,transform .2s}
+.ox-btn{display:inline-flex;width:auto!important;flex:0 0 auto;align-self:flex-start;justify-content:center;white-space:nowrap;align-items:center;gap:6px;min-height:34px;padding:0 12px;border-radius:999px;border:1.5px solid currentColor;background:transparent;color:var(--text-secondary,#586971);font:700 13px Work Sans,system-ui,sans-serif;cursor:pointer;margin:6px 0;transition:background .2s,color .2s,transform .2s}
 .ox-btn:hover{background:#172E3A;color:#F5F1E8;border-color:#172E3A;transform:translateY(-1px)}
 .ox-btn:focus-visible{outline:3px solid #8A5043;outline-offset:2px}
 .ox-lib-zone{grid-column:1/-1;display:flex;width:100%;min-width:0}
-.ox-lib-ouvrir{display:inline-flex;width:auto!important;max-width:100%;flex:0 0 auto;justify-content:flex-start;text-align:left;white-space:nowrap;align-items:center;gap:10px;min-height:48px;padding:0 20px;border-radius:999px;border:0;background:#172E3A;color:#F5F1E8;font:800 15.5px Manrope,system-ui,sans-serif;cursor:pointer;margin:4px 0 12px;box-shadow:0 8px 18px rgba(23,46,58,.18);transition:transform .25s,box-shadow .25s}
+.ox-lib-ouvrir{display:inline-flex;width:auto!important;max-width:100%;flex:0 0 auto;justify-content:flex-start;text-align:left;white-space:nowrap;align-items:center;gap:10px;min-height:48px;padding:0 20px;border-radius:999px;border:0;background:#172E3A;color:#F5F1E8;font:800 15.5px Work Sans,system-ui,sans-serif;cursor:pointer;margin:4px 0 12px;box-shadow:0 8px 18px rgba(23,46,58,.18);transition:transform .25s,box-shadow .25s}
 .ox-lib-ouvrir:hover{transform:translateY(-2px);box-shadow:0 12px 24px rgba(23,46,58,.25)}
 .ox-lib-ouvrir b{color:#E9B65C}
 @media (max-width:600px){.ox-lib-ouvrir{white-space:normal;min-height:52px;padding:8px 18px;font-size:14.5px;line-height:1.25}}
-dialog.ox-lib{width:min(1180px,96vw);max-height:92vh;padding:0;border:0;border-radius:24px;background:#F5F1E8;color:#172E3A;box-shadow:0 30px 80px rgba(0,0,0,.35);font-family:Manrope,system-ui,sans-serif}
+dialog.ox-lib{width:min(1180px,96vw);max-height:92vh;padding:0;border:0;border-radius:24px;background:#F5F1E8;color:#172E3A;box-shadow:0 30px 80px rgba(0,0,0,.35);font-family:Work Sans,system-ui,sans-serif}
 dialog.ox-lib::backdrop{background:rgba(10,22,29,.55);backdrop-filter:blur(3px)}
 dialog.ox-lib[open]{animation:oxEntre .35s cubic-bezier(.2,.8,.2,1)}
 @keyframes oxEntre{from{opacity:0;transform:translateY(20px) scale(.98)}}
 .ox-tete{position:sticky;top:0;z-index:2;display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;padding:20px 26px;background:#172E3A;color:#F5F1E8}
-.ox-tete h2{margin:0;font:600 26px/1.1 Newsreader,Georgia,serif;color:#F5F1E8}.ox-tete h2 em{color:#E9B65C}
+.ox-tete h2{margin:0;font:600 26px/1.1 Besley,Georgia,serif;color:#F5F1E8}.ox-tete h2 em{color:#E9B65C}
 .ox-tete p{margin:2px 0 0;font-size:13.5px;color:#C4C6C2}
-.ox-fermer{margin-left:auto;min-width:44px;height:44px;border-radius:999px;border:2px solid #F5F1E8;background:none;color:#F5F1E8;font:800 18px Manrope;cursor:pointer}
+.ox-fermer{margin-left:auto;min-width:44px;height:44px;border-radius:999px;border:2px solid #F5F1E8;background:none;color:#F5F1E8;font:800 18px Work Sans;cursor:pointer}
 .ox-onglets{display:flex;gap:6px;padding:14px 26px 0}
-.ox-onglets button{min-height:42px;padding:0 18px;border-radius:999px;border:2px solid #172E3A;background:none;color:#172E3A;font:800 14.5px Manrope;cursor:pointer}
+.ox-onglets button{min-height:42px;padding:0 18px;border-radius:999px;border:2px solid #172E3A;background:none;color:#172E3A;font:800 14.5px Work Sans;cursor:pointer}
 .ox-onglets button[aria-selected=true]{background:#172E3A;color:#F5F1E8}
 .ox-barre{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;padding:14px 26px;border-bottom:1px solid #E4DDCF}
 .ox-barre label{font-weight:700;font-size:14px;display:inline-flex;align-items:center;gap:8px}
-.ox-barre select{min-height:40px;border-radius:10px;border:2px solid #E4DDCF;background:#fff;padding:0 10px;font:600 14px Manrope;color:#172E3A}
-.ox-go{min-height:42px;padding:0 18px;border-radius:999px;border:0;background:#D77D68;color:#172E3A;font:800 14.5px Manrope;cursor:pointer}
+.ox-barre select{min-height:40px;border-radius:10px;border:2px solid #E4DDCF;background:#fff;padding:0 10px;font:600 14px Work Sans;color:#172E3A}
+.ox-go{min-height:42px;padding:0 18px;border-radius:999px;border:0;background:#D77D68;color:#172E3A;font:800 14.5px Work Sans;cursor:pointer}
 .ox-go.alt{background:#E9B65C}
 .ox-go:disabled{opacity:.5;cursor:progress}
 .ox-prog{flex-basis:100%;height:6px;border-radius:6px;background:#E4DDCF;overflow:hidden;display:none}.ox-prog.on{display:block}
 .ox-prog i{display:block;height:100%;width:0;background:#D77D68;transition:width .2s}
 .ox-msg{font-size:13.5px;color:#8A5043;font-weight:700}
-.ox-grp{padding-bottom:0;border:0}.ox-grp button{min-height:38px;padding:0 16px;border-radius:999px;border:2px solid #E4DDCF;background:#fff;color:#172E3A;font:800 13.5px Manrope;cursor:pointer}
+.ox-grp{padding-bottom:0;border:0}.ox-grp button{min-height:38px;padding:0 16px;border-radius:999px;border:2px solid #E4DDCF;background:#fff;color:#172E3A;font:800 13.5px Work Sans;cursor:pointer}
 .ox-grp button[aria-pressed=true]{border-color:#172E3A;background:#F9EBD1}
 .ox-grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;padding:20px 26px 28px}
 .ox-carte{display:flex;flex-direction:column;gap:10px;padding:12px;border-radius:18px;background:#fff;border:2px solid transparent;transition:border-color .2s,transform .25s cubic-bezier(.2,.8,.2,1.2),box-shadow .25s;animation:oxCarte .45s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i) * 45ms)}
@@ -362,17 +362,17 @@ dialog.ox-lib[open]{animation:oxEntre .35s cubic-bezier(.2,.8,.2,1)}
 @keyframes oxMaj{from{opacity:.25;transform:translateY(6px)}}
 .ox-titre{display:flex;gap:10px;align-items:flex-start;font-weight:800;font-size:14.5px;line-height:1.3;cursor:pointer}
 .ox-titre input{width:20px;height:20px;accent-color:#8A5043;flex:none;margin-top:1px}
-.ox-vue select{width:100%;min-height:36px;border-radius:10px;border:2px solid #E4DDCF;background:#F5F1E8;font:600 13px Manrope;color:#172E3A;padding:0 8px}
+.ox-vue select{width:100%;min-height:36px;border-radius:10px;border:2px solid #E4DDCF;background:#F5F1E8;font:600 13px Work Sans;color:#172E3A;padding:0 8px}
 .ox-vue small{display:block;margin-bottom:4px;font-size:12px;font-weight:700;color:#586971}
 .ox-fmts{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
-.ox-fmts button{min-height:36px;border-radius:10px;border:2px solid #172E3A;background:#fff;color:#172E3A;font:800 12.5px Manrope;cursor:pointer;transition:background .2s,color .2s,transform .2s}
+.ox-fmts button{min-height:36px;border-radius:10px;border:2px solid #172E3A;background:#fff;color:#172E3A;font:800 12.5px Work Sans;cursor:pointer;transition:background .2s,color .2s,transform .2s}
 .ox-fmts button:hover{background:#172E3A;color:#F5F1E8}
 .ox-fmts button:disabled{opacity:.3;cursor:not-allowed;background:#fff;color:#172E3A}
 .ox-fmts button.fait{background:#78A995;border-color:#78A995}
 .ox-textes{padding:20px 26px 28px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:20px}
 .ox-textes .ox-carte{animation:none}
 .ox-liseuse{max-height:58vh;overflow:auto;padding:22px 26px;border-radius:12px;background:#fff;box-shadow:0 6px 14px rgba(60,40,20,.12);font-size:13.5px;line-height:1.55}
-.ox-liseuse h3{font:600 22px Newsreader,Georgia,serif;margin:0 0 8px}.ox-liseuse h4{font:600 17px Newsreader,Georgia,serif;margin:16px 0 4px;border-bottom:1px solid #D77D68}.ox-liseuse h5{font-size:13px;color:#8A5043;margin:10px 0 2px}
+.ox-liseuse h3{font:600 22px Besley,Georgia,serif;margin:0 0 8px}.ox-liseuse h4{font:600 17px Besley,Georgia,serif;margin:16px 0 4px;border-bottom:1px solid #D77D68}.ox-liseuse h5{font-size:13px;color:#8A5043;margin:10px 0 2px}
 .ox-liseuse table{border-collapse:collapse;font-size:11.5px;margin:6px 0}.ox-liseuse td{border:1px solid #E4DDCF;padding:2px 6px}
 @media (prefers-reduced-motion:reduce){dialog.ox-lib[open],.ox-carte,.ox-apercu.maj{animation:none}}
 @media (max-width:760px){.ox-textes{grid-template-columns:1fr}}`;
