@@ -1,5 +1,5 @@
-/* Ma Petite Commune — styles partagés, nouvelle DA « V1 Newsreader » :
-   bleu profond, crème, sauge, terracotta, safran ; titres Newsreader, texte Manrope. */
+/* Ma Petite Commune — styles partagés, nouvelle DA « V1 Besley » :
+   bleu profond, crème, sauge, terracotta, safran ; titres Besley, texte Work Sans. */
 :root{
   /* Palette de marque (fixe, quel que soit le thème) */
   --mpc-bleu:#172E3A; --mpc-creme:#F5F1E8; --mpc-sauge:#78A995; --mpc-terra:#D77D68; --mpc-safran:#E9B65C;
@@ -12,10 +12,10 @@
   --pl-bg:#F5F1E8; --pl-panel:#FFFFFF; --pl-ink:#172E3A; --pl-ink-2:#586971; --pl-line:#E4DDCF;
   --pl-accent:#8A5043; --pl-accent-soft:#F4DBD5; --pl-hover:#EDE6D8;
   --pl-bar:#172E3A; --pl-bar-ink:#F5F1E8;
-  --pl-display:"Newsreader",Georgia,"Times New Roman",serif;
-  --pl-label:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --pl-body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --pl-mono:"Manrope",system-ui,sans-serif; /* chiffres : Manrope à chasse fixe (tnum) */
+  --pl-display:"Besley",Georgia,"Times New Roman",serif;
+  --pl-label:"Work Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --pl-body:"Work Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --pl-mono:"Work Sans",system-ui,sans-serif; /* chiffres : Work Sans à chasse fixe (tnum) */
   --pl-code:"DM Mono",ui-monospace,Menlo,monospace;
   --pl-h-weight:600;
   --pl-radius:16px;

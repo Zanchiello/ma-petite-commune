@@ -71,32 +71,32 @@
         const dlt = v1 - v0, pct = I.u === "€" ? Math.round(dlt / v0 * 100) : null;
         const txt = (dlt >= 0 ? "+" : "−") + (I.u === "%" ? nf(Math.abs(dlt), 1) + " point" + (Math.abs(dlt) >= 2 ? "s" : "") : nf(Math.abs(dlt), I.d) + " " + I.u) + (pct != null ? " (" + (pct >= 0 ? "+" : "−") + Math.abs(pct) + " %)" : "") + " depuis " + E.a;
         const bon = I.sens === 0 ? null : (dlt * I.sens > 0);
-        cle = `<text x="40" y="264" font-family="Manrope" font-size="12.5" fill="${GRIS}">en ${E.b} · <tspan font-weight="800" fill="${bon == null ? BLEU : bon ? SAUGE_T : TERRA_T}">${dlt >= 0 ? "▲" : "▼"} ${esc(txt)}</tspan></text>`;
+        cle = `<text x="40" y="264" font-family="Work Sans" font-size="12.5" fill="${GRIS}">en ${E.b} · <tspan font-weight="800" fill="${bon == null ? BLEU : bon ? SAUGE_T : TERRA_T}">${dlt >= 0 ? "▲" : "▼"} ${esc(txt)}</tspan></text>`;
       }
-      corps += `<text x="40" y="238" font-family="Newsreader" font-weight="600" font-size="54" fill="${TERRA_T}">${esc(fu(v1, I))}</text>` + cle;
+      corps += `<text x="40" y="238" font-family="Besley" font-weight="600" font-size="54" fill="${TERRA_T}">${esc(fu(v1, I))}</text>` + cle;
       // graphique
       const x0 = 70, x1 = 545, y0 = 300, y1 = 640, n = s.length;
       const med = unec ? mediane(E) : null, tousV = ok.concat(med ? med.filter(v => v != null) : []);
       const lo0 = Math.min(...tousV), hi0 = Math.max(...tousV), pad = (hi0 - lo0) * 0.25 || Math.abs(hi0) * 0.1 || 1;
       const lo = E.forme === "barres" ? 0 : Math.max(0, lo0 - pad), hi = hi0 + pad;
       const X = i => n === 1 ? (x0 + x1) / 2 : x0 + 20 + i * ((x1 - x0 - 40) / (n - 1)), Y = v => y1 - (v - lo) / (hi - lo || 1) * (y1 - y0);
-      for (let k = 0; k <= 4; k++) { const v = lo + (hi - lo) * k / 4, y = Y(v); corps += `<path d="M${x0} ${y.toFixed(1)}H${x1}" stroke="${BLEU}" stroke-opacity="${k ? .08 : .35}" stroke-width="1"/><text x="${x0 - 8}" y="${(y + 4).toFixed(1)}" text-anchor="end" font-family="Manrope" font-size="10" fill="${GRIS}">${nf(v, I.u === "€" ? 0 : 1)}</text>`; }
-      s.forEach((v, i) => corps += `<text x="${X(i).toFixed(1)}" y="${y1 + 18}" text-anchor="middle" font-family="Manrope" font-weight="700" font-size="10.5" fill="${GRIS}">${E.a + i}</text>`);
+      for (let k = 0; k <= 4; k++) { const v = lo + (hi - lo) * k / 4, y = Y(v); corps += `<path d="M${x0} ${y.toFixed(1)}H${x1}" stroke="${BLEU}" stroke-opacity="${k ? .08 : .35}" stroke-width="1"/><text x="${x0 - 8}" y="${(y + 4).toFixed(1)}" text-anchor="end" font-family="Work Sans" font-size="10" fill="${GRIS}">${nf(v, I.u === "€" ? 0 : 1)}</text>`; }
+      s.forEach((v, i) => corps += `<text x="${X(i).toFixed(1)}" y="${y1 + 18}" text-anchor="middle" font-family="Work Sans" font-weight="700" font-size="10.5" fill="${GRIS}">${E.a + i}</text>`);
       if (med) { const pm = med.map((v, i) => v == null ? null : `${X(i).toFixed(1)},${Y(v).toFixed(1)}`).filter(Boolean).join(" ");
         corps += `<polyline class="at-m" points="${pm}" fill="none" stroke="${GRIS}" stroke-width="2" stroke-dasharray="5 4" stroke-linejoin="round"/>`
-          + `<rect x="${x0}" y="${y1 + 32}" width="14" height="8" rx="2" fill="${E.forme === "barres" ? SAUGE : SAUGE_T}"/><text x="${x0 + 20}" y="${y1 + 40}" font-family="Manrope" font-weight="700" font-size="10" fill="${BLEU}">${esc(COM.n)}</text>`
-          + `<path d="M${x0 + 30 + COM.n.length * 6} ${y1 + 36}H${x0 + 54 + COM.n.length * 6}" stroke="${GRIS}" stroke-width="2" stroke-dasharray="5 4"/><text x="${x0 + 60 + COM.n.length * 6}" y="${y1 + 40}" font-family="Manrope" font-size="10" fill="${GRIS}">${E.ref === "moy" ? "Moyenne" : "Médiane"} des ${esc(STRATE[E.st])}, France</text>`; }
+          + `<rect x="${x0}" y="${y1 + 32}" width="14" height="8" rx="2" fill="${E.forme === "barres" ? SAUGE : SAUGE_T}"/><text x="${x0 + 20}" y="${y1 + 40}" font-family="Work Sans" font-weight="700" font-size="10" fill="${BLEU}">${esc(COM.n)}</text>`
+          + `<path d="M${x0 + 30 + COM.n.length * 6} ${y1 + 36}H${x0 + 54 + COM.n.length * 6}" stroke="${GRIS}" stroke-width="2" stroke-dasharray="5 4"/><text x="${x0 + 60 + COM.n.length * 6}" y="${y1 + 40}" font-family="Work Sans" font-size="10" fill="${GRIS}">${E.ref === "moy" ? "Moyenne" : "Médiane"} des ${esc(STRATE[E.st])}, France</text>`; }
       if (E.forme === "barres") {
         const bw = Math.min(46, (x1 - x0 - 40) / n * 0.62);
         s.forEach((v, i) => { if (v == null) return; const y = Y(v), last = i === n - 1;
           corps += `<rect class="at-b" style="--k:${i}" x="${(X(i) - bw / 2).toFixed(1)}" y="${y.toFixed(1)}" width="${bw.toFixed(1)}" height="${(y1 - y).toFixed(1)}" rx="4" fill="${last ? TERRA : SAUGE}"/>`
-            + `<text class="at-t" x="${X(i).toFixed(1)}" y="${(y - 7).toFixed(1)}" text-anchor="middle" font-family="Manrope" font-weight="800" font-size="10.5" fill="${last ? TERRA_T : BLEU}">${nf(v, I.d)}</text>`; });
+            + `<text class="at-t" x="${X(i).toFixed(1)}" y="${(y - 7).toFixed(1)}" text-anchor="middle" font-family="Work Sans" font-weight="800" font-size="10.5" fill="${last ? TERRA_T : BLEU}">${nf(v, I.d)}</text>`; });
       } else {
         const pts = s.map((v, i) => v == null ? null : `${X(i).toFixed(1)},${Y(v).toFixed(1)}`).filter(Boolean).join(" ");
         corps += `<polyline class="at-l" pathLength="1" points="${pts}" fill="none" stroke="${SAUGE_T}" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>`;
         s.forEach((v, i) => { if (v == null) return; const last = i === n - 1;
           corps += `<circle class="at-p" style="--k:${i}" cx="${X(i).toFixed(1)}" cy="${Y(v).toFixed(1)}" r="${last ? 6 : 4}" fill="${last ? TERRA : SAUGE_T}"/>`
-            + `<text class="at-t" x="${X(i).toFixed(1)}" y="${(Y(v) - 11).toFixed(1)}" text-anchor="middle" font-family="Manrope" font-weight="800" font-size="10.5" fill="${last ? TERRA_T : BLEU}">${nf(v, I.d)}</text>`; });
+            + `<text class="at-t" x="${X(i).toFixed(1)}" y="${(Y(v) - 11).toFixed(1)}" text-anchor="middle" font-family="Work Sans" font-weight="800" font-size="10.5" fill="${last ? TERRA_T : BLEU}">${nf(v, I.d)}</text>`; });
       }
     } else {
       const yi = E.b - 2018, v = DEPV(E)[E.st][yi];
@@ -106,17 +106,17 @@
       const cls = x => x == null ? "#D3D3D3" : SC[qt.filter(t => x > t).length];
       const paires = C.geo.map((g, k) => [g.n, v[k]]).filter(p => p[1] != null).sort((p, q) => q[1] - p[1]);
       const med = paires.map(p => p[1]).sort((p, q) => p - q)[Math.floor(paires.length / 2)];
-      corps += `<text x="40" y="236" font-family="Newsreader" font-weight="600" font-size="22" fill="${BLEU}">De ${esc(fu(paires[paires.length - 1][1], E.I))} à ${esc(fu(paires[0][1], E.I))}</text><text x="40" y="258" font-family="Manrope" font-size="12" fill="${GRIS}">entre départements en ${E.b} ; département médian : ${esc(fu(med, E.I))}</text>`;
+      corps += `<text x="40" y="236" font-family="Besley" font-weight="600" font-size="22" fill="${BLEU}">De ${esc(fu(paires[paires.length - 1][1], E.I))} à ${esc(fu(paires[0][1], E.I))}</text><text x="40" y="258" font-family="Work Sans" font-size="12" fill="${GRIS}">entre départements en ${E.b} ; département médian : ${esc(fu(med, E.I))}</text>`;
       if (E.forme === "carte") {
         corps += `<svg x="40" y="285" width="515" height="420" viewBox="0 0 622 597">` + C.geo.map((g, k) => `<path class="at-d" style="--k:${(k % 12)}" d="${g.p}" fill="${cls(v[k])}" stroke="${CREME}" stroke-width="1"/>`).join("") + `</svg>`;
         const lim = [tous[0], ...qt, tous[tous.length - 1]];
-        SC.forEach((c, k) => { const x = 40 + k * 103; corps += `<rect x="${x}" y="716" width="12" height="12" rx="2" fill="${c}"/><text x="${x + 17}" y="726" font-family="Manrope" font-size="9.5" fill="${GRIS}">${nf(lim[k], E.I.d)} à ${nf(lim[k + 1], E.I.d)} ${E.I.u}</text>`; });
-        corps += `<text x="40" y="746" font-family="Manrope" font-size="9.5" fill="${GRIS}">Gris : moins de 10 communes suivies. Échelle commune aux années ${E.I.debut || 2018} à 2025.</text>`;
+        SC.forEach((c, k) => { const x = 40 + k * 103; corps += `<rect x="${x}" y="716" width="12" height="12" rx="2" fill="${c}"/><text x="${x + 17}" y="726" font-family="Work Sans" font-size="9.5" fill="${GRIS}">${nf(lim[k], E.I.d)} à ${nf(lim[k + 1], E.I.d)} ${E.I.u}</text>`; });
+        corps += `<text x="40" y="746" font-family="Work Sans" font-size="9.5" fill="${GRIS}">Gris : moins de 10 communes suivies. Échelle commune aux années ${E.I.debut || 2018} à 2025.</text>`;
       } else {
         const haut = paires.slice(0, 10), bas = paires.slice(-10).reverse(), mx = paires[0][1];
-        const col = (liste, x, lab, coul) => { let o = `<text x="${x}" y="300" font-family="Manrope" font-weight="800" font-size="12" fill="${BLEU}">${lab}</text>`;
+        const col = (liste, x, lab, coul) => { let o = `<text x="${x}" y="300" font-family="Work Sans" font-weight="800" font-size="12" fill="${BLEU}">${lab}</text>`;
           liste.forEach(([n, val], i) => { const y = 322 + i * 38, w = Math.max(4, val / mx * 170);
-            o += `<text x="${x}" y="${y}" font-family="Manrope" font-size="11.5" fill="${BLEU}">${i + 1}. ${esc(n)}</text><rect class="at-c" style="--k:${i}" x="${x}" y="${y + 6}" width="${w.toFixed(1)}" height="10" rx="3" fill="${coul}"/><text x="${x + w + 6}" y="${y + 15}" font-family="Manrope" font-weight="800" font-size="10.5" fill="${BLEU}">${nf(val, E.I.d)}</text>`; });
+            o += `<text x="${x}" y="${y}" font-family="Work Sans" font-size="11.5" fill="${BLEU}">${i + 1}. ${esc(n)}</text><rect class="at-c" style="--k:${i}" x="${x}" y="${y + 6}" width="${w.toFixed(1)}" height="10" rx="3" fill="${coul}"/><text x="${x + w + 6}" y="${y + 15}" font-family="Work Sans" font-weight="800" font-size="10.5" fill="${BLEU}">${nf(val, E.I.d)}</text>`; });
           return o; };
         corps += col(haut, 40, "Les 10 plus élevés", TERRA) + col(bas, 310, "Les 10 plus bas", SAUGE);
       }
@@ -127,16 +127,16 @@
 <rect width="${W}" height="${H}" fill="#FFFFFF"/><rect width="${W}" height="78" fill="${BLEU}"/>
 <svg x="36" y="18" width="84" height="43" viewBox="${document.querySelector(".pl-brand svg").getAttribute("viewBox")}" preserveAspectRatio="xMinYMid meet">${logo}</svg>
 <text x="128" y="37" font-family="Montserrat" font-weight="800" font-size="11" fill="${CREME}">Ma Petite</text><text x="128" y="51" font-family="Montserrat" font-weight="800" font-size="11" fill="${CREME}">Commune</text>
-<text x="${W - 36}" y="44" text-anchor="end" font-family="Manrope" font-weight="700" font-size="10" fill="${SAFRAN}">Les finances locales, en clair</text>
-<text x="40" y="120" font-family="Manrope" font-weight="800" font-size="10.5" letter-spacing="1.6" fill="${TERRA_T}">${esc(FORME[E.forme].toUpperCase())}</text>
-<text x="40" y="152" font-family="Newsreader" font-weight="600" font-size="25" fill="${BLEU}">${esc(titre)}</text>
-<text x="40" y="176" font-family="Manrope" font-size="11.5" fill="${GRIS}">${esc(sous)}</text>
-<text x="40" y="194" font-family="Manrope" font-style="italic" font-size="10.5" fill="${GRIS}">${esc(I.def)}</text>
+<text x="${W - 36}" y="44" text-anchor="end" font-family="Work Sans" font-weight="700" font-size="10" fill="${SAFRAN}">Les finances locales, en clair</text>
+<text x="40" y="120" font-family="Work Sans" font-weight="800" font-size="10.5" letter-spacing="1.6" fill="${TERRA_T}">${esc(FORME[E.forme].toUpperCase())}</text>
+<text x="40" y="152" font-family="Besley" font-weight="600" font-size="25" fill="${BLEU}">${esc(titre)}</text>
+<text x="40" y="176" font-family="Work Sans" font-size="11.5" fill="${GRIS}">${esc(sous)}</text>
+<text x="40" y="194" font-family="Work Sans" font-style="italic" font-size="10.5" fill="${GRIS}">${esc(I.def)}</text>
 ${corps}
 <path d="M40 778H555" stroke="${BLEU}" stroke-opacity=".15"/>
-<text x="40" y="796" font-family="Manrope" font-size="9" fill="${GRIS}">Source : DGFiP, comptes individuels des communes (budget principal) ; calculs Ma Petite Commune, d'après les données d'Observer.</text>
-<text x="40" y="810" font-family="Manrope" font-size="9" fill="${GRIS}">${E.ref === "moy" ? "Moyennes simples" : "Médianes"} des communes de 200 à 3 500 hab. suivies par Observer. Départements de moins de 10 communes non représentés.</text>
-<text x="40" y="826" font-family="Manrope" font-weight="700" font-size="9" fill="${BLEU}">commentseportentlesfinancesdemapetitecommune.com · téléchargé le ${esc(date)}</text>
+<text x="40" y="796" font-family="Work Sans" font-size="9" fill="${GRIS}">Source : DGFiP, comptes individuels des communes (budget principal) ; calculs Ma Petite Commune, d'après les données d'Observer.</text>
+<text x="40" y="810" font-family="Work Sans" font-size="9" fill="${GRIS}">${E.ref === "moy" ? "Moyennes simples" : "Médianes"} des communes de 200 à 3 500 hab. suivies par Observer. Départements de moins de 10 communes non représentés.</text>
+<text x="40" y="826" font-family="Work Sans" font-weight="700" font-size="9" fill="${BLEU}">commentseportentlesfinancesdemapetitecommune.com · téléchargé le ${esc(date)}</text>
 </svg>`;
   }
 
@@ -164,7 +164,7 @@ ${corps}
   async function fontesCss() {
     if (fontes) return fontes;
     const b64 = async u => { const r = await fetch(u); const b = new Uint8Array(await r.arrayBuffer()); let s = ""; for (let i = 0; i < b.length; i += 0x8000) s += String.fromCharCode.apply(null, b.subarray(i, i + 0x8000)); return btoa(s); };
-    const F = [["Newsreader", "normal", "200 800", "fonts/newsreader-latin-opsz-normal.woff2"], ["Manrope", "normal", "400", "fonts/manrope-latin-400-normal.woff2"], ["Manrope", "normal", "700", "fonts/manrope-latin-700-normal.woff2"], ["Manrope", "normal", "800", "fonts/manrope-latin-800-normal.woff2"], ["Montserrat", "normal", "800", "fonts/montserrat-latin-800-normal.woff2"]];
+    const F = [["Besley", "normal", "400 900", "fonts/besley-latin-wght-normal.woff2"], ["Besley", "italic", "400 900", "fonts/besley-latin-wght-italic.woff2"], ["Work Sans", "normal", "100 900", "fonts/work-sans-latin-wght-normal.woff2"], ["Montserrat", "normal", "800", "fonts/montserrat-latin-800-normal.woff2"]];
     const parts = await Promise.all(F.map(async ([f, st, w, u]) => `@font-face{font-family:'${f}';font-style:${st};font-weight:${w};src:url(data:font/woff2;base64,${await b64(u)}) format('woff2')}`));
     return (fontes = parts.join(""));
   }
